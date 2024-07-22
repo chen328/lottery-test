@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"
+		/>
+		<title></title>
+		<script>
+			(function () {
+				const scale = window.innerWidth / 375;
+				document
+					.querySelector('meta[name=viewport]')
+					.setAttribute(
+						'content',
+						'width=375,initial-scale=' +
+							scale +
+							',' +
+							'maximum-scale=' +
+							scale +
+							',minimum-scale=' +
+							scale +
+							',user-scalable=no',
+					);
+			})();
+		</script>
+
+		<script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.min.js"></script>
+
+	</head>
+
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+	</body>	
+	<script type="text/javascript">
+		function loadScript(moduleName, cb) {
+			function scriptLoaded() {
+			  document.body.removeChild(domScript);
+			  domScript.removeEventListener('load', scriptLoaded, false);
+			  cb && cb();
+			}
+			var domScript = document.createElement('script');
+			domScript.async = true;
+			domScript.src = moduleName;
+			domScript.addEventListener('load', scriptLoaded, false);
+			document.body.appendChild(domScript);
+		}
+		(function(){
+			var dev = false;
+			<% if (env==='k8s' || env==='development') { %>
+			dev = true;
+			<% } %>
+
+			if (
+				/debug=show/.test(location.href || '')
+				|| dev
+			) {
+				loadScript('https://cdn.bootcdn.net/ajax/libs/vConsole/3.15.1/vconsole.min.js', function () {
+					new window.VConsole();
+				})
+			}
+		})();
+	</script>
+</html>
