@@ -40,12 +40,21 @@ export default defineConfig({
 	build: {
 		target: 'es2015',
 		rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom', 'dayjs', 'md5', 'qs', 'axios', '@aliyun-sls/web-track-browser'],
-        },
-      },
-    },
+			output: {
+				manualChunks: {
+					'vendor-react': [
+						'react',
+						'react-dom',
+						'react-router-dom',
+						'dayjs',
+						'md5',
+						'qs',
+						'axios',
+						'@aliyun-sls/web-track-browser',
+					],
+				},
+			},
+		},
 	},
 	server: {},
 });

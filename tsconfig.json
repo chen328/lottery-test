@@ -24,6 +24,6 @@
 		"noImplicitAny": false,
 		"suppressImplicitAnyIndexErrors": false
 	},
-	"include": ["src/*", "global.d.ts"],
+	"include": ["src/**/*", "global.d.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

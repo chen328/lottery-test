@@ -1,0 +1,1488 @@
+.detail-wrap {
+  width: 100vw;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.prize-pic {
+  position: relative;
+  background-size: cover;
+  height: 343px;
+  margin: 0 32px 10px;
+  flex: 0 0 auto;
+}
+
+.card-clause-detail {
+  display: flex;
+  margin: 16px 30px 14px;
+  align-items: flex-end;
+  font-size: 26px;
+  color: #999;
+  line-height: 28px;
+}
+
+.wish-card-req {
+  font-size: 28px;
+  line-height: 28px;
+  padding: 15px 14px;
+  flex: 0 0 auto;
+  color: #999;
+  align-self: flex-start;
+  border-radius: 4px;
+  background: #f5f5f5;
+  margin: 0 32px 14px;
+}
+
+.blue-line-arrow {
+  margin-left: 10px;
+  background-image: url(/images/merchant/arrow-blue-new.png);
+  height: 23px;
+  width: 13px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  uc-perf-stat-ignore: image;
+}
+
+.brief-box-end {
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.05); */
+  border-radius: 8px;
+  /* margin-top: 20px; */
+  position: relative;
+  color: #d66d00;
+  background-color: rgba(255, 239, 201, 1);
+}
+
+.brief-commas {
+  position: absolute;
+  left: 30px;
+  top: 24px;
+  width: 72px;
+  height: 54px;
+}
+
+.brief-content {
+  display: inline-block;
+  margin: 32px 48px;
+  font-size: 28px;
+  line-height: 44px;
+  color: #d66d00;
+}
+
+.tool-box {
+  margin-top: 20px;
+  line-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 142px;
+  background: #ffffff;
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.tool-main {
+  font-size: 34px;
+  color: #108ee9;
+  flex: 1;
+  text-align: center;
+}
+
+.tool-sub {
+  border-left: 1px solid #eee;
+  font-size: 34px;
+  color: #108ee9;
+  flex: 1;
+  text-align: center;
+}
+
+.end-box {
+  /* margin-top: 20px; */
+  background-color: #ffffff;
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 40px;
+}
+
+.tab-box {
+  height: 110px;
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+  display: flex;
+  align-items: center;
+}
+
+.tab-main {
+  font-size: 34px;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+  text-align: center;
+  line-height: 50px;
+}
+
+.tab-sub {
+  font-size: 30px;
+  color: #333;
+  flex: 1;
+  text-align: center;
+  line-height: 50px;
+}
+
+.end-success {
+  line-height: 170px;
+  font-weight: bold;
+  font-size: 52px;
+  color: #ff3c2c;
+}
+
+.end-success-box {
+  padding-top: 32px;
+}
+
+.end-prize {
+  font-size: 28px;
+  color: #333333;
+}
+
+.end-action-box {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: flex;
+}
+
+.end-action-address {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 180px;
+  border: 1px solid #ff3c2c;
+  background: #ff3c2c;
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.end-action-address-icon {
+  width: 54px;
+  height: 70px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url('/images/awardDetail/address.png');
+  uc-perf-stat-ignore: image;
+}
+
+.end-action-gift-icon {
+  width: 70px;
+  height: 70px;
+  background-image: url('/images/small-icon/gift.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  uc-perf-stat-ignore: image;
+}
+
+.end-action-address-todo {
+  margin-top: 20px;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.end-action-zan {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 180px;
+  border: 1px solid #ff3c2c;
+  border-radius: 8px;
+  justify-content: center;
+  margin-left: 15px;
+  line-height: normal;
+}
+
+.end-action-zan-icon {
+  margin-top: 12px;
+  width: 64px;
+  height: 60px;
+  uc-perf-stat-ignore: image;
+}
+
+.end-action-zan-todo {
+  margin-top: 20px;
+  font-size: 28px;
+  color: #ff3c2c;
+}
+
+.end-winners-title {
+  font-size: 28px;
+  color: #333333;
+  margin-top: 32px;
+}
+
+.end-winners-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.end-winners-header {
+  padding-top: 6px;
+  padding-left: 2px;
+  margin-bottom: 44px;
+  font-size: 28px;
+  color: #999999;
+}
+.end-winners-people-icon {
+  width: 396px;
+  height: 28px;
+  display: block;
+  margin: 32px auto 30px;
+}
+.end-winners-people {
+  font-size: 32px;
+  color: #eb3427;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.end-winners-number {
+  font-weight: bold;
+}
+
+.detail-end-config {
+  width: 654px;
+  height: 248px;
+  display: block;
+  margin: 32px auto 0;
+}
+.detail-end-wish {
+  margin: 42px auto 0;
+  width: 562px;
+  height: 64px;
+  background-image: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*kdIzSbsAw9AAAAAAAAAAAAAADg6FAQ/original);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.end-prize-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 28px;
+  color: #333333;
+  text-align: center;
+}
+
+.end-prize-count {
+  margin-left: 8px;
+  font-size: 28px;
+  color: #333333;
+  text-align: center;
+}
+
+.end-benefit {
+  font-size: 28px;
+  color: #333;
+}
+
+.end-fail-box {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 32px;
+}
+
+.end-benefits {
+  padding: 0 0 40px 0;
+  margin-top: 30px;
+  /* margin-bottom: 40px; */
+  line-height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  /* box-shadow: 0 2px 0 0 rgba(0,0,0,0.05); */
+}
+
+.end-benefits-alimama {
+  margin-top: 30px;
+  width: 100%;
+  uc-perf-stat-ignore: image;
+}
+
+.end-benefits-main {
+  flex: 1;
+  height: 390px;
+  /* width: 330px; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #ff3c2c;
+  border-radius: 10px;
+}
+
+.end-benefits-sub {
+  height: 390px;
+  /* width: 330px; */
+  flex: 1;
+  position: relative;
+  margin-left: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid #ff3c2c;
+  border-radius: 10px;
+}
+
+.benefits-main-title {
+  margin-left: 26px;
+  margin-top: 30px;
+  font-size: 28px;
+  color: #ff3c2c;
+  line-height: 32px;
+}
+
+.benefits-main-content {
+  margin: 20px 26px 0px 26px;
+  font-size: 30px;
+  color: #333333;
+  line-height: 50px;
+  margin-bottom: 146px;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.benefits-sub-content {
+  margin: 20px 26px 0px 26px;
+  font-size: 30px;
+  color: #333333;
+  line-height: 50px;
+  margin-bottom: 146px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.action-wrap {
+  left: 0;
+  right: 0;
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.end-benefit-content {
+  line-height: 50px;
+  margin-top: 20px;
+  font-size: 30px;
+  color: #333333;
+  text-align: justify;
+}
+
+.end-benefit-action {
+  width: 170px;
+  line-height: 54px;
+  margin-top: 40px;
+  background: #ff3c2c;
+  border-radius: 2px;
+  color: #fff;
+  text-align: center;
+}
+
+.benefits-main-action {
+  width: 140px;
+  padding: 0 15px;
+  height: 54px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 54px;
+  background: #ff3c2c;
+  border-radius: 2px;
+  color: #fff;
+  text-align: center;
+}
+
+.desc-box {
+  background-color: #fff;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  font-size: 36px;
+  box-sizing: border-box;
+}
+
+.desc-text {
+  font-size: 26px;
+  color: #333;
+  line-height: 44px;
+  word-break: break-all;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  /* margin-top: 10px; */
+}
+
+.desc-image {
+  width: 100%;
+  margin: 20px 0 0 0;
+  uc-perf-stat-ignore: image;
+}
+
+.desc-link {
+  margin: 20px 40px 0px 40px;
+  height: 130px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 40px;
+  background: #fff2f2;
+  border-radius: 65px;
+}
+
+.desc-link-icon {
+  width: 60px;
+  height: 60px;
+  uc-perf-stat-ignore: image;
+}
+
+.desc-link-title {
+  flex: 1;
+  margin-left: 12px;
+  font-size: 32px;
+  color: #454952;
+}
+
+.desc-link-action {
+  padding: 5px 25px;
+  font-size: 32px;
+  color: #ff3c2c;
+  border: 2px solid #ff3c2c;
+  border-radius: 25px;
+}
+
+.desc-gap {
+  height: 30px;
+}
+
+.bottom-fix {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.share-image {
+  width: 31px;
+  height: 31px;
+  margin-right: 12px;
+}
+
+.am-modal-image-md,
+.am-modal-image-sm {
+  margin-top: 0;
+  z-index: -10000000;
+}
+
+.am-modal-image-md image {
+  width: 100%;
+}
+
+.camp-desc-block {
+  background-color: #f9f9f9;
+  padding: 20px 0 20px 0;
+}
+
+.detail-card-box {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #fff; */
+  padding-bottom: 22px;
+}
+
+.logo-margin {
+  margin-top: -150px;
+}
+
+.desc-box-end {
+  background-color: #fff;
+  padding-top: 38px;
+  display: flex;
+  flex-direction: column;
+  font-size: 36px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.desc-text-end {
+  /* display: inline-block; */
+  font-size: 30px;
+  color: #333;
+  /* text-align: justify; */
+  line-height: 52px;
+  word-break: break-all;
+  /* white-space: normal; */
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding: 24px 0 0 0;
+}
+
+.desc-item-link {
+  height: 130px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 30px;
+  border-radius: 8px;
+  /* background: url(./images/platform/bg.png) no-repeat; */
+  background-size: 100% 100%;
+  margin: 0 0 20px 0;
+  uc-perf-stat-ignore: image;
+}
+
+.desc-item-link-action {
+  font-size: 24px;
+  border-radius: 25px;
+  color: #1696ff;
+}
+
+.desc-image-view {
+  text-align: center;
+}
+
+/* 抽奖详情顶部信息 */
+
+.gray-margin {
+  height: 30px;
+  background: rgb(249, 249, 249);
+}
+
+.desc-header {
+  display: flex;
+  align-items: center;
+  padding: 30px 32px 24px;
+}
+
+.desc-header > .src-chnl-icon {
+  height: 75px;
+  width: 75px;
+  background-size: contain !important;
+  border-radius: 8px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+.desc-header > .right {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.desc-header > .right > .header-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: #333;
+  line-height: 40px;
+}
+
+.desc-header > .right > .header-start {
+  color: #999;
+  font-size: 24px;
+  margin-top: 3px;
+  line-height: 33px;
+}
+
+.header-desc-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.header-desc-box > .prize-desc {
+  line-height: 52px;
+  font-size: 30px;
+  color: #404040;
+  padding: 0 32px 20px;
+  word-break: break-all;
+}
+
+.service-card-wrap {
+  background: #fff;
+  padding: 0 24px 20px 24px;
+}
+
+.r-panel-content,
+.r-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9000;
+}
+
+.r-mask {
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.r-mask.show {
+  display: flex;
+}
+
+.r-mask.hide {
+  display: none;
+}
+
+.r-panel-content {
+  min-height: 540px;
+  max-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  bottom: -120%;
+  transition: 0.3s;
+  border-radius: 20px 20px 0 0;
+  background-image: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*CH5GRYvTwCwAAAAAAAAAAAAAARQnAQ);
+  background-size: 100% 240px;
+  background-repeat: no-repeat;
+}
+
+.r-panel-content.show {
+  bottom: 0;
+}
+
+.r-header {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  padding: 36px 48px 6px 36px;
+  font-size: 40px;
+  line-height: 50px;
+  flex: 0 0 auto;
+  /* height: 98px; */
+  box-sizing: border-box;
+  position: relative;
+}
+
+.r-header .success {
+  color: #ff3c2c;
+}
+
+.r-close {
+  background-image: url('https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*uMfFSKTb7a8AAAAAAAAAAAAAARQnAQ');
+  width: 46px;
+  height: 46px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 20px;
+  top: -66px;
+  /* top: 34px; */
+  uc-perf-stat-ignore: image;
+}
+
+.r-content {
+  padding: 0 32px 32px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.winners-wrap {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.winners-title {
+  font-size: 40px;
+  line-height: 60px;
+  font-weight: 500;
+  margin-bottom: 34px;
+  text-align: center;
+}
+
+.view-all-winners {
+  font-size: 26px;
+  color: #ec171f;
+  border: 2px solid #ec171f;
+  height: 56px;
+  width: 330px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+.winners-wrap-rate {
+  font-size: 24px;
+  color: #999999;
+  margin-top: 42px;
+  text-align: center;
+}
+
+.bottom-btn-wrap-placeholder {
+  height: 130px;
+  flex: 0 0 auto;
+}
+
+.bottom-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 32px;
+  background: #fff;
+  display: flex;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottom-btn {
+  flex: 1;
+  padding: 19px;
+  background: #ff3c2c;
+  color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  line-height: 50px;
+}
+
+.bottom-btn-next-lottery-text {
+  width: 100%;
+  height: 116px;
+  opacity: 0.25;
+  background-image: linear-gradient(180deg, #ff6d6d 0%, #ffffff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 28px;
+}
+
+.prize-count,
+.prize-name {
+  font-weight: 500;
+}
+
+.desc-line-wrap {
+  padding: 0 32px 30px;
+}
+
+.special-background {
+  height: 754px;
+}
+
+.normal-background {
+  height: 530px;
+}
+
+.background {
+  width: 750px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+.bg-wrap {
+  background-color: #fff;
+}
+
+.slogan-text {
+  max-width: 95%;
+  color: #333333;
+}
+
+.detail-slogan {
+  display: block;
+  margin: -78px auto 0;
+  width: 286px;
+  height: 176px;
+}
+
+.end-user-tag-code {
+  width: calc(100% - 10px);
+  margin-top: 10px;
+  height: 52px;
+  border: 1px solid #ff2c11;
+  border-radius: 32px;
+  font-size: 21px;
+  color: #ff2c11;
+  line-height: 52px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.end-user-tag {
+  margin-top: 10px;
+  width: 132px;
+  height: 48px;
+  background: #ff3c2c;
+  border-radius: 24px;
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 48px;
+  text-align: center;
+}
+
+.end-merchant-tag {
+  margin-top: 10px;
+  width: 180px;
+  height: 48px;
+  background: #108ee9;
+  border-radius: 24px;
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 48px;
+  text-align: center;
+}
+
+.ranking__title {
+  background-image: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*IcSGSboTt8YAAAAAAAAAAABkARQnAQ);
+  background-size: 100%;
+  background-position: center;
+  width: 750px;
+  height: 530px;
+  uc-perf-stat-ignore: image;
+}
+
+.detail-ranking {
+  padding-top: 180px;
+}
+
+.single-logo-top {
+  margin-top: -250px;
+}
+
+.raise-money {
+  font-size: 28px;
+  color: #ff3c2c;
+}
+
+.raise-money-icon {
+  background-image: url(/images/awardDetail/cash.png);
+  background-size: 100%;
+  background-position: center;
+  width: 64px;
+  height: 47px;
+  uc-perf-stat-ignore: image;
+}
+
+.detail-raise__sub-title {
+  width: 236px;
+  height: 55px;
+  background-size: cover;
+}
+
+/* 详情底部留空隙 */
+
+.detail-gap {
+  height: 344px;
+}
+
+.detail-gap-small {
+  height: 153px;
+}
+
+/* 服务号样式优化 */
+
+.service-card-optimiza .sc-service-card {
+  background: rgba(255, 44, 17, 0.08) !important;
+}
+
+.service-card-optimiza .sc-favorite {
+  width: 140px;
+  height: 64px;
+  background-image: linear-gradient(139deg, #ff9669 0%, #ff2430 100%, #ff361c 100%);
+  color: #fff;
+  font-size: 28px;
+}
+
+.service-card-optimiza .sc-line {
+  background: rgba(255, 44, 17, 0.2);
+}
+
+.service-card-optimiza .sc-link-title {
+  color: #ff2c11;
+  font-size: 24px;
+}
+
+.service-card-optimiza .sc-link-desc {
+  color: #ff2c11;
+  font-size: 24px;
+}
+
+.service-card-optimiza .sc-link-arrow {
+  background-size: cover;
+  background-image: url('/images/small-icon/small-arrow-new.png');
+  width: 13px;
+  height: 23px;
+  background-repeat: no-repeat;
+  uc-perf-stat-ignore: image;
+}
+
+.service-card-optimiza .sc-middle > .sc-title {
+  color: #454952;
+  font-size: 30px;
+}
+
+.service-card-optimiza .sc-middle > .sc-desc {
+  font-size: 24px;
+  color: #9599a8;
+}
+
+.show-invitee-block {
+  margin: 40px auto;
+  width: 586px;
+  height: 146px;
+  background: #fff4db;
+  border-radius: 8px;
+  padding: 30px 50px 40px 50px;
+}
+
+.invitee-block-title {
+  font-size: 28px;
+  color: #e47706;
+  text-align: center;
+  line-height: 44px;
+}
+
+.invitee-icon-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.invitee-user-icon {
+  width: 82px;
+  height: 82px;
+  border-radius: 4px;
+  background-position: center center;
+  background-size: 100% 100%;
+  margin-right: 20px;
+  uc-perf-stat-ignore: image;
+}
+
+.invitee-user-icon:last-child {
+  margin-right: 0;
+  uc-perf-stat-ignore: image;
+}
+.goToUseCoupon {
+  background: white;
+  color: #ff3c2c;
+  border: 3px solid #ff3c2c;
+  border-radius: 8px;
+}
+
+.end-winners-descflex {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+.end-winners-desc-line {
+  width: 100px;
+  height: 1px;
+  background-color: #cdcdcd;
+}
+.end-winners-desc-give {
+  margin: 0 20px;
+  font-size: 28px;
+  color: #666666;
+}
+.end-winners-ad {
+  width: 686px;
+  height: 270px;
+  border-radius: 16px;
+  margin: 32px auto 0;
+  display: block;
+}
+.detail__channel {
+  width: 686px;
+  height: 240px;
+  display: block;
+  margin: 32px auto;
+}
+
+.immediate-err-dialog {
+  width: 750px;
+  height: 524px;
+  background-image: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*VsrZQocjcfoAAAAAAAAAAAAADg6FAQ/original);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.immediate-err-dialog-btn {
+  width: 686px;
+  height: 88px;
+  margin: 394px auto 0;
+}
+
+.container {
+  width: 100vw;
+  min-height: 100vw;
+  background-color: #fff;
+  background-size: 100% auto;
+  background-position: top center;
+  color: #333;
+}
+
+.container.detail-points-lottery {
+  background-color: #eee;
+}
+
+/* 骨架图 */
+.detail-loading-image {
+  background-image: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*7bnfSbTCBMkAAAAAAAAAAAAADg6FAQ/original);
+  background-size: 100% 100%;
+  background-position: center center;
+  width: 750px;
+  height: 1800px;
+}
+
+/* 错误显示 */
+.error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 300px;
+}
+
+.error-icon {
+  margin-top: 190px;
+  width: 114px;
+  height: 110px;
+}
+
+.error-main {
+  margin-top: 30px;
+  font-size: 34px;
+  color: #333333;
+  text-align: justify;
+  line-height: 52px;
+}
+
+.error-sub {
+  margin-top: 6px;
+  font-size: 30px;
+  color: #999999;
+  text-align: justify;
+  line-height: 52px;
+}
+
+/* 公告 */
+.notice-item {
+  width: 100%;
+}
+
+.notice-item .am-notice {
+  height: 55px;
+  line-height: 55px;
+}
+
+/* 授权弹窗 */
+.auth-dlg-info {
+  margin: 10px 32px;
+  background: url('/images/dlg-auth.png');
+  width: 470px;
+  height: 422px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  align-self: center;
+  uc-perf-stat-ignore: image;
+}
+
+/* 正文 */
+.award-main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 心愿列表 */
+.wishes-wrap {
+  font-size: 32px;
+  margin: 0 32px 40px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  padding: 30px 30px 35px;
+}
+
+.more-wishes {
+  color: #ff3c2c;
+  line-height: 52px;
+  margin-top: 17px;
+  display: flex;
+}
+
+.more-wishes-arrow {
+  background-image: url('/images/small-icon/small-arrow.png');
+  width: 16px;
+  height: 26px;
+  background-size: 100%;
+  margin-left: 12px;
+  uc-perf-stat-ignore: image;
+}
+
+.coinAnimation-lottie {
+  width: 750px;
+  height: 1626px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -375px;
+  margin-top: -813px;
+}
+
+.coinMessage-lottie {
+  width: 750px;
+  height: 1626px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -375px;
+  margin-top: -813px;
+  z-index: 9000;
+}
+
+.wish-icon {
+  height: 60px;
+  width: 60px;
+  border-radius: 4px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+}
+
+.wish-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 12px;
+  color: #333;
+  font-weight: 500;
+  line-height: 45px;
+}
+
+.wish-time {
+  font-size: 24px;
+  color: #999;
+}
+
+.wish-content {
+  margin-top: 10px;
+  word-break: break-all;
+  line-height: 52px;
+}
+
+.am-modal-body {
+  margin-top: -180px;
+}
+
+.detail-cpmbox {
+  /* 暂时展示 */
+  background-color: #eee;
+  margin-top: -300px;
+
+  /* position: fixed; */
+  /* top: -2000px; */
+  /* left: -2000px; */
+}
+
+.detail-immediateDialog-btn {
+  width: 424px;
+  height: 80px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  margin: 416px auto 24px;
+}
+
+.immediateMutiDialog {
+  background-image: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*SOA2RLg-WqgAAAAAAAAAAAAADg6FAQ/original);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 750px;
+  height: 484px;
+}
+
+.immediateMutiDialog-lottie {
+  width: 300px;
+  height: 174px;
+  margin: -54px auto 0;
+  display: block;
+}
+
+.immediateMutiDialog-topicon {
+  width: 300px;
+  height: 174px;
+  margin: -94px auto 0;
+  display: block;
+}
+
+.immediateMutiDialog-count {
+  color: #333333;
+  margin-top: 24px;
+  margin-bottom: 70px;
+}
+
+.immediateMutiDialog-count-num {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 50px;
+  color: #ec171f;
+  background-color: rgba(236, 23, 31, 0.1);
+  margin-left: 4px;
+  margin-right: 4px;
+  align-items: baseline;
+}
+
+.immediateMutiDialog-cash {
+  position: absolute;
+  left: 50%;
+  top: 180px;
+  transform: translateX(-50%);
+}
+
+.immediateMutiDialog-flex {
+  height: 70px;
+  width: 646px;
+  margin: 0 auto 54px;
+  justify-content: space-between;
+}
+
+.immediateMutiDialog-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.immediateMutiDialog-icon-red {
+  width: 48px;
+  height: 54px;
+}
+
+.immediateMutiDialog-red {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 70px;
+  height: 68px;
+  box-sizing: border-box;
+  padding-top: 6px;
+  padding-left: 32px;
+  animation: shake 2s 0.15s linear infinite;
+  position: relative;
+}
+
+.immediateMutiDialog-red-tip {
+  position: absolute;
+  width: 130px;
+  height: 54px;
+  left: 60%;
+  transform: translateX(-50%);
+  top: -54px;
+}
+
+.immediateMutiDialog-btn {
+  width: 686px;
+  height: 88px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.immediateRedDialog {
+  background-image: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*hiegQIPZtGkAAAAAAAAAAAAADg6FAQ/original);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 582px;
+  height: 610px;
+}
+
+.immediateRedDialog-name {
+  font-family: 'DINPro-Medium';
+  font-size: 140px;
+  color: var(--primary-color);
+  margin: 214px auto 0;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.immediateRedDialog-btn {
+  width: 424px;
+  height: 80px;
+  background-color: var(--primary-color);
+  margin: 32px auto 24px;
+  border-radius: 8px;
+}
+
+.immediateMutiDialog-close {
+  position: absolute;
+  right: 20px;
+  top: -80px;
+}
+
+.immediateMutilottery-lottie {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -152px;
+  width: 304px;
+  height: 280px;
+}
+
+.isFirstAutoDialog-close {
+  width: 424px;
+  height: 80px;
+  margin: 348px auto 0;
+}
+
+.limitDialog-text {
+  margin: 292px auto 0 116px;
+}
+
+.limitDialog-box {
+  width: 320px;
+  height: 52px;
+  overflow: hidden;
+  border-radius: 26px;
+  margin-left: 116px;
+  background-color: #ffbebe;
+  position: relative;
+}
+
+.limitDialog-box-progress {
+  height: 100%;
+  background-image: linear-gradient(90deg, #ff773e 0%, #ff2a35 100%, #ff0021 100%);
+  border-radius: 26px;
+  max-width: 100%;
+  width: 0;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.5s linear;
+}
+
+.limitDialog-box-progress-mask {
+  width: 1014px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: move 5s linear infinite;
+}
+
+.limitDialog-box-tip {
+  opacity: 0.75;
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.limitDialog-btn {
+  width: 424px;
+  height: 80px;
+  background-color: #ec171f;
+  border-radius: 8px;
+  margin: 90px auto 0;
+}
+
+.limitDialog-lottie {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  top: 284px;
+  left: 120px;
+}
+
+.immediateRedMutiDialog {
+  width: 750px;
+  height: 880px;
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  margin-left: -375px;
+  margin-top: -440px;
+}
+
+.immediateRedMutiDialog-lottie {
+  width: 750px;
+  height: 880px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.immediateRedMutiDialog-title {
+  color: #1b1b1b;
+  margin-top: 370px;
+}
+
+.immediateRedMutiDialog-box {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #F31A1A;
+}
+
+.immediateRedMutiDialog-line {
+  width: 404px;
+  height: 2px;
+  display: block;
+  margin: 58px auto -34px;
+}
+
+.immediateRedMutiDialog-flex {
+  width: 408px;
+  height: 70px;
+  justify-content: space-between;
+  margin: 0 auto 36px;
+}
+
+.immediateRedMutiDialog-btn {
+  width: 424px;
+  height: 80px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.immediateRedMutiDialog-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.immediateRedMutiDialog-icon-red {
+  width: 38px;
+  height: 42px;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
