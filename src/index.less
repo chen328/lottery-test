@@ -200,3 +200,326 @@ body {
 .c-red {
 	color: #fe182c;
 }
+
+
+@font-face {
+  font-family: 'DINPro-Medium';
+  src: url('https://resource/DINPro-Medium.ttf');
+}
+@font-face {
+  font-family: AlipayNumber-Regular;
+  src: url(/images/AlipayNumber-Regular-201809141106.ttf);
+}
+@font-face {
+  font-family: 'DINPro-Medium';
+  src: url('https://resource/DINPro-Medium.ttf');
+}
+
+@font-face {
+  font-family: AlipayNumber-Black;
+  src: url('https://gw.alipayobjects.com/os/bmw-prod/21a8ad22-c068-4fd2-beec-a1c6bb89cd39.otf');
+}
+
+@font-face {
+  font-family: Alibaba-PuHuiTi;
+  src: url('https://gw.alipayobjects.com/os/bmw-prod/e5e65c3e-cc80-478b-99da-6e70311d406b.otf');
+}
+
+page {
+  flex: 1;
+  display: flex;
+  background-color: white;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  word-break: break-word;
+}
+
+.detail-main-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-box {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 32px 20px 32px;
+}
+
+.empty-box {
+  text-align: center;
+  margin-top: 50%;
+}
+
+.empty-image {
+  width: 200px;
+  height: 200px;
+  background-size: 100% 100%;
+}
+
+.card-box {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 24px;
+  box-shadow: 0 2px 24px 0px rgba(0, 0, 0, 0.05);
+}
+
+.card-cover {
+  background-size: cover;
+  height: 340px;
+  margin-bottom: 10px;
+}
+
+.card-sponsor {
+  margin: 26px 30px 0px 30px;
+  font-size: 24px;
+  color: #f24724;
+}
+
+.prize-box {
+  display: flex;
+  margin: 16px 30px 0px 30px;
+  align-items: flex-end;
+  font-size: 34px;
+  color: #333;
+}
+
+.prize-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.prize-count {
+  margin-left: 16px;
+  flex: 1;
+}
+
+.card-clause {
+  display: flex;
+  margin: 16px 30px 32px 30px;
+  align-items: flex-end;
+  font-size: 26px;
+  color: #999999;
+  line-height: 28px;
+}
+
+.action-box {
+  z-index: 3;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.action {
+  height: 88px;
+  line-height: 88px;
+  margin: 16px 32px;
+  font-size: 36px;
+  color: #fff;
+  background-color: rgba(255, 60, 44, 1);
+  border: none;
+}
+
+/*
+依次: iPhone  XS Max, iPhone XS, XR
+参考: https://stackoverflow.com/questions/52321212/iphone-xr-xs-xs-max-css-media-queries */
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3),
+  only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3),
+  only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .g-iphonex-top {
+    height: 50px;
+    /* min-height: 24px;
+    height: env(safe-area-inset-top); */
+    flex: 0 0 auto;
+  }
+
+  .g-iphonex-margin-top {
+    margin-top: 24px;
+    flex: 0 0 auto;
+  }
+
+  .g-iphonex-bottom {
+    visibility: hidden;
+    min-height: 34px;
+    height: env(safe-area-inset-bottom);
+  }
+}
+
+/* common */
+
+.l-page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background: #f7f7f7;
+  flex: 1;
+  color: #333;
+}
+
+/* 1像素横线，顶部左侧由32px缺口 */
+
+.l-line-indent-tl {
+  background-image: -webkit-linear-gradient(-90deg, #fff, #fff) top left
+      no-repeat,
+    -webkit-linear-gradient(90deg, #fff, #fff) bottom left no-repeat,
+    -webkit-linear-gradient(-90deg, #eee, #eee 33%, transparent 33%) top left no-repeat,
+    -webkit-linear-gradient(90deg, #eee, #eee 33%, transparent 33%) bottom left no-repeat,
+    #fff;
+  background-image: linear-gradient(180deg, #fff, #fff) top left no-repeat,
+    linear-gradient(0deg, #fff, #fff) bottom left no-repeat,
+    linear-gradient(180deg, #eee, #eee 33%, transparent 33%) top left no-repeat,
+    linear-gradient(0deg, #eee, #eee 33%, transparent 33%) bottom left no-repeat,
+    #fff;
+  -webkit-background-size: 32px 1px, 32px 32px, 100% 1px, 100% 0px;
+  background-size: 32px 1px, 32px 32px, 100% 1px, 100% 0px;
+}
+
+/* 1像素横线，底部左侧由32px缺口 */
+
+.l-line-indent-bl {
+  background-image: -webkit-linear-gradient(-90deg, #fff, #fff) top left
+      no-repeat,
+    -webkit-linear-gradient(90deg, #fff, #fff) bottom left no-repeat,
+    -webkit-linear-gradient(-90deg, #eee, #eee 33%, transparent 33%) top left no-repeat,
+    -webkit-linear-gradient(90deg, #eee, #eee 33%, transparent 33%) bottom left no-repeat,
+    #fff;
+  background-image: linear-gradient(180deg, #fff, #fff) top left no-repeat,
+    linear-gradient(0deg, #fff, #fff) bottom left no-repeat,
+    linear-gradient(180deg, #eee, #eee 33%, transparent 33%) top left no-repeat,
+    linear-gradient(0deg, #eee, #eee 33%, transparent 33%) bottom left no-repeat,
+    #fff;
+  -webkit-background-size: 32px 0px, 32px 32px, 100% 0px, 100% 1px;
+  background-size: 32px 0px, 32px 32px, 100% 0px, 100% 1px;
+}
+
+/* 底部线：无缺口 */
+
+.l-line-b {
+  background-image: -webkit-linear-gradient(-90deg, #fff, #fff) top left
+      no-repeat,
+    -webkit-linear-gradient(90deg, #fff, #fff) bottom left no-repeat,
+    -webkit-linear-gradient(-90deg, #eee, #eee 33%, transparent 33%) top left no-repeat,
+    -webkit-linear-gradient(90deg, #eee, #eee 33%, transparent 33%) bottom left no-repeat,
+    #fff;
+  background-image: linear-gradient(180deg, #fff, #fff) top left no-repeat,
+    linear-gradient(0deg, #fff, #fff) bottom left no-repeat,
+    linear-gradient(180deg, #eee, #eee 33%, transparent 33%) top left no-repeat,
+    linear-gradient(0deg, #eee, #eee 33%, transparent 33%) bottom left no-repeat,
+    #fff;
+  -webkit-background-size: 0px 0px, 0px 0px, 100% 0px, 100% 1px;
+  background-size: 0px 0px, 0px 0px, 100% 0px, 100% 1px;
+}
+
+/* 顶部线：无缺口 */
+
+.l-line-t {
+  background-image: linear-gradient(180deg, #fff, #fff) top left no-repeat;
+  background-size: 0px 1px, 0px 0px, 100% 1px, 100% 0px;
+}
+
+/* flex */
+
+.l-flex {
+  display: flex;
+}
+
+.l-flex-v {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-flex-1 {
+  flex: 1;
+}
+
+.l-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal !important;
+}
+
+.l-flex-align-center {
+  display: flex;
+  align-items: center;
+  line-height: normal !important;
+}
+
+.l-flex-0 {
+  flex: 0 0 auto;
+}
+
+/* bottom button */
+
+.l-bottom-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  /* fix: 小程序bug, textarea比按钮高度高 */
+  z-index: 4;
+}
+
+.l-btn-wrap {
+  box-sizing: border-box;
+  height: 128px;
+  padding: 20px 32px;
+  display: flex;
+  align-items: stretch;
+}
+
+.l-btn-wrap > .l-btn {
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.l-btn-wrap > .l-btn.sub {
+  background: rgba(255, 60, 44, 0.08);
+  color: #ff3c2c;
+}
+
+.l-btn-wrap > .l-btn.main {
+  background: #ff3c2c;
+  color: #fff;
+}
+
+.l-hair-line {
+  flex: 0 0 auto;
+  background-color: #eee;
+  max-height: 1px;
+  min-height: 1px;
+  height: 1px;
+  transform: scaleY(0.5);
+}
+
+.l-list-hover {
+  background-color: #f8f8f8;
+}
+
+.l-break-all {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.l-btn-override {
+  background-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  border-radius: 0;
+  border: none;
+}

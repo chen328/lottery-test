@@ -1161,6 +1161,21 @@ ahooks@^3.7.6:
     screenfull "^5.0.0"
     tslib "^2.4.1"
 
+ahooks@^3.8.0:
+  version "3.8.0"
+  resolved "http://verdaccio.shuli.com/ahooks/-/ahooks-3.8.0.tgz#62476bf3459862ff706de2189b87de5e4f49b298"
+  integrity sha512-M01m+mxLRNNeJ/PCT3Fom26UyreTj6oMqJBetUrJnK4VNI5j6eMA543Xxo53OBXn6XibA2FXKcCCgrT6YCTtKQ==
+  dependencies:
+    "@babel/runtime" "^7.21.0"
+    dayjs "^1.9.1"
+    intersection-observer "^0.12.0"
+    js-cookie "^2.x.x"
+    lodash "^4.17.21"
+    react-fast-compare "^3.2.2"
+    resize-observer-polyfill "^1.5.1"
+    screenfull "^5.0.0"
+    tslib "^2.4.1"
+
 ajv@^6.12.4:
   version "6.12.6"
   resolved "http://verdaccio.shuli.com/ajv/-/ajv-6.12.6.tgz"
@@ -2416,7 +2431,7 @@ loose-envify@^1.1.0:
 
 lottie-web@^5.12.2:
   version "5.12.2"
-  resolved "http://verdaccio.shuli.com/lottie-web/-/lottie-web-5.12.2.tgz"
+  resolved "http://verdaccio.shuli.com/lottie-web/-/lottie-web-5.12.2.tgz#579ca9fe6d3fd9e352571edd3c0be162492f68e5"
   integrity sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==
 
 lower-case@^2.0.2:
@@ -3124,6 +3139,11 @@ react-dom@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-fast-compare@^3.2.2:
+  version "3.2.2"
+  resolved "http://verdaccio.shuli.com/react-fast-compare/-/react-fast-compare-3.2.2.tgz#929a97a532304ce9fee4bcae44234f1ce2c21d49"
+  integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
 
 react-is@^18.2.0:
   version "18.2.0"

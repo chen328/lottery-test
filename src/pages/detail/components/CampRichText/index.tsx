@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {  } from 'react';
 // import { trackEnterPage } from '@/public/track/index';
 import './index.less';
 
@@ -29,12 +29,11 @@ function CampRichText(props) {
 			{campDescItemInfos && campDescItemInfos.length && (
 				<div
 					className='desc-box'
-					style={
-						abstractCampInfo.displayColumn === 'STUDENT_CHEAP'
-							? 'background-color: transparent; padding: 0;'
-							: ''
-					}
-					// onFirstAppear="onTextImgExpose"
+					// style={
+					// 	abstractCampInfo.displayColumn === 'STUDENT_CHEAP'
+					// 		? 'background-color: transparent; padding: 0;'
+					// 		: ''
+					// }
 				>
 					{campDescItemInfos.map((item, index) => {
 						<>
