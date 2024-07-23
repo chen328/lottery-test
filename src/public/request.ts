@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { capture } from './excepture';
-import { showErrorDialog } from './util';
+import { showToast } from './util';
 import cst from './constant';
 import { getAuth } from './auth';
 import { trackUserInfo } from './track';
@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
 			);
 
 			if (!response.config['disabledErrorToast']) {
-				showErrorDialog({
+				showToast({
 					message: response.data.msg,
 				});
 			}
@@ -49,7 +49,7 @@ axiosInstance.interceptors.response.use(
 		return response.data;
 	},
 	function (error) {
-		showErrorDialog({
+		showToast({
 			message: '网络状态不佳\n请稍后重试',
 		});
 		return Promise.reject(error);

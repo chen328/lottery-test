@@ -1,7 +1,7 @@
 import qs from 'qs';
 import cst from './constant';
 import { auth } from './service/common';
-import { showErrorDialog } from './util';
+import { showToast } from './util';
 
 export function getAuth() {
 	return new Promise((resolve, reject) => {
@@ -30,7 +30,7 @@ export function getAuth() {
 							(error) => reject(error),
 						);
 					} else {
-						showErrorDialog({ message: JSON.stringify(errorMessage) });
+						showToast({ message: JSON.stringify(errorMessage) });
 						reject(errorMessage);
 					}
 				},

@@ -1,6 +1,6 @@
 import { pureRequest } from '../request';
 import cst from '../constant';
-import { showErrorDialog } from '../util';
+import { showToast } from '../util';
 
 export function auth(authCode) {
 	return pureRequest({
@@ -22,7 +22,7 @@ export function auth(authCode) {
 		},
 		(error) => {
 			const { msg } = error;
-			showErrorDialog({
+			showToast({
 				message: msg || '网络状态不佳\n请稍后重试',
 			});
 			return Promise.reject(error);

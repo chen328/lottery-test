@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button } from 'antd-mobile';
 import clipboard from 'copy-to-clipboard';
 import cst from '@/public/constant';
-import { showErrorDialog } from '@/public/util';
-import { redirectTo } from '@/public/util'
+import { showToast } from '@/public/util';
 
 const Auth = () => {
 	useEffect(() => {
@@ -21,7 +20,7 @@ const Auth = () => {
 				console.log(res, 'getAuthCode');
 				if (authCode) {
 					clipboard(authCode);
-					showErrorDialog({ message: '复制成功' });
+					showToast({ message: '复制成功' });
 				}
 			},
 		);
@@ -39,7 +38,7 @@ const Auth = () => {
 
 				if (authCode) {
 					clipboard(authCode);
-					showErrorDialog({ message: '复制成功' });
+					showToast({ message: '复制成功' });
 				}
 			},
 		);

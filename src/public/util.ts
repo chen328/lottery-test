@@ -28,7 +28,7 @@ export function isInAlipay() {
 	return userAgent.includes('alipay') || userAgent.includes('aliapp'); // 返回true或false，表示是否在支付宝内部
 }
 
-export function showErrorDialog(config: any = { message: '', duration: 3000 }) {
+export function showToast(config: any = { message: '', duration: 3000 }) {
 	const { message = '', type, duration = 3000 } = config;
 	const typeList = {
 		fail: 'https://sl-online-oss.shulidata.com/resource/shequn/v1_0_26_encourage/icon-fail.svg?111',
