@@ -1,18 +1,25 @@
 import { pureRequest } from '../request';
 import cst from '../constant';
-import { showToast } from '../util';
+import { genRandomStr, showToast } from '../util';
 
 export function auth(authCode) {
 	return pureRequest({
-		url: '/alipay/auth',
-		data: `authCode=${authCode}&source=${cst.SOURCE}`,
+		url: '/ipsponsorprod/lottery/auth',
+		data: {
+			authCode,
+			source: cst.SOURCE
+		},
+		headers: {
+			'content-type': 'application/json',
+			'X-B3-TraceId': genRandomStr(32),
+		}
 	}).then(
 		({ data }) => {
-			const { token, user } = data || {};
-			const { userId, uid } = user || {};
+			const { invUserInfo, sessionId } = data || {};
+			const { userId, uid } = invUserInfo || {};
 
 			cst.USER = {
-				token,
+				token: sessionId,
 				userId,
 				uid,
 				authCode,

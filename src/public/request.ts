@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { capture } from './excepture';
-import { showToast } from './util';
+import { genRandomStr, showToast } from './util';
 import cst from './constant';
 import { getAuth } from './auth';
 import { trackUserInfo } from './track';
@@ -62,7 +62,9 @@ export function requestWithToken(cfg) {
 	let data;
 	const hs = {
 		'content-type': 'application/x-www-form-urlencoded',
+		'X-B3-TraceId': genRandomStr(32),
 		token: Token,
+		sessionId: Token,
 		...headers,
 	};
 
@@ -136,7 +138,7 @@ export default function request<T = any>(
 		triggerRequestQueue();
 	} else if (requestQueue.length === 1) {
 		getAuth().then((res: any) => {
-			Token = res.token;
+			Token = res.sessionId;
 			trackUserInfo();
 			triggerRequestQueue();
 		});

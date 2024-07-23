@@ -1,30 +1,32 @@
 import { useEffect } from 'react';
 import { useQuery } from '@/public/hooks';
 import { trackEnterPage } from '@/public/track/index';
+import { homePrizesList } from '@/public/service/home';
+import { BUILTIN_CHANNELS } from './config';
 import './index.less';
 
 function Home() {
 	const { source } = useQuery();
 
 	useEffect(() => {
-		// 直接跳转到支付宝小程序 从小程序返回之后 页面不会重新加载 使用onAppResume方法监听是否页面返回
-		// 页面重新打开触发的事件
-		ap.onAppResume(() => {
-			
-		});
-
-	
 		trackEnterPage({ pageId: source });
-
-		// 页面销毁时 取消监听 避免多次触发onAppResume事件
-		return () => {
-			ap.offAppResume();
-		};
+		
+		getList();
 	}, []);
 
-	return (
-		<div>首页</div>
-	);
+	const getList = () => {
+		homePrizesList({
+			page: 1,
+			pageSize: 50,
+			displayChannel: 'LOTTERY_LIST',
+			displayColumn: 'NORMAL',
+			regionId: BUILTIN_CHANNELS.official.id,
+		}).then((data) => {
+			console.log(data);
+		});
+	};
+
+	return <div>首页</div>;
 }
 
 export default Home;
