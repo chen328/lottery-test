@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export function genRandomStr(length = 16) {
 	const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 	let result = '';
@@ -105,9 +107,74 @@ export function getCoutdownFormat(totalSeconds) {
 	const minutes = Math.floor(totalSeconds / 60);
 	const seconds = Math.floor(totalSeconds % 60); // 最后剩余的秒数
 
-	return { 
-		hours: hours < 10 ? `0${hours}` : hours, 
-		minutes: minutes < 10 ? `0${minutes}` : minutes, 
-		seconds: seconds < 10 ? `0${seconds}` : seconds
+	return {
+		hours: hours < 10 ? `0${hours}` : hours,
+		minutes: minutes < 10 ? `0${minutes}` : minutes,
+		seconds: seconds < 10 ? `0${seconds}` : seconds,
 	};
+}
+
+export function isFunction(fn) {
+	return typeof fn === 'function';
+}
+
+export function isArray(o) {
+	return Object.prototype.toString.call(o) === '[object Array]';
+}
+
+export async function execAsync(fn, time = 0) {
+	if (!isFunction(fn)) {
+		return;
+	}
+
+	setTimeout(() => {
+		fn();
+	}, time);
+}
+
+export function isString(o) {
+	return typeof o === 'string';
+}
+export function trim(str, eliminateAllBlank) {
+	if (!isString(str)) {
+		return JSON.stringify(str);
+	}
+
+	str = (str || '').trim();
+	if (eliminateAllBlank) {
+		str = str.replace(/\s/g, '');
+	}
+	return str;
+}
+
+export function openWebInAlipay(url) {
+	ap.pushWindow(url);
+}
+
+export function storageToday(_key, val?) {
+	// 今天是否已经存储过
+	const today = dayjs().format('yyyy-MM-dd');
+	const key = `${_key}.${today}`;
+	if (val === undefined) {
+		return localStorage.getItem('key')
+			? JSON.parse(localStorage.getItem('key')!)
+			: undefined;
+	}
+	localStorage.setItem(key, JSON.stringify(val));
+}
+
+export function storage(key, val?) {
+	if (val === undefined) {
+		return localStorage.getItem('key')
+			? JSON.parse(localStorage.getItem('key')!)
+			: undefined;
+	}
+
+	localStorage.setItem(key, JSON.stringify(val));
+}
+
+export function delay(time = 0) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, time);
+	});
 }

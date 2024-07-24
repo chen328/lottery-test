@@ -11,7 +11,7 @@ let Token;
 
 export const getToken = () => {
 	return Token;
-}
+};
 
 type RequestItem = {
 	trigger(): void;
@@ -48,7 +48,7 @@ axiosInstance.interceptors.response.use(
 		}
 		return {
 			...response.data,
-			...response.data.data
+			...response.data.data,
 		};
 	},
 	function (error) {
@@ -72,9 +72,10 @@ export function requestWithToken(cfg) {
 	};
 
 	if (cst.ENV !== 'production') {
-		hs['x-referer-url'] = cst.ENV === 'development' ? 'base.test' : location.host;
+		hs['x-referer-url'] =
+			cst.ENV === 'development' ? 'base.test' : location.host;
 	}
-	
+
 	if (config.data) {
 		if (config.method.toLocaleLowerCase() === 'get') {
 			config.params = config.data;
@@ -124,7 +125,13 @@ export function pureRequest(config) {
 
 export default function request<T = any>(
 	config: AxiosRequestConfig & { disabledErrorToast?: boolean },
-): Promise<{ code: number; msg: string; data: T }> {
+): Promise<{
+	code: number;
+	msg: string;
+	data: T;
+	success: boolean;
+	[key: string]: any;
+}> {
 	const requestItem: RequestItem = {
 		trigger() {},
 		req: Promise.resolve(),
