@@ -46,7 +46,10 @@ axiosInstance.interceptors.response.use(
 
 			return Promise.reject(response.data);
 		}
-		return response.data;
+		return {
+			...response.data,
+			...response.data.data
+		};
 	},
 	function (error) {
 		showToast({
