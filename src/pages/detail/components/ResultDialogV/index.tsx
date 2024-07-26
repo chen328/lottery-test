@@ -2,20 +2,8 @@ import { useEffect, useRef, LegacyRef } from 'react';
 import lottie from 'lottie-web';
 import { LOTTERY_STATE } from '@/public/enum';
 import classNames from 'classnames';
-// import {
-// 	// trackRecommendExposure,
-// 	// trackRecommendClick,
-// 	// trackLotteryPrizeFailedExposure,
-// 	// trackGoWishGoldExposure,
-// 	trackGoWishGoldClick,
-// } from '@/public/track/awardDetail';
 import { trackShowPrizeClick } from '@/public/track/awardDetail';
-// import PointCount from '@/components/PointCount';
 import RecommendLottery from '../RecommendLottery';
-// import { useQuery } from '@/public/hooks';
-// import { trackEnterPage } from '@/public/track/index';
-// import { homePrizesList } from '@/public/service/home';
-// import { BUILTIN_CHANNELS } from './config';
 import './index.less';
 
 function getBtnName(campLotteryTransVo, abstractCampInfo) {

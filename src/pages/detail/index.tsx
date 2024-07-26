@@ -62,7 +62,6 @@ let partnerRegionInfo;
 let customParams;
 
 let campList: any = [];
-// let isFirstAutoFlag;
 
 // 抽奖详情
 function LotteryDetail() {
@@ -81,9 +80,6 @@ function LotteryDetail() {
 	const [haveGoToServiceLink, sethaveGoToServiceLink] = useState(false); // 是否已逛一逛 或者完成前置任务
 	const isGoToLinkTimeRef = useRef<number>(0); // 逛一逛前时间
 	const taskDurationRef = useRef<number>(0);
-	// const [taskDuration, settaskDuration] = useState(0); // 任务浏览时长
-	// const [showParticipateSuccess, setshowParticipateSuccess] = useState(0); // 参与成功弹窗展示  1参与私域 2参与推荐
-	// const [adData, setadData] = useState(null); // 参与成功广告弹窗数据
 	const [pointAmount, setpointAmount] = useState(-1); // 心愿金总额
 	const [lotteryNum, setlotteryNum] = useState(0); // 参与抽奖次数
 	const [pointTaskStatus, setpointTaskStatus] = useState(0); // 心愿金icon是否领取
@@ -266,38 +262,13 @@ function LotteryDetail() {
 
 		setcampDescItemInfos(prizeItem.campDescItemInfos);
 
-		// 抽奖定制参数
-		// targetRegionId = response.targetRegionId || '';
-
 		partnerRegionInfo = response.partnerRegionVo;
-		// regionInfo = response.regionInfoVo || {};
-		// targetRegionInfo = response.targetRegionInfoVo || {};
 
 		prizeItem.prizeInfoList = prizeItem.prizeInfoVoList;
 
 		if (prizeItem.displayStatus === LOTTERY_STATE.ENDED) {
 			prizeItem.advInfos = prizeItem.advInfoVos;
 
-			// const pizeBenefits =
-			// 	(prizeItem.advInfos &&
-			// 		prizeItem.advInfos[0] &&
-			// 		prizeItem.advInfos[0].advItemInfoVos) ||
-			// 	[];
-			// let regionBenefits =
-			// 	(regionInfo.advInfos &&
-			// 		regionInfo.advInfos[0] &&
-			// 		regionInfo.advInfos[0].advItemInfos) ||
-			// 	[];
-			// const targetRegionBenefits =
-			// 	(targetRegionInfo.advInfos &&
-			// 		targetRegionInfo.advInfos[0] &&
-			// 		targetRegionInfo.advInfos[0].advItemInfos) ||
-			// 	[];
-
-			// 隐藏抽奖不使用兜底福利
-			// if (prizeItem.displayChannel !== 'LOTTERY_LIST') {
-			// 	regionBenefits = [];
-			// }
 		}
 
 		campLotteryTransVoList = response.campLotteryTransVoList;
@@ -978,37 +949,19 @@ function LotteryDetail() {
 									totalPrice={totalPrice}
 									onTapNextAwardDetail={onTapNextAwardDetail}
 									onEndAddressTap={onEndAddressTap}
-									// onRateClick='onRateClick'
-									// couponInfo='{{coupon}}'
-									// condition='{{condition}}'
-									// pageReady='{{pageReady}}'
-									// campInviteVo='{{campInviteVo}}'
 									nextCampInfoVo={mynextCampInfoVo}
-									// hideMore='{{hideMore}}'
 									campLotteryTransVo={campLotteryTransVo}
-									// benefits='{{benefits}}'
 									prizeUserDigestVos={myprizeUserDigestVos}
 									serviceFavoriteVo={serviceFavoriteVo}
-									// additionalPrizeUserDigestVos='{{additionalPrizeUserDigestVos}}'
-									// channel='{{channel}}'
 									campDescItemInfos={campDescItemInfos}
-									// objectId='{{objectId}}'
-									// partnerRegionInfo='{{partnerRegionInfo}}'
 									abstractCampInfo={abstractCampInfo}
 									campClause={campClause}
 									prizeInfoVoList={prizeInfoVoList}
-									// adData={adData}
 									consumeConfigInfoVo={consumeConfigInfoVo}
-									// isChannelLottery='{{ isChannelLottery }}'
-									// certificateCodeList='{{ certificateCodeList }}'
-									// isImmediateLottery='{{ isImmediateLottery }}'
-									// advTaskInfoVo='{{serviceFavoriteVo.serviceInfoVo.serviceAdvInfoVo.multiLinks && serviceFavoriteVo.serviceInfoVo.serviceAdvInfoVo.multiLinks[serviceFavoriteVo.serviceInfoVo.serviceAdvInfoVo.multiLinks.length - 1]}}'
-									// immediateRedDialog='{{ immediateRedDialog }}'
 									wishGoldRedPacket={wishGoldRedPacket}
 									pointAmount={pointAmount}
 									lotteryShareStatus={lotteryShareStatus}
 									materialId={materialId}
-									// topAdSpaceCode='{{ topAdSpaceCode }}'
 								/>
 								{/* 参与抽奖区域 & 参与人数、分享按钮 */}
 								<ParticipateArea
@@ -1020,10 +973,7 @@ function LotteryDetail() {
 									onShowResultPanel={() => {
 										childRef?.current?.showResultPanel();
 									}}
-									// userSetting='{{userSetting}}'
-									// campId='{{abstractCampInfo.campId}}'
 									config={helper.getBtnsConfig({
-										// isAdmin,
 										campLotteryTransVo,
 										customParams,
 										userSetting,
@@ -1039,24 +989,9 @@ function LotteryDetail() {
 										// isChannelLottery,
 										unimktTaskInfoVo,
 									})}
-									// campScene='{{abstractCampInfo.campScene}}'
-									// systemColor='{{systemColor}}'
-									// needLotteryPreGuide='{{needLotteryPreGuide}}'
-									// circleButton='{{circleButton}}'
-									// longButton='{{longButton}}'
-									// campLotteryTransVo='{{campLotteryTransVo}}'
-									// fromHome='{{fromHome}}'
 									campName={abstractCampInfo?.campName}
 									pointAmount={pointAmount}
 									consumeConfigInfoVo={consumeConfigInfoVo}
-									// showSliderBottom='{{showSliderBottom}}'
-									// subtitle={subtitle}
-									// showLotteryDetailGuideConfig='{{showLotteryDetailGuideConfig}}'
-									// lotteryDetailGuideConfig='{{lotteryDetailGuideConfig}}'
-									// isStudent='{{isStudent}}'
-									// serviceAdvInfoVo={serviceFavoriteVo?.serviceInfoVo?.serviceAdvInfoVo}
-									// lightTask='{{lightTask}}'
-									// topAdRenderError='{{ topAdRenderError }}'
 								/>
 								{/* <ParticipateDialog /> */}
 
