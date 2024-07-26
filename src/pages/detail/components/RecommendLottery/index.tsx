@@ -92,15 +92,15 @@ function RecommendLottery(props) {
 										className='recommend-lottery-time-count'
 										style={{ marginLeft: 0 }}
 									>
-										{hours > 10 ? hours : `0${hours}`}
+										{hours > 9 ? hours : `0${hours}`}
 									</span>
 									:
 									<span className='recommend-lottery-time-count'>
-										{minutes > 10 ? minutes : `0${minutes}`}
+										{minutes > 9 ? minutes : `0${minutes}`}
 									</span>
 									:
 									<span className='recommend-lottery-time-count'>
-										{seconds > 10 ? seconds : `0${seconds}`}
+										{seconds > 9 ? seconds : `0${seconds}`}
 									</span>
 									<span className='re-time-text'>后开奖</span>
 								</div>
