@@ -67,8 +67,8 @@ export function formatMoney(money, unit = 2) {
 			// let reg = num.indexOf('.') >-1 ? /(\d{1,3})(?=(?:\d{3})+\.)/g : /(\d{1,3})(?=(?:\d{3})+$)/g;//千分符的正则
 			// let number = num.replace(reg, '$1') || '0';
 			if (number && number.indexOf('.') > -1) {
-				let i = number.split('.')[0];
-				let f = number.split('.')[1];
+				const i = number.split('.')[0];
+				const f = number.split('.')[1];
 				number = Number(`${i}.${f.substring(0, unit)}`);
 			}
 			return number; //千分位格式化
@@ -177,4 +177,60 @@ export function delay(time = 0) {
 	return new Promise((resolve) => {
 		setTimeout(resolve, time);
 	});
+}
+
+export function appendQueryToUrl(url, query) {
+	if (!url) {
+		return url;
+	}
+
+	let symbol = url && url.indexOf('?') > -1 ? '&' : '?';
+	const len = url.length;
+	if (url[len - 1] === '?' || url[len - 1] === '&') {
+		symbol = '';
+	}
+	query = `${query}`.replace(/[?&]/g, '');
+	return url + symbol + query;
+}
+
+export function appendQueriesToUrl(url, params) {
+	if (!url) {
+		return url;
+	}
+
+	params = params || {};
+	for (const key in params) {
+		url = appendQueryToUrl(
+			url,
+			`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`,
+		);
+	}
+	return url;
+}
+
+export function processImageUrl(url, zoom) {
+	url = trim(url, true);
+	if (!url) {
+		return url;
+	}
+
+	if (url.indexOf('mdn.alipayobjects.com') >= 0) {
+		if (url.indexOf('?') >= 0) {
+			url = url.replace('/original?', `/${zoom}?`);
+		} else if (url.lastIndexOf('/original') === url.length - 9) {
+			url = `${url.substr(0, url.length - 9)}/${zoom}`;
+		}
+	} else if (url.indexOf('tfs.alipayobjects.com') >= 0) {
+		url = `${url}_${zoom}_.webp`;
+	} else if (url.indexOf('img.alicdn.com') >= 0) {
+		url = `${url}_${zoom}`;
+	} else if (url.indexOf('gw.alipayobjects.com') >= 0) {
+		const fileid = url.split('/')[url.split('/').length - 1];
+		url = `https://mdn.alipay.com/wsdk/img?fileid=${fileid}&bz=antmedia&zoom=${zoom}`;
+	} else {
+		url = url.replace('&zoom=original', '');
+		url = appendQueriesToUrl(url, { zoom });
+	}
+
+	return url;
 }
