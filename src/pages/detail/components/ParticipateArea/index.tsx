@@ -297,9 +297,10 @@ const ParticipateArea = (props) => {
 						<img
 							className='lottery-service-participate-gift'
 							src={
-								config.startInfo
-									? 'https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*HN3HSrRatxAAAAAAAAAAAAAAARQnAQ'
-									: 'https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*K4RjRrk4opwAAAAAAAAAAAAAARQnAQ'
+								// config.startInfo
+								// 	? 'https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*HN3HSrRatxAAAAAAAAAAAAAAARQnAQ'
+								// 	:
+								'https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*K4RjRrk4opwAAAAAAAAAAAAAARQnAQ'
 							}
 						/>
 
@@ -339,7 +340,10 @@ const ParticipateArea = (props) => {
 						/>
 					) : null}
 
-					<div className='lottery-service-participate-num' style={{marginLeft: '32px'}}>
+					<div
+						className='lottery-service-participate-num'
+						style={{ marginLeft: '32px' }}
+					>
 						我的心愿金
 					</div>
 					<div className='lottery-service-participate-flex justify-end ml-0 mr-20'>
