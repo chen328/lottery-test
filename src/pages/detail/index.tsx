@@ -2,20 +2,10 @@ import { useState, useEffect, LegacyRef, useRef } from 'react';
 import { useQuery } from '@/public/hooks';
 import dayjs from 'dayjs';
 import defaultcompany from '@/public/images/default-company.png';
-import {
-	execAsync,
-	openWebInAlipay,
-	storage,
-} from '@/public/util';
-import {
-	DescItemTypeEnum,
-	LOTTERY_STATE,
-} from '@/public/enum';
+import { execAsync, openWebInAlipay, storage } from '@/public/util';
+import { DescItemTypeEnum, LOTTERY_STATE } from '@/public/enum';
 import { capture } from '@/public/excepture';
-import cst, {
-	BUILTIN_CHANNELS,
-	ERRCODETEXT,
-} from '@/public/constant';
+import cst, { BUILTIN_CHANNELS, ERRCODETEXT } from '@/public/constant';
 import {
 	trackEntryDetail,
 	trackDetailJoinActivity,
@@ -72,8 +62,6 @@ let customParams;
 
 let campList: any = [];
 let isFirstAutoFlag;
-
-
 
 // 抽奖详情
 function LotteryDetail() {
@@ -567,7 +555,7 @@ function LotteryDetail() {
 		if (!IS_FIRST_AUTO && isFirstAutoFlag) {
 			setIsShowFirstAutoDialog(true);
 			storage('IS_FIRST_AUTO', true);
-			return;
+			// return;
 		}
 		isFirstAutoFlag = false;
 		// 弹窗逻辑暂时不需要
@@ -1099,16 +1087,18 @@ function LotteryDetail() {
 					}
 					{/* <!-- 解锁抽奖弹窗 --> */}
 					{limitDialog && (
-						<Modal>
+						<Modal showClose onClose={() => {
+							setlimitDialog(false)
+						}}>
 							<div
-								className='w-[714px] h-[656px]'
+								className='w-[714px] h-[656px] bg-no-repeat bg-contain overflow-hidden'
 								style={{
 									backgroundImage:
 										'url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*oR_wSZxG08wAAAAAAAAAAAAADg6FAQ/original)',
 								}}
 							>
 								{totalWishGold < receiveWishGold + unclaimedWishGold ? (
-									<div className='fz-32 tc-3 limitDialog-text fw-medium'>
+									<div className='fz-32 tc-3 limitDialog-text fw-medium relative left-[120px]'>
 										收
 										<text className='tc-primary' style={{ padding: '0 4px' }}>
 											心愿金气泡
@@ -1116,7 +1106,7 @@ function LotteryDetail() {
 										即可解锁
 									</div>
 								) : (
-									<div className='fz-32 tc-3 limitDialog-text fw-medium l-flex items-baseline mt-[262px] relative left-6'>
+									<div className='fz-32 tc-3 limitDialog-text fw-medium l-flex items-baseline relative left-[120px]' style={{marginTop: '132px'}}>
 										今日需再集
 										<div className='fz-60 tc-primary ff-dm relative top-[-4px]'>
 											<PointCount
@@ -1135,12 +1125,13 @@ function LotteryDetail() {
 
 								{/* <!-- 进度条 --> */}
 								<div
-									className={classNames('limitDialog-box')}
+									className={classNames('limitDialog-box','mt-4')}
 									style={{
 										left:
-											totalWishGold > receiveWishGold + unclaimedWishGold
-												? '6px'
-												: 'auto',
+											// totalWishGold > receiveWishGold + unclaimedWishGold
+											// 	? '65px'
+											// 	: 'auto',
+											'65px'
 									}}
 								>
 									<div
@@ -1163,7 +1154,7 @@ function LotteryDetail() {
 								</div>
 
 								<div
-									className='limitDialog-btn white l-flex-center'
+									className='limitDialog-btn white l-flex-center text-[32px]'
 									onClick={goWish}
 								>
 									去收集
