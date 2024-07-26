@@ -215,6 +215,7 @@ function LotteryDetail() {
 							displayChannel: 'LOTTERY_LIST',
 							displayColumn: 'NORMAL',
 							regionId: BUILTIN_CHANNELS.official.id,
+							displaySubChannel: 'H5',
 						};
 						homePrizesList(param).then((res) => {
 							if (
