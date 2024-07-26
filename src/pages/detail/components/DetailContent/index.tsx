@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useImperativeHandle, forwardRef } from 'react';
 import { useCountDown } from 'ahooks';
 import classNames from 'classnames';
 import { LOTTERY_STATE } from '@/public/enum';
@@ -8,10 +8,10 @@ import ResultDialogV from '../ResultDialogV';
 
 import './index.less';
 
-const statusHeight = 70;
+const statusHeight = 30;
 const TEXTMAP = ['一', '二', '三', '四', '五'];
 
-const DetailContent = (props) => {
+const DetailContent = forwardRef((props: any, ref) => {
 	const {
 		pointAmount = -1,
 		lotteryShareStatus,
@@ -24,9 +24,10 @@ const DetailContent = (props) => {
 		isChannelLottery = false,
 		isImmediateLottery = false,
 		nextCampInfoVo,
-		onChangeScrollable = () => {},
+		// onChangeScrollable = () => {},
 		wishGoldRedPacket,
 		prizeUserDigestVos = [],
+		campDescItemInfos,
 	} = props;
 	const [serverTime, setServerTime] = useState<number>(0);
 	const [showResultPanel, setShowResultPanel] = useState<boolean>(false);
@@ -38,26 +39,29 @@ const DetailContent = (props) => {
 
 	const onTapNextAwardDetail = () => {
 		setShowResultPanel(false);
-		onChangeScrollable(true);
 		props?.onTapNextAwardDetail();
 	};
 	const onTapCloseResultPanel = () => {
 		setShowResultPanel(false);
-		onChangeScrollable(true);
 	};
 	const onEndAddressTap = (isGoAddress = false) => {
 		props.onEndAddressTap(isGoAddress);
 	};
 	const onTapShowResultPanel = () => {
 		setShowResultPanel(true);
-		onChangeScrollable(false);
 	};
+
+	useImperativeHandle(ref, () => ({
+		showResultPanel() {
+			console.log('子组件的方法被调用');
+			onTapShowResultPanel();
+		},
+	}));
 
 	useEffect(() => {
 		setServerTime(Date.now());
 		if (abstractCampInfo.displayStatus === LOTTERY_STATE.ENDED) {
 			setShowResultPanel(true);
-			onChangeScrollable(false);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -101,37 +105,39 @@ const DetailContent = (props) => {
 						)}
 
 					{/* <!-- 时间开奖 --> */}
-					{campClause.openMode === 'TIME' && serverTime && (
-						<div className='awardDetail-newdetail-top__mode mt-16'>
-							<img
-								className='awardDetail-newdetail-top__mode-time'
-								src='https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*gUDkTa7Y0gsAAAAAAAAAAAAADg6FAQ/original'
-							/>
-							<div className='l-flex-center'>
-								<span className='awardDetail-newdetail-top__mode-count fz-28 l-flex-center ml-0'>
-									{hours}
-								</span>
-								<span
-									className='fz-28 fw-medium'
-									style={{ color: '#FF2626', padding: '0 4px' }}
-								>
-									:
-								</span>
-								<span className='awardDetail-newdetail-top__mode-count fz-28 l-flex-center'>
-									{minutes}
-								</span>
-								<span
-									className='fz-28 fw-medium'
-									style={{ color: '#FF2626', padding: '0 4px' }}
-								>
-									:
-								</span>
-								<span className='awardDetail-newdetail-top__mode-count fz-28 l-flex-center'>
-									{seconds}
-								</span>
+					{!['ENDED', 'WAIT_GOING'].includes(abstractCampInfo.displayStatus) &&
+						campClause.openMode === 'TIME' &&
+						serverTime && (
+							<div className='awardDetail-newdetail-top__mode mt-16'>
+								<img
+									className='awardDetail-newdetail-top__mode-time'
+									src='https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*gUDkTa7Y0gsAAAAAAAAAAAAADg6FAQ/original'
+								/>
+								<div className='l-flex-center'>
+									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center ml-0'>
+										{hours > 10 ? hours : `0${hours}`}
+									</span>
+									<span
+										className='text-[28px] fw-medium'
+										style={{ color: '#FF2626', padding: '0 4px' }}
+									>
+										:
+									</span>
+									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center'>
+										{minutes > 10 ? minutes : `0${minutes}`}
+									</span>
+									<span
+										className='text-[28px] fw-medium'
+										style={{ color: '#FF2626', padding: '0 4px' }}
+									>
+										:
+									</span>
+									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center'>
+										{seconds > 10 ? seconds : `0${seconds}`}
+									</span>
+								</div>
 							</div>
-						</div>
-					)}
+						)}
 
 					{/* <!-- 奖品图片 --> */}
 					<div
@@ -141,7 +147,7 @@ const DetailContent = (props) => {
 						})}
 						style={{ backgroundImage: `url(${abstractCampInfo.campLogo})` }}
 					>
-						<div className='awardDetail-newdetail-top__logo-price l-flex-align-center fz-28 white'>
+						<div className='awardDetail-newdetail-top__logo-price l-flex-align-center text-[28px] white'>
 							价值
 							{abstractCampInfo.priceDesc ? (
 								abstractCampInfo.priceDesc
@@ -268,8 +274,8 @@ const DetailContent = (props) => {
 
 					{/* <!-- 活动图文描述 --> */}
 					<CampRichText
-						campDescItemInfos='{{campDescItemInfos}}'
-						abstractCampInfo='{{abstractCampInfo}}'
+						campDescItemInfos={campDescItemInfos}
+						abstractCampInfo={abstractCampInfo}
 					/>
 				</div>
 			</div>
@@ -278,7 +284,7 @@ const DetailContent = (props) => {
 			{!isChannelLottery &&
 				!isImmediateLottery &&
 				nextCampInfoVo &&
-				nextCampInfoVo.prizeInfoVoList.length > 0 && (
+				nextCampInfoVo?.prizeInfoVoList?.length > 0 && (
 					<RecommendLottery
 						onTapNextAwardDetail={onTapNextAwardDetail}
 						nextCampInfoVo={nextCampInfoVo}
@@ -288,19 +294,19 @@ const DetailContent = (props) => {
 				)}
 
 			{/* <!-- 查看我的中奖状态按钮 --> */}
-			{abstractCampInfo.displayStatus === LOTTERY_STATE.ENDED &&
+			{/* {abstractCampInfo.displayStatus === LOTTERY_STATE.ENDED &&
 				prizeUserDigestForShow &&
 				prizeUserDigestForShow.length &&
 				!isImmediateLottery && (
 					<div className='winners-wrap'>
 						<div
-							className='div-all-winners awardDetail-newdetail__winner'
+							className='view-all-winners awardDetail-newdetail__winner'
 							onClick={onTapShowResultPanel}
 						>
 							已开奖 查看中奖名单
 						</div>
 					</div>
-				)}
+				)} */}
 
 			{/* <!-- 限时抽奖开关 --> */}
 			{/* <div
@@ -344,13 +350,12 @@ const DetailContent = (props) => {
 				prizeInfoVoList={prizeInfoVoList}
 				onTapCloseResultPanel={onTapCloseResultPanel}
 				onEndAddressTap={onEndAddressTap}
-				// onClickMore="onClickMore"
 				lotteryShareStatus={lotteryShareStatus}
 				// materialId="{{ materialId }}"
 			/>
 			{/* </block> */}
 		</div>
 	);
-};
+});
 
 export default DetailContent;

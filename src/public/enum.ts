@@ -9,3 +9,17 @@ export const LOTTERY_STATE = {
 	INVALID: 'INVALID', // 下架
 	REJECT: 'REJECT', // 审核未通过
 };
+
+export const DescItemTypeEnum = {
+	text: 'TEXT',
+	link: 'REDIRECT_LINK',
+	coupon: 'COUPON_INFO',
+	img: 'PICTURE',
+};
+
+// 活动场景枚举
+export const LOTTERY_CAMP_SCENE = {
+	TRANSITIVE_JIANLIAN_OFFLINE: 'TRANSITIVE_JIANLIAN_OFFLINE',
+	TIANTIAN_LOTTRERY: 'TIANTIAN_LOTTRERY',
+	MERCHANT_TRANSFER: 'MERCHANT_TRANSFER',
+};

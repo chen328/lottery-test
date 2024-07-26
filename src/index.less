@@ -153,28 +153,76 @@ body {
 	font-size: 12px;
 }
 
-.fz-14 {
-	font-size: 14px;
-}
-
 .fz-16 {
-	font-size: 16px;
-}
-
-.fz-18 {
-	font-size: 18px;
+  font-size: 16px;
 }
 
 .fz-20 {
-	font-size: 20px;
+  font-size: 20px;
+}
+
+.fz-22 {
+  font-size: 22px;
 }
 
 .fz-24 {
-	font-size: 24px;
+  font-size: 24px;
+}
+
+.fz-26 {
+  font-size: 26px;
+}
+
+.fz-28 {
+  font-size: 28px;
+}
+
+.fz-30 {
+  font-size: 30px;
+}
+
+.fz-32 {
+  font-size: 32px;
+}
+
+.fz-34 {
+  font-size: 34px;
 }
 
 .fz-36 {
-	font-size: 36px;
+  font-size: 36px;
+}
+
+.fz-40 {
+  font-size: 40px;
+}
+
+.fz-42 {
+  font-size: 42px;
+}
+
+.fz-44 {
+  font-size: 44px;
+}
+
+.fz-48 {
+  font-size: 48px;
+}
+
+.fz-56 {
+  font-size: 56px;
+}
+
+.fz-60 {
+  font-size: 60px;
+}
+
+.fz-64 {
+  font-size: 64px;
+}
+
+.fz-72 {
+  font-size: 72px;
 }
 
 .ml-4 {
@@ -199,6 +247,29 @@ body {
 
 .c-red {
 	color: #fe182c;
+}
+
+.lh-normal {
+  line-height: 1;
+}
+
+.lh-medium {
+  line-height: 1.375;
+}
+
+.lh-44 {
+  line-height: 44px;
+}
+
+.tac {
+  text-align: center;
+}
+.tal {
+  text-align: left;
+}
+
+.white {
+  color: #fff;
 }
 
 
@@ -522,4 +593,197 @@ page {
   box-sizing: border-box;
   border-radius: 0;
   border: none;
+}
+
+/* 后续按钮复用逻辑需要添加到这边 */
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--white-color);
+}
+
+/* 心愿金按钮 */
+.btn-primary-gold {
+  border-radius: 16px;
+  height: 100px;
+  color: #fff8c7;
+  font-size: 36px;
+}
+
+.btn-primary.btn-primary--disabled {
+  background: #999;
+  color: #fff;
+}
+
+.btn-primary.btn-primary--linear {
+  background-image: linear-gradient(90deg, #FE7B43 0%, #FE2531 100%);
+}
+
+/* text-color-xxxx */
+:root {
+  --primary-color: #ec171f;
+  --white-color: #fff;
+}
+
+.tc-f {
+  color: #fff;
+}
+
+.tc-0 {
+  color: #000;
+}
+
+.tc-1b {
+  color: #1b1b1b;
+}
+
+.tc-1b {
+  color: #1b1b1b;
+}
+
+.tc-3 {
+  color: #333;
+}
+
+.tc-6 {
+  color: #666;
+}
+
+.tc-9 {
+  color: #999;
+}
+
+.tc-c {
+  color: #ccc;
+}
+
+.tc-f6 {
+  color: #f6f6f6;
+}
+
+.tc-primary {
+  color: var(--primary-color);
+}
+
+.tc-primary-op10 {
+  color: rgba(326, 23, 31, 0.1);
+}
+
+.tc-primary-op5 {
+  color: rgba(326, 23, 31, 0.05);
+}
+
+.tc-primary-2 {
+  color: #e88839;
+}
+
+.tc-primary-2-op10 {
+  color: rbga(232, 163, 57, 0.1);
+}
+
+.tc-pink {
+  color: #ffebec;
+}
+
+.tc-brown {
+  color: #fee2d3;
+}
+
+.tc-red2 {
+  color: #f95117;
+}
+
+.tc-red3 {
+  color: #ff343d;
+}
+
+.tc-yellow {
+  color: #f7ff00;
+}
+
+.tc-yellow2 {
+  color: #fff8c7;
+}
+
+.tc-yellow2 {
+  color: #ffd800;
+}
+
+/* background */
+.bg-linear {
+  background-image: linear-gradient(90deg, #FE7B43 0%, #FE2531 100%);
+}
+
+.bg-linear2 {
+  background-image: linear-gradient(90deg, #ffc102 0%, #ff4100 100%);
+}
+
+
+@keyframes popFloat {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  10% {
+    transform: rotate(15deg);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 延迟3s展示 */
+.delay-show {
+  animation: just-show 3s linear;
+}
+
+@keyframes just-show {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -148,7 +148,8 @@ function getBtnsConfig({
 		// B.1 未参与
 
 		if (!abstractCampInfo.myLotteryNum) {
-			let { tip, hideTip } = condition || {};
+			let { tip } = condition || {};
+			const { hideTip } = condition || {};
 			tip = hideTip ? null : tip;
 			// 未参与，不显示红包入口
 			showTmsRedPacket = false;
@@ -475,169 +476,138 @@ function getBtnsConfig({
 			}
 
 			rightBtn = null;
-		} else if (isImmediateLottery) {
-			// 已参与且限时抽奖 不展示
+		} else {
 			leftBtn = {
 				show: false,
 			};
-		} else if (campScene === 'MERCHANT_TRANSFER') {
-			// 已参与 且商家转帐场景
-			leftBtn = {
-				show: true,
-				tip: null,
-				text: '待开奖',
-				subText: '',
-				state: 'pa-disabled',
-				buttonBg: '/images/awardDetail/btn-disabled.png',
-			};
-			if (customParams && customParams.userRole === 'merchant') {
-				rightBtn = {
-					show: true,
-					tip:
-						(campInviteVo &&
-							campInviteVo.inviteNum &&
-							`你的中奖概率提升了${campInviteVo.inviteNum}倍，好棒！`) ||
-						'暂时没有收款人受邀参与抽奖',
-					text: '继续转账',
-					state: 'pa-active',
-					type: 'action',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			} else {
-				rightBtn = {
-					show: true,
-					tip: '',
-					text: '分享给好友',
-					state: 'pa-active',
-					type: 'share',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			}
-		} else {
-			// B.2 已参与无小惊喜
-			leftBtn = {
-				show: true,
-				tip: null,
-				text: getSubText(campClause, abstractCampInfo.cGmtEnd)
-					? '自动开奖'
-					: '待开奖',
-				subText: getSubText(campClause, abstractCampInfo.cGmtEnd),
-				state: 'pa-disabled',
-				buttonBg:
-					(customerActionBtn &&
-						customerActionBtn.stepOneButton &&
-						customerActionBtn.stepOneButton.disabledButtonBg) ||
-					'/images/awardDetail/btn-disabled.png',
-			};
-			const wishSubmitted =
-				campLotteryTransVo && campLotteryTransVo.lotteryWish;
-
-			const canMakeAWish = isCanMakeWish(abstractCampInfo);
-			if (rightBtnAction && rightBtnAction.actUrl) {
-				// B.2.1 去捡漏等系统功能
-				rightBtn = {
-					show: true,
-					tip: rightBtnAction.tip || '',
-					text: rightBtnAction.btnText,
-					subText: '',
-					state: 'pa-active',
-					type: 'action',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			} else if (customerActionBtn && customerActionBtn.stepTwoButton) {
-				// B.2.2 通过垂直标签定制按钮样式及行为
-				rightBtn = {
-					show: true,
-					tip: customerActionBtn.stepTwoButton.tip || '',
-					text: customerActionBtn.stepTwoButton.axtionText,
-					subText: '',
-					state: 'pa-active',
-					type: 'action',
-					buttonBg:
-						customerActionBtn.stepTwoButton.buttonBg ||
-						'/images/awardDetail/btn-active.png',
-				};
-			} else if (
-				abstractCampInfo.refuelTaskSwitch &&
-				campRefuelTaskVoList &&
-				campRefuelTaskVoList.length > 0
-			) {
-				// 后置任务列表开
-				let tip = '每日可完成任务, 中奖率翻倍';
-				if (campRefuelTaskTransVoList.length > 0) {
-					let refuelNum = campRefuelTaskTransVoList.reduce((init, item) => {
-						return init + item.refuelNum;
-					}, 0);
-					tip = `中奖率已 +${refuelNum} 倍`;
-				}
-				rightBtn = {
-					show: true,
-					tip,
-					text: '点我增加中奖率',
-					subText: '',
-					state: 'pa-active',
-					// type: lotteryPostGuideVo.redirectLink === 'share' ? 'share' : 'action',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			} else if (lotteryPostGuideVo && lotteryPostGuideVo.title) {
-				// B.2.3 创建活动时带出的右按钮动作
-				rightBtn = {
-					show: true,
-					tip: lotteryPostGuideVo.desc || '',
-					text: lotteryPostGuideVo.title,
-					subText: '',
-					state: 'pa-active',
-					type:
-						lotteryPostGuideVo.redirectLink === 'share' ? 'share' : 'action',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			} else if (canMakeAWish) {
-				// B.2.4 可以许愿露出许愿/晒心愿按钮
-				rightBtn = {
-					show: true,
-					tip: '',
-					text: wishSubmitted ? '晒心愿' : '去许愿',
-					subText: '',
-					state: 'pa-active',
-					type: 'wish',
-					buttonBg: '/images/awardDetail/btn-wish.png',
-				};
-				// 支持抽奖码
-			} else if (campClause && campClause.usingCertificate) {
-				let { tip, hideTip } = condition || {};
-				tip = hideTip ? null : tip;
-				const { consumeType, consumePoint, consumeTypeName } =
-					consumeConfigInfoVo;
-				let consumeName = '';
-				if (consumeType) {
-					consumeName = consumeTypeName;
-				}
-				const consumeTip = consumeName
-					? `消耗${consumePoint}${consumeName}`
-					: '';
-				// tip 参与条件 consumeTip 消费配置
-				rightBtn = {
-					show: true,
-					tip: tip || consumeTip || lotteryPreGuideVo.desc || '',
-					text: fromHome ? '继续加码' : '继续许愿',
-					subText: '中奖机会+1',
-					state: 'pa-active',
-					type: 'action',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			} else if (sharable) {
-				// B.2.2 不需要心愿卡且可分享
-				rightBtn = {
-					show: true,
-					tip: '邀请好友提高中奖率',
-					text: '分享好友',
-					subText: '',
-					state: 'pa-active',
-					type: 'share',
-					buttonBg: '/images/awardDetail/btn-active.png',
-				};
-			}
 		}
+		//  else if (isImmediateLottery) {
+		// 	// 已参与且限时抽奖 不展示
+		// 	leftBtn = {
+		// 		show: false,
+		// 	};
+		// } else if (campScene === 'MERCHANT_TRANSFER') {
+		// 	// 已参与 且商家转帐场景
+		// 	leftBtn = {
+		// 		show: true,
+		// 		tip: null,
+		// 		text: '待开奖',
+		// 		subText: '',
+		// 		state: 'pa-disabled',
+		// 		buttonBg: '/images/awardDetail/btn-disabled.png',
+		// 	};
+		// 	if (customParams && customParams.userRole === 'merchant') {
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip:
+		// 				(campInviteVo &&
+		// 					campInviteVo.inviteNum &&
+		// 					`你的中奖概率提升了${campInviteVo.inviteNum}倍，好棒！`) ||
+		// 				'暂时没有收款人受邀参与抽奖',
+		// 			text: '继续转账',
+		// 			state: 'pa-active',
+		// 			type: 'action',
+		// 			buttonBg: '/images/awardDetail/btn-active.png',
+		// 		};
+		// 	} else {
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip: '',
+		// 			text: '分享给好友',
+		// 			state: 'pa-active',
+		// 			type: 'share',
+		// 			buttonBg: '/images/awardDetail/btn-active.png',
+		// 		};
+		// 	}
+		// } else {
+		// 	// B.2 已参与无小惊喜
+		// 	leftBtn = {
+		// 		show: true,
+		// 		tip: null,
+		// 		text: getSubText(campClause, abstractCampInfo.cGmtEnd)
+		// 			? '自动开奖'
+		// 			: '待开奖',
+		// 		subText: getSubText(campClause, abstractCampInfo.cGmtEnd),
+		// 		state: 'pa-disabled',
+		// 		buttonBg:
+		// 			(customerActionBtn &&
+		// 				customerActionBtn.stepOneButton &&
+		// 				customerActionBtn.stepOneButton.disabledButtonBg) ||
+		// 			'/images/awardDetail/btn-disabled.png',
+		// 	};
+		// 	const wishSubmitted =
+		// 		campLotteryTransVo && campLotteryTransVo.lotteryWish;
+
+		// 	const canMakeAWish = isCanMakeWish(abstractCampInfo);
+		// 	if (rightBtnAction && rightBtnAction.actUrl) {
+		// 		// B.2.1 去捡漏等系统功能
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip: rightBtnAction.tip || '',
+		// 			text: rightBtnAction.btnText,
+		// 			subText: '',
+		// 			state: 'pa-active',
+		// 			type: 'action',
+		// 			buttonBg: '/images/awardDetail/btn-active.png',
+		// 		};
+		// 	} else if (
+		// 		abstractCampInfo.refuelTaskSwitch &&
+		// 		campRefuelTaskVoList &&
+		// 		campRefuelTaskVoList.length > 0
+		// 	) {
+		// 		// 后置任务列表开
+		// 		let tip = '每日可完成任务, 中奖率翻倍';
+		// 		if (campRefuelTaskTransVoList.length > 0) {
+		// 			let refuelNum = campRefuelTaskTransVoList.reduce((init, item) => {
+		// 				return init + item.refuelNum;
+		// 			}, 0);
+		// 			tip = `中奖率已 +${refuelNum} 倍`;
+		// 		}
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip,
+		// 			text: '点我增加中奖率',
+		// 			subText: '',
+		// 			state: 'pa-active',
+		// 			// type: lotteryPostGuideVo.redirectLink === 'share' ? 'share' : 'action',
+		// 			buttonBg: '/images/awardDetail/btn-active.png',
+		// 		};
+		// 	} else if (lotteryPostGuideVo && lotteryPostGuideVo.title) {
+		// 		// B.2.3 创建活动时带出的右按钮动作
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip: lotteryPostGuideVo.desc || '',
+		// 			text: lotteryPostGuideVo.title,
+		// 			subText: '',
+		// 			state: 'pa-active',
+		// 			type:
+		// 				lotteryPostGuideVo.redirectLink === 'share' ? 'share' : 'action',
+		// 			buttonBg: '/images/awardDetail/btn-active.png',
+		// 		};
+		// 	} else if (canMakeAWish) {
+		// 		// B.2.4 可以许愿露出许愿/晒心愿按钮
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip: '',
+		// 			text: wishSubmitted ? '晒心愿' : '去许愿',
+		// 			subText: '',
+		// 			state: 'pa-active',
+		// 			type: 'wish',
+		// 			buttonBg: '/images/awardDetail/btn-wish.png',
+		// 		};
+		// 	} else if (sharable) {
+		// 		// B.2.2 不需要心愿卡且可分享
+		// 		rightBtn = {
+		// 			show: true,
+		// 			tip: '邀请好友提高中奖率',
+		// 			text: '分享好友',
+		// 			subText: '',
+		// 			state: 'pa-active',
+		// 			type: 'share',
+		// 			buttonBg: '/images/awardDetail/btn-active.png',
+		// 		};
+		// 	}
+		// }
 	} else if (abstractCampInfo.displayStatus === LOTTERY_STATE.WAIT_OPEN) {
 		leftBtn = {
 			show: true,

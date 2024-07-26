@@ -46,7 +46,7 @@ function RecommendLottery(props) {
 	useEffect(() => {
 		setServerTime(new Date().getTime());
 		onRecommendExpose();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<div className='recommend-lottery-wrap' id='recommend-lottery'>
@@ -64,7 +64,7 @@ function RecommendLottery(props) {
 			<div className='recommend-lottery-region'>
 				<div className='recommend-lottery-region-desc'>
 					奖品由
-					<text className='recommend-lottery-region-desc-left'>【</text>
+					<span className='recommend-lottery-region-desc-left'>【</span>
 					<img
 						className='recommend-lottery-region-desc-regionIcon'
 						src='{{nextCampInfoVo.serviceFavoriteVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo.serviceIcon}}'
@@ -74,7 +74,7 @@ function RecommendLottery(props) {
 							nextCampInfoVo.serviceFavoriteVo.serviceInfoVo &&
 							nextCampInfoVo.serviceFavoriteVo.serviceInfoVo.serviceName}
 					</div>
-					<text className='recommend-lottery-region-desc-right'>】</text>
+					<span className='recommend-lottery-region-desc-right'>】</span>
 					提供
 				</div>
 				<div
@@ -88,30 +88,33 @@ function RecommendLottery(props) {
 						!nextCampInfoVo.myLotteryNum && (
 							<div className='re-time'>
 								<div slot-scope='props' className='lottery-my-time'>
-									<text
+									<span
 										className='recommend-lottery-time-count'
 										style={{ marginLeft: 0 }}
 									>
 										{hours}
-									</text>
+									</span>
 									:
-									<text className='recommend-lottery-time-count'>
+									<span className='recommend-lottery-time-count'>
 										{minutes}
-									</text>
+									</span>
 									:
-									<text className='recommend-lottery-time-count'>
+									<span className='recommend-lottery-time-count'>
 										{seconds}
-									</text>
-									<text className='re-time-text'>后开奖</text>
+									</span>
+									<span className='re-time-text'>后开奖</span>
 								</div>
 							</div>
 						)}
-					{(nextCampInfoVo.openMode === 'TIME' &&
-						nextCampInfoVo.myLotteryNum) ||
-						(nextCampInfoVo.timeFmt &&
-							getHour(serverTime, nextCampInfoVo.gmtEnd) >= 48 && (
-								<div className='time'>{nextCampInfoVo.timeFmt}自动开奖</div>
-							))}
+					{nextCampInfoVo.openMode === 'TIME' && (
+						<>
+							{nextCampInfoVo.myLotteryNum ||
+								(nextCampInfoVo.timeFmt &&
+									getHour(serverTime, nextCampInfoVo.gmtEnd) >= 48 && (
+										<div className='time'>{nextCampInfoVo.timeFmt}自动开奖</div>
+									))}
+						</>
+					)}
 					{nextCampInfoVo.openMode === 'PERSON' && (
 						<div className='time'>
 							满{nextCampInfoVo.personOpenbudgetValue}人时自动开奖
@@ -127,7 +130,7 @@ function RecommendLottery(props) {
 				onClick={TapNextAwardDetail}
 			>
 				<div className='lottery-main-list-img'>
-					<img src="{{ nextCampInfoVo.processLogo || '/images/create.webp' }}" />
+					<img src={nextCampInfoVo.processLogo} />
 				</div>
 				<div className='lottery-main-list-text'>
 					<div>

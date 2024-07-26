@@ -169,7 +169,7 @@ function ResultDialogV(props) {
 		if (!noLottieRef.current) {
 			setTimeout(() => {
 				noLottieRef.current = lottie.loadAnimation({
-					container: extraLottieDomRef.current!, // 容器元素的引用
+					container: noLottieDomRef.current!, // 容器元素的引用
 					renderer: 'canvas',
 					loop: true, // 是否循环播放
 					autoplay: true, // 是否自动播放
@@ -197,6 +197,7 @@ function ResultDialogV(props) {
 			<div
 				className={classNames(
 					'award-detail-result-dialog-v2',
+					'r-thousand-lottery-bg--points',
 					'r-panel-content',
 					{ show: pageReady && showResultPanel },
 					{ hide: !(pageReady && showResultPanel) },
@@ -219,7 +220,8 @@ function ResultDialogV(props) {
 						/>
 
 						<img
-							className='r-thousand-close top-[-140px]'
+							className='r-thousand-close'
+							style={{top: '-140px'}}
 							src='https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*uMfFSKTb7a8AAAAAAAAAAAAAARQnAQ'
 							onClick={onTapCloseResultPanel}
 						/>

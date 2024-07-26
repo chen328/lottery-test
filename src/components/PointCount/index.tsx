@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import './index.less';
+
 function getCount(num) {
 	return `${num}`.split('');
 }
@@ -8,16 +10,16 @@ const PointCount = (props) => {
 	const { count } = props;
 	return (
 		<div className='point-count'>
-			{getCount(count).map((itemName) => {
+			{getCount(count).map((itemName,index) => {
 				return (
-					<div>
+					<div key={index}>
 						<div className='point-count-item'>
 							<div
 								style={{ bottom: `-${+itemName * 100}%` }}
 								className='point-count-roller'
 							>
 								{num.map((j) => (
-									<span>{j}</span>
+									<span key={j}>{j}</span>
 								))}
 							</div>
 						</div>

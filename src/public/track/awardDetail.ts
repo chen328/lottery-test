@@ -59,7 +59,7 @@ export function trackRecommendClick(params) {
 	});
 }
 // 访问抽奖详情页
-export function trackEntryDetail(params, duration) {
+export function trackEntryDetail(params, duration?) {
 	const extParams = {
 		activity_id: params.campId,
 		activity_name: params.campName,

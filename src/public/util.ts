@@ -153,7 +153,7 @@ export function openWebInAlipay(url) {
 
 export function storageToday(_key, val?) {
 	// 今天是否已经存储过
-	const today = dayjs().format('yyyy-MM-dd');
+	const today = dayjs().format('yyyy-MM-DD');
 	const key = `${_key}.${today}`;
 	if (val === undefined) {
 		return localStorage.getItem('key')

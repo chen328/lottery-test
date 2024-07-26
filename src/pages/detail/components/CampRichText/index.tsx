@@ -9,7 +9,7 @@ const DescItemTypeEnum = {
 };
 
 function CampRichText(props) {
-	const { abstractCampInfo, campDescItemInfos } = props;
+	const { abstractCampInfo, campDescItemInfos = [] } = props;
 	const onLinkTap = (index) => {
 		ap.pushWindow(campDescItemInfos[index].descItem.link);
 	};
@@ -20,13 +20,13 @@ function CampRichText(props) {
 	return (
 		<div>
 			{abstractCampInfo.displayColumn === 'SUSPENSION' &&
-				campDescItemInfos.length === 0 && (
+				campDescItemInfos.length === 0 ? (
 					<img
 						className='desc-box-image'
 						src='https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*FvT8Q7qpNe8AAAAAAAAAAAAAARQnAQ'
 					/>
-				)}
-			{campDescItemInfos && campDescItemInfos.length && (
+				) : null}
+			{campDescItemInfos && campDescItemInfos.length ? (
 				<div
 					className='desc-box'
 					// style={
@@ -36,7 +36,7 @@ function CampRichText(props) {
 					// }
 				>
 					{campDescItemInfos.map((item, index) => {
-						<>
+						return <div key={index}>
 							{item.descItemType === DescItemTypeEnum.link && (
 								<div
 									className='desc-item-link'
@@ -61,12 +61,12 @@ function CampRichText(props) {
 									/>
 								</div>
 							)}
-						</>;
+						</div>;
 					})}
 
 					<div className='desc-gap'></div>
 				</div>
-			)}
+			): null}
 		</div>
 	);
 }
