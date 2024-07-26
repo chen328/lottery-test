@@ -2,15 +2,15 @@ import { useEffect, useRef, LegacyRef } from 'react';
 import lottie from 'lottie-web';
 import { LOTTERY_STATE } from '@/public/enum';
 import classNames from 'classnames';
-import {
-	// trackRecommendExposure,
-	// trackRecommendClick,
-	// trackLotteryPrizeFailedExposure,
-	// trackGoWishGoldExposure,
-	trackGoWishGoldClick,
-} from '@/public/track/awardDetail';
+// import {
+// 	// trackRecommendExposure,
+// 	// trackRecommendClick,
+// 	// trackLotteryPrizeFailedExposure,
+// 	// trackGoWishGoldExposure,
+// 	trackGoWishGoldClick,
+// } from '@/public/track/awardDetail';
 import { trackShowPrizeClick } from '@/public/track/awardDetail';
-import PointCount from '@/components/PointCount';
+// import PointCount from '@/components/PointCount';
 import RecommendLottery from '../RecommendLottery';
 // import { useQuery } from '@/public/hooks';
 // import { trackEnterPage } from '@/public/track/index';
@@ -18,19 +18,19 @@ import RecommendLottery from '../RecommendLottery';
 // import { BUILTIN_CHANNELS } from './config';
 import './index.less';
 
-function getBtnName(campLotteryTransVo, abstractCampInfo, lotteryShareStatus) {
+function getBtnName(campLotteryTransVo, abstractCampInfo) {
 	const { status, prizeType } = campLotteryTransVo;
 	if (status === 'AWARDED') {
 		if (prizeType === 'MATTER') {
-			if (lotteryShareStatus === 'SHARE') {
-				return '分享到群';
-			} else if (lotteryShareStatus === 'WAIT_MATERIAL') {
-				return '晒晒我的奖品';
-			} else if (lotteryShareStatus === 'MATERIAL') {
-				return '查看我的晒奖';
-			} else {
+			// if (lotteryShareStatus === 'SHARE') {
+			// 	return '分享到群';
+			// } else if (lotteryShareStatus === 'WAIT_MATERIAL') {
+			// 	return '晒晒我的奖品';
+			// } else if (lotteryShareStatus === 'MATERIAL') {
+			// 	return '查看我的晒奖';
+			// } else {
 				return '查看物流';
-			}
+			// }
 		} else if (prizeType === 'WISH_GOLD') {
 			return '查看我的心愿金';
 		} else if (prizeType === 'CASH') {
@@ -113,7 +113,7 @@ function ResultDialogV(props) {
 		prizeUserDigestForShow = [],
 		// materialId,
 		// pointAmount,
-		wishGoldRedPacket,
+		// wishGoldRedPacket,
 		lotteryShareStatus,
 		onTapCloseResultPanel,
 		campLotteryTransVo,

@@ -122,6 +122,7 @@ function LotteryDetail() {
 	const limitLottieDomRef = useRef<HTMLDivElement>();
 	const limitLottieRef = useRef<AnimationItem | null>(null);
 	const childRef = useRef<any>();
+	const refreshRef = useRef<boolean>(false);
 
 	const goHome = () => {
 		location.href = '/';
@@ -610,23 +611,16 @@ function LotteryDetail() {
 				campLotteryTransVo.prizeType === 'MATTER' ||
 				campLotteryTransVo.prizeType === 'CASH'
 			) {
-				// TODO: 测试
-				location.href = `alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
-					`/firstSubpackage/pages/receive/receive?itemId=${
-						abstractCampInfo.campId
-					}&campLotteryTransVo=${encodeURIComponent(
-						JSON.stringify(campLotteryTransVo),
-					)}&prizeType=${campLotteryTransVo.prizeType}`,
-				)}`;
-				// ap.pushWindow(
-				// 	`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
-				// 		`/firstSubpackage/pages/receive/receive?itemId=${
-				// 			abstractCampInfo.campId
-				// 		}&campLotteryTransVo=${encodeURIComponent(
-				// 			JSON.stringify(campLotteryTransVo),
-				// 		)}&prizeType=${campLotteryTransVo.prizeType}`,
-				// 	)}`,
-				// );
+				ap.pushWindow(
+					`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
+						`/firstSubpackage/pages/receive/receive?itemId=${
+							abstractCampInfo.campId
+						}&campLotteryTransVo=${encodeURIComponent(
+							JSON.stringify(campLotteryTransVo),
+						)}&prizeType=${campLotteryTransVo.prizeType}`,
+					)}`,
+				);
+				refreshRef.current = true;
 			} else {
 				// this.onTapReceiveCoupon();
 			}
@@ -734,23 +728,26 @@ function LotteryDetail() {
 		// 刷新页面
 		if (prizeItem) {
 			const nextCampId = campList && campList.length ? campList[0] : '';
-			// handleItemId({ type: 'reload' });
-
-			itemDetail({
-				campId: itemId,
-				chInfo: cst.PAGE_SOURCE,
-				nextCampId,
-				channelSource,
-				outBizId,
-				channelName,
-			}).then((response) => {
-				setneedLotteryPreGuide(response.needLotteryPreGuide);
-				setlotteryPreGuideVo(
-					response?.lotteryGuideInfoVo?.lotteryPreGuideVo || {},
-				);
-				setpointAmount(+response.pointAmount);
-				setpointTaskStatus(response.pointTaskStatus);
-			});
+			if (refreshRef.current) {
+				handleItemId({ type: 'reload' });
+				refreshRef.current = false;
+			} else {
+				itemDetail({
+					campId: itemId,
+					chInfo: cst.PAGE_SOURCE,
+					nextCampId,
+					channelSource,
+					outBizId,
+					channelName,
+				}).then((response) => {
+					setneedLotteryPreGuide(response.needLotteryPreGuide);
+					setlotteryPreGuideVo(
+						response?.lotteryGuideInfoVo?.lotteryPreGuideVo || {},
+					);
+					setpointAmount(+response.pointAmount);
+					setpointTaskStatus(response.pointTaskStatus);
+				});
+			}
 		}
 	};
 
