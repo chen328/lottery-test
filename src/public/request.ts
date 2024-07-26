@@ -44,7 +44,12 @@ axiosInstance.interceptors.response.use(
 				});
 			}
 
-			return Promise.reject(response.data);
+			return Promise.resolve({
+				errorCode: response.data.code + '',
+				errorMsg: response.data.msg,
+				...response.data,
+				...response.data.data,
+			});
 		}
 		return {
 			...response.data,
