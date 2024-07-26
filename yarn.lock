@@ -3030,11 +3030,6 @@ postcss-px-to-viewport@^1.1.1:
     object-assign ">=4.0.1"
     postcss ">=5.0.2"
 
-postcss-pxtorem@^6.1.0:
-  version "6.1.0"
-  resolved "http://verdaccio.shuli.com/postcss-pxtorem/-/postcss-pxtorem-6.1.0.tgz#7e6410e30426adef53bad6c4c5f00cd5f586937c"
-  integrity sha512-ROODSNci9ADal3zUcPHOF/K83TiCgNSPXQFSbwyPHNV8ioHIE4SaC+FPOufd8jsr5jV2uIz29v1Uqy1c4ov42g==
-
 postcss-replace-overflow-wrap@^4.0.0:
   version "4.0.0"
   resolved "http://verdaccio.shuli.com/postcss-replace-overflow-wrap/-/postcss-replace-overflow-wrap-4.0.0.tgz"
