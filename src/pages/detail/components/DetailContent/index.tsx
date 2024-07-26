@@ -114,7 +114,7 @@ const DetailContent = forwardRef((props: any, ref) => {
 								/>
 								<div className='l-flex-center'>
 									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center ml-0'>
-										{hours > 10 ? hours : `0${hours}`}
+										{hours > 9 ? hours : `0${hours}`}
 									</span>
 									<span
 										className='text-[28px] fw-medium'
@@ -123,7 +123,7 @@ const DetailContent = forwardRef((props: any, ref) => {
 										:
 									</span>
 									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center'>
-										{minutes > 10 ? minutes : `0${minutes}`}
+										{minutes > 9 ? minutes : `0${minutes}`}
 									</span>
 									<span
 										className='text-[28px] fw-medium'
@@ -132,7 +132,7 @@ const DetailContent = forwardRef((props: any, ref) => {
 										:
 									</span>
 									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center'>
-										{seconds > 10 ? seconds : `0${seconds}`}
+										{seconds > 9 ? seconds : `0${seconds}`}
 									</span>
 								</div>
 							</div>
