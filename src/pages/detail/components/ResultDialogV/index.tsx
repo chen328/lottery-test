@@ -264,7 +264,7 @@ function ResultDialogV(props) {
 							{getBtnName(
 								campLotteryTransVo,
 								abstractCampInfo,
-								lotteryShareStatus,
+								// lotteryShareStatus,
 							)}
 							{lotteryShareStatus &&
 								lotteryShareStatus !== 'MATERIAL' &&
