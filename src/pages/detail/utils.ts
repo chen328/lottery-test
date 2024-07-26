@@ -68,27 +68,27 @@ function getParticipateNum(participantNum, isAdmin) {
 	}
 }
 
-function isCanMakeWish(prizeItemParam) {
-	return (
-		prizeItemParam.displayWeight === 95 &&
-		prizeItemParam.displayColumn === 'NORMAL'
-	);
-}
+// function isCanMakeWish(prizeItemParam) {
+// 	return (
+// 		prizeItemParam.displayWeight === 95 &&
+// 		prizeItemParam.displayColumn === 'NORMAL'
+// 	);
+// }
 
 function getBtnsConfig({
 	fromHome = false,
 	isAdmin = false,
-	campLotteryTransVo = {},
+	// campLotteryTransVo = {},
 	followLifeName,
-	rightBtnAction,
+	// rightBtnAction,
 	condition, // 参与条件
 	customParams = {}, // 针对场景的定制参数
-	campInviteVo = {}, // 邀请人
+	// campInviteVo = {}, // 邀请人
 	customerActionBtn = {}, // 活动定制按钮样式(包括文字、背景图、气泡)
 	haveGoToServiceLink = false, // 是否已完成逛一逛
 	needLotteryPreGuide = false, // 是否需要引导获取抽奖资格
 	lotteryPreGuideVo = {}, // 抽奖前动作
-	lotteryPostGuideVo = {}, // 抽奖后动作
+	// lotteryPostGuideVo = {}, // 抽奖后动作
 	consumeConfigInfoVo = {}, // 消费配置
 	mainSubText = '', // 收藏关注天天抽奖小程序的小字文案
 	lotteryDoingGuideVo = {}, // 抽奖时动作
@@ -96,10 +96,10 @@ function getBtnsConfig({
 	campClause = {}, // 活动配置
 	serviceFavoriteVo = {}, // 服务信息配置
 	isSubscribe = false, // 活动提醒订阅
-	campRefuelTaskTransVoList = [], // 翻倍任务概率
-	campRefuelTaskVoList = [],
+	// campRefuelTaskTransVoList = [], // 翻倍任务概率
+	// campRefuelTaskVoList = [],
 	isChannelLottery = false, // 是否为渠道抽奖
-	isImmediateLottery = false,
+	// isImmediateLottery = false,
 	unimktTaskInfoVo = null,
 }: any) {
 	let leftBtn;

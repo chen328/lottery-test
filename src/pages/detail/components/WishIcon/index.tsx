@@ -1,8 +1,10 @@
 import {
-	trackGoWishGoldExposure,
+	// trackGoWishGoldExposure,
 	trackGoWishGoldClick,
 } from '@/public/track/awardDetail';
 import classNames from 'classnames';
+
+import './index.less';
 
 const WishIcon = (props) => {
 	const { lotteryNum, pointTaskStatus } = props;
