@@ -39,8 +39,14 @@ function Home() {
 
 	useEffect(() => {
 		// trackEnterPage({ pageId: source });
-		getList();
-		queryRecentLuckDogs();
+		ap.onResume(() => {
+			getList();
+			queryRecentLuckDogs();
+		});
+
+		return () => {
+			ap.offResume();
+		};
 	}, []);
 
 	return (
