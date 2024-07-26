@@ -128,8 +128,10 @@ function LotteryDetail() {
 	// const [isAdmin, setisAdmin] = useState(false);
 	const [residualCampList, setresidualCampList] = useState([]); //剩余campList
 	const [haveGoToServiceLink, sethaveGoToServiceLink] = useState(false); // 是否已逛一逛 或者完成前置任务
-	const [isGoToLinkTime, setisGoToLinkTime] = useState<number>(0); // 逛一逛前时间
-	const [taskDuration, settaskDuration] = useState(0); // 任务浏览时长
+	// const [isGoToLinkTime, setisGoToLinkTime] = useState<number>(0); // 逛一逛前时间
+	const isGoToLinkTimeRef = useRef<number>(0);// 逛一逛前时间
+	const taskDurationRef = useRef<number>(0)
+	// const [taskDuration, settaskDuration] = useState(0); // 任务浏览时长
 	// const [showParticipateSuccess, setshowParticipateSuccess] = useState(0); // 参与成功弹窗展示  1参与私域 2参与推荐
 	// const [adData, setadData] = useState(null); // 参与成功广告弹窗数据
 	const [pointAmount, setpointAmount] = useState(-1); // 心愿金总额
@@ -149,7 +151,7 @@ function LotteryDetail() {
 	const [unclaimedWishGold, setunclaimedWishGold] = useState(0); // 待领取
 	const [totalWishGold, settotalWishGold] = useState(0); // 心愿金门槛
 	const [unimktTaskInfoVo, setunimktTaskInfoVo] = useState<any>(null); // 云码前置任务
-	const [isLightPre, setisLightPre] = useState(false); // 云码和灯火前置判断
+	const isLightPreRef = useRef<boolean>(false); // 云码和灯火前置判断
 	const [, setriskUserType] = useState('NORMAL'); //用户人群是否白名单
 	const [campClause, setcampClause] = useState<any>();
 	const [serviceFavoriteVo, setserviceFavoriteVo] = useState<any>();
@@ -757,30 +759,28 @@ function LotteryDetail() {
 		);
 		handleLimitDialog();
 	};
-	console.log('外面isGoToLinkTime :>> ', isGoToLinkTime);
+
 	const handlePageShow = () => {
-		// const { taskDuration, isGoToLinkTime, isImmediateLottery, isLightPre } =
-		// 	this.data;
-		console.log('isGoToLinkTime :>> ', isGoToLinkTime);
+		console.log('isGoToLinkTime :>> ', isGoToLinkTimeRef.current);
 		// 点击逛一逛回来
-		if (isGoToLinkTime) {
+		if (isGoToLinkTimeRef.current) {
 			// 有时长读时长 没有超过3秒返回才可以参与 私域活动15s
-			const time = taskDuration * 1000 || 3000;
-			if (isGoToLinkTime + time < +new Date()) {
+			const time = taskDurationRef.current * 1000 || 3000;
+			if (isGoToLinkTimeRef.current + time < +new Date()) {
 				// 如果是不需要点击参与的直接抽
 				isFirstAutoFlag = true;
-				setisGoToLinkTime(0);
+				isGoToLinkTimeRef.current = 0
 				onLotterySubmit();
 			}
 			// 灯火或者云码前置任务时长不足,也去完成判断是否完成
-			else if (isLightPre) {
+			else if (isLightPreRef.current) {
 				onLotterySubmit('isLightPre');
 			} else {
 				ap.showToast({ content: '需完成任务才可参与抽奖' });
 			}
-			setisGoToLinkTime(0);
-			settaskDuration(0);
-			setisLightPre(false);
+			isGoToLinkTimeRef.current = 0
+			taskDurationRef.current = 0
+			isLightPreRef.current = false;
 		}
 
 		// 刷新页面
@@ -819,7 +819,7 @@ function LotteryDetail() {
 				switch (advInfoType) {
 					case 'JUMP_STOP_TASK':
 						// 3s任务
-						setisGoToLinkTime(+new Date());
+						isGoToLinkTimeRef.current = +new Date()
 						// 逛一逛 点击埋点
 						trackDetailJumpOut({
 							campId: abstractCampInfo.campId,
@@ -843,7 +843,7 @@ function LotteryDetail() {
 						break;
 					case 'JUMP_TASK':
 						// 跳转任务
-						setisGoToLinkTime(+new Date() - 3000);
+						isGoToLinkTimeRef.current = +new Date() - 3000
 						sethaveGoToServiceLink(true);
 						trackDetailJumpOut({
 							campId: abstractCampInfo.campId,
@@ -862,7 +862,7 @@ function LotteryDetail() {
 						break;
 					case 'JOIN_GROUP':
 						// 已入过群不需要浏览时长
-						setisGoToLinkTime(+new Date() - 3000);
+						isGoToLinkTimeRef.current = +new Date() - 3000
 						ap.pushWindow(link);
 
 						trackDetailJumpOut({
@@ -882,14 +882,14 @@ function LotteryDetail() {
 						// eslint-disable-next-line no-case-declarations
 						const { unimktUrl = '' } = unimktTaskInfoVo;
 						if (unimktUrl) {
-							setisGoToLinkTime(+new Date());
-							settaskDuration(stopSecond || 0);
-							setisLightPre(true);
+							isGoToLinkTimeRef.current = +new Date()
+							taskDurationRef.current = stopSecond || 0
+							isLightPreRef.current = true;
 							trackGuideClick('YUN_MA');
 							ap.pushWindow(unimktUrl);
 						} else {
-							setisGoToLinkTime(+new Date());
-							settaskDuration(stopSecond || 0);
+							isGoToLinkTimeRef.current = +new Date()
+							taskDurationRef.current = stopSecond || 0
 							ap.pushWindow(link);
 						}
 						break;
@@ -937,7 +937,7 @@ function LotteryDetail() {
 		setabstractCampInfo(null);
 		setmyCampLotteryTransVo(null);
 		sethaveGoToServiceLink(false);
-		setisGoToLinkTime(0);
+		isGoToLinkTimeRef.current = 0
 		// setshowParticipateSuccess(0);
 		itemDetail({
 			campId: id,
@@ -971,7 +971,7 @@ function LotteryDetail() {
 		setresidualCampList(JSON.parse(JSON.stringify(campList)));
 
 		ap.onResume(() => {
-			console.log('onResume')
+			console.log('onResume');
 			handlePageShow();
 		});
 
