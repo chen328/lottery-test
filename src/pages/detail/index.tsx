@@ -523,7 +523,7 @@ function LotteryDetail() {
 				ap.showToast({
 					content: '任务未完成',
 				});
-				sethaveGoToServiceLink(true);
+				// sethaveGoToServiceLink(true);
 			} else {
 				ap.showToast({
 					content: ERRCODETEXT[errorCode] || errorMsg,
