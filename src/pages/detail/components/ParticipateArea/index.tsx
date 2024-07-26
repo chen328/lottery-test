@@ -339,7 +339,7 @@ const ParticipateArea = (props) => {
 						/>
 					) : null}
 
-					<div className='lottery-service-participate-num ml-64'>
+					<div className='lottery-service-participate-num' style={{marginLeft: '32px'}}>
 						我的心愿金
 					</div>
 					<div className='lottery-service-participate-flex justify-end ml-0 mr-20'>
