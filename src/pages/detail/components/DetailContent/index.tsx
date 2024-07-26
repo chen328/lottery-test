@@ -351,6 +351,9 @@ const DetailContent = forwardRef((props: any, ref) => {
 				onTapCloseResultPanel={onTapCloseResultPanel}
 				onEndAddressTap={onEndAddressTap}
 				lotteryShareStatus={lotteryShareStatus}
+				serverTime={serverTime}
+				onTapNextAwardDetail={onTapNextAwardDetail}
+				// serviceFavoriteVo={serviceFavoriteVo}
 				// materialId="{{ materialId }}"
 			/>
 			{/* </block> */}

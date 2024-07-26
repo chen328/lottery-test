@@ -11,6 +11,7 @@ import {
 } from '@/public/track/awardDetail';
 import { trackShowPrizeClick } from '@/public/track/awardDetail';
 import PointCount from '@/components/PointCount';
+import RecommendLottery from '../RecommendLottery';
 // import { useQuery } from '@/public/hooks';
 // import { trackEnterPage } from '@/public/track/index';
 // import { homePrizesList } from '@/public/service/home';
@@ -111,16 +112,17 @@ function ResultDialogV(props) {
 		isImmediateLottery = false,
 		prizeUserDigestForShow = [],
 		// materialId,
-		pointAmount,
+		// pointAmount,
 		wishGoldRedPacket,
 		lotteryShareStatus,
 		onTapCloseResultPanel,
 		campLotteryTransVo,
 		prizeInfoVoList,
-		// consumeConfigInfoVo,
-		// campClause,
 		onEndAddressTap,
-		// onClickMore,
+		nextCampInfoVo,
+		serverTime,
+		serviceFavoriteVo,
+		onTapNextAwardDetail = () => {},
 	} = props;
 	const extraLottieDomRef = useRef<HTMLDivElement>();
 	const extraLottieRef = useRef<unknown>(null);
@@ -221,7 +223,7 @@ function ResultDialogV(props) {
 
 						<img
 							className='r-thousand-close'
-							style={{top: '-140px'}}
+							style={{ top: '-140px' }}
 							src='https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*uMfFSKTb7a8AAAAAAAAAAAAAARQnAQ'
 							onClick={onTapCloseResultPanel}
 						/>
@@ -340,7 +342,7 @@ function ResultDialogV(props) {
 								越努力越幸运，下一个大奖可能就是你！
 							</div>
 						)}
-						{wishGoldRedPacket && wishGoldRedPacket.adIcon && (
+						{/* {wishGoldRedPacket && wishGoldRedPacket.adIcon && (
 							<img
 								// onLoad="appearWishGold"
 								data-component='详情页开奖弹窗-心愿金banner'
@@ -374,7 +376,16 @@ function ResultDialogV(props) {
 									<PointCount count={+pointAmount} />
 								</div>
 							)}
-						</div>
+						</div> */}
+						{/* <!-- 推荐抽奖--> */}
+						{nextCampInfoVo && nextCampInfoVo?.prizeInfoVoList?.length > 0 && (
+							<RecommendLottery
+								onTapNextAwardDetail={onTapNextAwardDetail}
+								nextCampInfoVo={nextCampInfoVo}
+								serverTime={serverTime}
+								serviceFavoriteVo={serviceFavoriteVo}
+							/>
+						)}
 					</>
 				)}
 			</div>
