@@ -5,37 +5,21 @@ import defaultcompany from '@/public/images/default-company.png';
 import {
 	execAsync,
 	openWebInAlipay,
-	// isArray,
-	// trim,
-	// storageToday,
 	storage,
-	// delay,
 } from '@/public/util';
 import {
 	DescItemTypeEnum,
 	LOTTERY_STATE,
-	// LOTTERY_CAMP_SCENE,
 } from '@/public/enum';
 import { capture } from '@/public/excepture';
 import cst, {
 	BUILTIN_CHANNELS,
-	// NON_EXIST_REGION_ID,
-	// TTCJ_LIFE_STYLE_PUBLIC_ID,
 	ERRCODETEXT,
 } from '@/public/constant';
 import {
 	trackEntryDetail,
 	trackDetailJoinActivity,
 	trackDetailJumpOut,
-	// trackDetailShare,
-	// trackTaskFinish,
-	// trackGoWishGoldExposure,
-	// trackLotteryExposure,
-	// trackLotteryClick,
-	// trackWishShareTaskVisit,
-	// trackWishShareTaskHelpFinish,
-	// trackLotteryPrizeFailedExposure,
-	// trackLotteryPrizeFailedClick,
 	trackWishGoldThresholdExposure,
 	trackWishGoldThresholdClick,
 	trackGuideClick,
@@ -45,7 +29,6 @@ import {
 	itemDetail,
 	sendReport,
 	messagePointProvide,
-	// queryAdv,
 	lotteryAction,
 	lotteryFreeQuery,
 	channelReport,
@@ -53,6 +36,7 @@ import {
 import lottie, { AnimationItem } from 'lottie-web';
 import Modal from '@/components/Modal';
 import classNames from 'classnames';
+import { useGetState } from 'ahooks';
 import { homePrizesList } from '@/public/service/home';
 import PointCount from '@/components/PointCount';
 import ParticipateArea from './components/ParticipateArea';
@@ -83,35 +67,13 @@ let campLotteryTransVoList;
 let campLotteryTransVo;
 let prizeUserDigestVos;
 
-// let prizeListIndex;
-// let itemId;
-
-// let benefits;
-// let channel;
 let partnerRegionInfo;
-// let regionInfo;
-// let targetRegionInfo;
-
-// let targetRegionId;
 let customParams;
-// let additionalPrizeUserDigestVos;
 
 let campList: any = [];
-// let prizeColumnType;
-// let lifeId;
-
-// let channelName;
-// let taskShareId;
-// let channelSource;
-// let outBizId;
-
-// let topDistance = 0;
 let isFirstAutoFlag;
 
-// 渠道用的字段
-// let isChannelLottery = false;
-// let isChannelInited = false;
-// let channelGoodsIndex = 0;
+
 
 // 抽奖详情
 function LotteryDetail() {
@@ -123,38 +85,33 @@ function LotteryDetail() {
 	} = useQuery();
 	let { itemId, outBizId } = useQuery();
 
-	const [abstractCampInfo, setabstractCampInfo] = useState<any>(null);
+	const [abstractCampInfo, setabstractCampInfo, getabstractCampInfo] =
+		useGetState<any>(null);
 	const [totalPrice, setTotalPrice] = useState<number>(0);
-	// const [isAdmin, setisAdmin] = useState(false);
 	const [residualCampList, setresidualCampList] = useState([]); //剩余campList
 	const [haveGoToServiceLink, sethaveGoToServiceLink] = useState(false); // 是否已逛一逛 或者完成前置任务
-	// const [isGoToLinkTime, setisGoToLinkTime] = useState<number>(0); // 逛一逛前时间
-	const isGoToLinkTimeRef = useRef<number>(0);// 逛一逛前时间
-	const taskDurationRef = useRef<number>(0)
+	const isGoToLinkTimeRef = useRef<number>(0); // 逛一逛前时间
+	const taskDurationRef = useRef<number>(0);
 	// const [taskDuration, settaskDuration] = useState(0); // 任务浏览时长
 	// const [showParticipateSuccess, setshowParticipateSuccess] = useState(0); // 参与成功弹窗展示  1参与私域 2参与推荐
 	// const [adData, setadData] = useState(null); // 参与成功广告弹窗数据
 	const [pointAmount, setpointAmount] = useState(-1); // 心愿金总额
 	const [lotteryNum, setlotteryNum] = useState(0); // 参与抽奖次数
-	// const [wishType, setwishType] = useState(''); // 心愿金弹窗类型
-	// const [wishImage, setwishImage] = useState(''); // 心愿金弹窗配置图片
 	const [pointTaskStatus, setpointTaskStatus] = useState(0); // 心愿金icon是否领取
 	// const [showWishNo, setshowWishNo] = useState(false); // 心愿金不足弹窗
 	const [showCoinAnimation, setshowCoinAnimation] = useState(false); // 是否显示心愿金获取动效
 	const [, setrecommendPopCampInfo] = useState(null); // 推荐位抽奖
 	const [wishGoldRedPacket, setwishGoldRedPacket] = useState(null); // 心愿金红包配置
-	// const [lotteryDetailGuideConfig, setlotteryDetailGuideConfig] =
-	// 	useState(null); // 心愿金引导配置
-	// const [showLotteryDetailGuideConfig, setshowLotteryDetailGuideConfig] =
-	// 	useState(false); // 心愿金引导配置展示
 	const [receiveWishGold, setreceiveWishGold] = useState(0); // 已领取 // 抽奖门槛
 	const [unclaimedWishGold, setunclaimedWishGold] = useState(0); // 待领取
 	const [totalWishGold, settotalWishGold] = useState(0); // 心愿金门槛
-	const [unimktTaskInfoVo, setunimktTaskInfoVo] = useState<any>(null); // 云码前置任务
+	const [unimktTaskInfoVo, setunimktTaskInfoVo, getunimktTaskInfoVo] =
+		useGetState<any>(null); // 云码前置任务
 	const isLightPreRef = useRef<boolean>(false); // 云码和灯火前置判断
 	const [, setriskUserType] = useState('NORMAL'); //用户人群是否白名单
-	const [campClause, setcampClause] = useState<any>();
-	const [serviceFavoriteVo, setserviceFavoriteVo] = useState<any>();
+	const [campClause, setcampClause, getcampClause] = useGetState<any>();
+	const [serviceFavoriteVo, setserviceFavoriteVo, getserviceFavoriteVo] =
+		useGetState<any>();
 	const [lotteryShareStatus, setlotteryShareStatus] = useState();
 	const [materialId, setmaterialId] = useState();
 	const [campDescItemInfos, setcampDescItemInfos] = useState();
@@ -165,11 +122,10 @@ function LotteryDetail() {
 	const [lotteryPreGuideVo, setlotteryPreGuideVo] = useState();
 	const [lotteryDoingGuideVo, setlotteryDoingGuideVo] = useState();
 	const [lotteryPostGuideVo, setlotteryPostGuideVo] = useState();
-	const [consumeConfigInfoVo, setconsumeConfigInfoVo] = useState<any>();
+	const [consumeConfigInfoVo, setconsumeConfigInfoVo, getconsumeConfigInfoVo] =
+		useGetState<any>();
 	const [prizeInfoVoList, setprizeInfoVoList] = useState();
 	const [mynextCampInfoVo, setmynextCampInfoVo] = useState();
-	// const [showMessageCoinAnimation, setshowMessageCoinAnimation] =
-	// 	useState(false);
 	const lottieDomRef = useRef<HTMLDivElement>();
 	const lottieRef = useRef<AnimationItem | null>(null);
 	const [isShowFirstAutoDialog, setIsShowFirstAutoDialog] =
@@ -489,26 +445,25 @@ function LotteryDetail() {
 	// };
 	const onLotterySubmit = async (type = '') => {
 		const lotteryObj = {
-			campId: abstractCampInfo.campId, // 活动id
-			// targetRegionId: app.globalData.targetRegionId, // 引流regionId 链接拼接或者官方渠道id
+			campId: getabstractCampInfo().campId, // 活动id
 			clientVersion: cst.clientVersion,
 			chInfo: cst.PAGE_SOURCE,
 		};
 
 		if (type === 'isLightPre') {
-			if (unimktTaskInfoVo?.unimktUrl) {
-				lotteryObj['outBizNo'] = unimktTaskInfoVo.outBizNo;
+			if (getunimktTaskInfoVo()?.unimktUrl) {
+				lotteryObj['outBizNo'] = getunimktTaskInfoVo().outBizNo;
 			}
 		}
 		trackDetailJoinActivity({
-			campId: abstractCampInfo.campId,
-			campName: abstractCampInfo.campName,
-			consumeConfigInfoVo: consumeConfigInfoVo,
-			regionId: serviceFavoriteVo?.serviceInfoVo?.serviceId,
-			regionName: serviceFavoriteVo?.serviceInfoVo?.serviceName,
-			wish_gold_num: consumeConfigInfoVo?.consumePoint,
-			openMode: campClause?.openMode,
-			displayColumn: abstractCampInfo?.displayColumn,
+			campId: getabstractCampInfo().campId,
+			campName: getabstractCampInfo().campName,
+			consumeConfigInfoVo: getconsumeConfigInfoVo(),
+			regionId: getserviceFavoriteVo()?.serviceInfoVo?.serviceId,
+			regionName: getserviceFavoriteVo()?.serviceInfoVo?.serviceName,
+			wish_gold_num: getconsumeConfigInfoVo()?.consumePoint,
+			openMode: getcampClause()?.openMode,
+			displayColumn: getabstractCampInfo().displayColumn,
 		});
 		ap.showLoading();
 
@@ -550,11 +505,11 @@ function LotteryDetail() {
 				}, 50);
 
 				trackWishGoldThresholdExposure({
-					campId: abstractCampInfo.campId,
-					campName: abstractCampInfo.campName,
-					consumeConfigInfoVo: consumeConfigInfoVo,
-					regionId: serviceFavoriteVo?.serviceInfoVo?.serviceId,
-					regionName: serviceFavoriteVo?.serviceInfoVo?.serviceName,
+					campId: getabstractCampInfo().campId,
+					campName: getabstractCampInfo().campName,
+					consumeConfigInfoVo: getconsumeConfigInfoVo(),
+					regionId: getserviceFavoriteVo()?.serviceInfoVo?.serviceId,
+					regionName: getserviceFavoriteVo()?.serviceInfoVo?.serviceName,
 					receiveWishGold: +receiveWishGold + unclaimedWishGold,
 				});
 			} else if (errorCode === '2160') {
@@ -585,7 +540,6 @@ function LotteryDetail() {
 		prizeItem.participantNum++;
 		prizeItem.myLotteryNum = 1;
 
-		// getRecommend();
 		handleWishDialogType({ pointAmount, popType, lotteryNum });
 
 		setmyCampLotteryTransVo({
@@ -594,7 +548,7 @@ function LotteryDetail() {
 			...(myCampLotteryTransVo || {}),
 		});
 		setabstractCampInfo({
-			...abstractCampInfo,
+			...getabstractCampInfo(),
 			participantNum: prizeItem.participantNum && +prizeItem.participantNum,
 			myLotteryNum: 1,
 		});
@@ -623,7 +577,6 @@ function LotteryDetail() {
 
 		handleAfterDialogRefresh(_data, { showCoinAnimation });
 	};
-
 	const handleAfterDialogRefresh = (_data, { showCoinAnimation }) => {
 		const { pointAmount, lotteryNum } = _data;
 		setlotteryNum(+lotteryNum);
@@ -769,7 +722,7 @@ function LotteryDetail() {
 			if (isGoToLinkTimeRef.current + time < +new Date()) {
 				// 如果是不需要点击参与的直接抽
 				isFirstAutoFlag = true;
-				isGoToLinkTimeRef.current = 0
+				isGoToLinkTimeRef.current = 0;
 				onLotterySubmit();
 			}
 			// 灯火或者云码前置任务时长不足,也去完成判断是否完成
@@ -778,8 +731,8 @@ function LotteryDetail() {
 			} else {
 				ap.showToast({ content: '需完成任务才可参与抽奖' });
 			}
-			isGoToLinkTimeRef.current = 0
-			taskDurationRef.current = 0
+			isGoToLinkTimeRef.current = 0;
+			taskDurationRef.current = 0;
 			isLightPreRef.current = false;
 		}
 
@@ -819,7 +772,7 @@ function LotteryDetail() {
 				switch (advInfoType) {
 					case 'JUMP_STOP_TASK':
 						// 3s任务
-						isGoToLinkTimeRef.current = +new Date()
+						isGoToLinkTimeRef.current = +new Date();
 						// 逛一逛 点击埋点
 						trackDetailJumpOut({
 							campId: abstractCampInfo.campId,
@@ -843,7 +796,7 @@ function LotteryDetail() {
 						break;
 					case 'JUMP_TASK':
 						// 跳转任务
-						isGoToLinkTimeRef.current = +new Date() - 3000
+						isGoToLinkTimeRef.current = +new Date() - 3000;
 						sethaveGoToServiceLink(true);
 						trackDetailJumpOut({
 							campId: abstractCampInfo.campId,
@@ -862,7 +815,7 @@ function LotteryDetail() {
 						break;
 					case 'JOIN_GROUP':
 						// 已入过群不需要浏览时长
-						isGoToLinkTimeRef.current = +new Date() - 3000
+						isGoToLinkTimeRef.current = +new Date() - 3000;
 						ap.pushWindow(link);
 
 						trackDetailJumpOut({
@@ -882,14 +835,14 @@ function LotteryDetail() {
 						// eslint-disable-next-line no-case-declarations
 						const { unimktUrl = '' } = unimktTaskInfoVo;
 						if (unimktUrl) {
-							isGoToLinkTimeRef.current = +new Date()
-							taskDurationRef.current = stopSecond || 0
+							isGoToLinkTimeRef.current = +new Date();
+							taskDurationRef.current = stopSecond || 0;
 							isLightPreRef.current = true;
 							trackGuideClick('YUN_MA');
 							ap.pushWindow(unimktUrl);
 						} else {
-							isGoToLinkTimeRef.current = +new Date()
-							taskDurationRef.current = stopSecond || 0
+							isGoToLinkTimeRef.current = +new Date();
+							taskDurationRef.current = stopSecond || 0;
 							ap.pushWindow(link);
 						}
 						break;
@@ -937,7 +890,7 @@ function LotteryDetail() {
 		setabstractCampInfo(null);
 		setmyCampLotteryTransVo(null);
 		sethaveGoToServiceLink(false);
-		isGoToLinkTimeRef.current = 0
+		isGoToLinkTimeRef.current = 0;
 		// setshowParticipateSuccess(0);
 		itemDetail({
 			campId: id,
