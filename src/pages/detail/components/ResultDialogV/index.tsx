@@ -140,16 +140,16 @@ function ResultDialogV(props) {
 		}
 		onEndAddressTap(false);
 	};
-	const goWish = () => {
-		trackGoWishGoldClick({ component: '详情页开奖弹窗-心愿金banner' });
-		ap.pushWindow(
-			'alipays://platformapi/startapp?appId=2018103161898599&page=pages%2FpointsIndex%2FpointsIndex',
-		);
-	};
-	const goRed = () => {
-		trackGoWishGoldClick({ component: '详情页开奖弹窗-心愿金banner' });
-		ap.pushWindow(wishGoldRedPacket.adUrl);
-	};
+	// const goWish = () => {
+	// 	trackGoWishGoldClick({ component: '详情页开奖弹窗-心愿金banner' });
+	// 	ap.pushWindow(
+	// 		'alipays://platformapi/startapp?appId=2018103161898599&page=pages%2FpointsIndex%2FpointsIndex',
+	// 	);
+	// };
+	// const goRed = () => {
+	// 	trackGoWishGoldClick({ component: '详情页开奖弹窗-心愿金banner' });
+	// 	ap.pushWindow(wishGoldRedPacket.adUrl);
+	// };
 	const goSquare = () => {
 		trackShowPrizeClick({ component: '开奖弹窗' });
 		ap.pushWindow(

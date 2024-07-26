@@ -24,7 +24,6 @@ const DetailContent = forwardRef((props: any, ref) => {
 		isChannelLottery = false,
 		isImmediateLottery = false,
 		nextCampInfoVo,
-		// onChangeScrollable = () => {},
 		wishGoldRedPacket,
 		prizeUserDigestVos = [],
 		campDescItemInfos,

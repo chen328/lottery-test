@@ -610,15 +610,23 @@ function LotteryDetail() {
 				campLotteryTransVo.prizeType === 'MATTER' ||
 				campLotteryTransVo.prizeType === 'CASH'
 			) {
-				ap.pushWindow(
-					`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
-						`/firstSubpackage/pages/receive/receive?itemId=${
-							abstractCampInfo.campId
-						}&campLotteryTransVo=${encodeURIComponent(
-							JSON.stringify(campLotteryTransVo),
-						)}&prizeType=${campLotteryTransVo.prizeType}`,
-					)}`,
-				);
+				// TODO: 测试
+				location.href = `alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
+					`/firstSubpackage/pages/receive/receive?itemId=${
+						abstractCampInfo.campId
+					}&campLotteryTransVo=${encodeURIComponent(
+						JSON.stringify(campLotteryTransVo),
+					)}&prizeType=${campLotteryTransVo.prizeType}`,
+				)}`;
+				// ap.pushWindow(
+				// 	`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
+				// 		`/firstSubpackage/pages/receive/receive?itemId=${
+				// 			abstractCampInfo.campId
+				// 		}&campLotteryTransVo=${encodeURIComponent(
+				// 			JSON.stringify(campLotteryTransVo),
+				// 		)}&prizeType=${campLotteryTransVo.prizeType}`,
+				// 	)}`,
+				// );
 			} else {
 				// this.onTapReceiveCoupon();
 			}
@@ -702,7 +710,6 @@ function LotteryDetail() {
 	};
 
 	const handlePageShow = () => {
-		console.log('isGoToLinkTime :>> ', isGoToLinkTimeRef.current);
 		// 点击逛一逛回来
 		if (isGoToLinkTimeRef.current) {
 			// 有时长读时长 没有超过3秒返回才可以参与 私域活动15s
@@ -727,6 +734,7 @@ function LotteryDetail() {
 		// 刷新页面
 		if (prizeItem) {
 			const nextCampId = campList && campList.length ? campList[0] : '';
+			// handleItemId({ type: 'reload' });
 
 			itemDetail({
 				campId: itemId,
@@ -1087,9 +1095,12 @@ function LotteryDetail() {
 					}
 					{/* <!-- 解锁抽奖弹窗 --> */}
 					{limitDialog && (
-						<Modal showClose onClose={() => {
-							setlimitDialog(false)
-						}}>
+						<Modal
+							showClose
+							onClose={() => {
+								setlimitDialog(false);
+							}}
+						>
 							<div
 								className='w-[714px] h-[656px] bg-no-repeat bg-contain overflow-hidden'
 								style={{
@@ -1106,7 +1117,10 @@ function LotteryDetail() {
 										即可解锁
 									</div>
 								) : (
-									<div className='fz-32 tc-3 limitDialog-text fw-medium l-flex items-baseline relative left-[120px]' style={{marginTop: '132px'}}>
+									<div
+										className='fz-32 tc-3 limitDialog-text fw-medium l-flex items-baseline relative left-[120px]'
+										style={{ marginTop: '132px' }}
+									>
 										今日需再集
 										<div className='text-[50px] tc-primary ff-dm relative top-[-4px]'>
 											<PointCount
@@ -1125,13 +1139,13 @@ function LotteryDetail() {
 
 								{/* <!-- 进度条 --> */}
 								<div
-									className={classNames('limitDialog-box','mt-4')}
+									className={classNames('limitDialog-box', 'mt-4')}
 									style={{
 										left:
 											// totalWishGold > receiveWishGold + unclaimedWishGold
 											// 	? '65px'
 											// 	: 'auto',
-											'65px'
+											'65px',
 									}}
 								>
 									<div
