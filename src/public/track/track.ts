@@ -15,7 +15,7 @@ export default function track({ extParams, ...data }: any) {
 	const appId = cst.APP_ID
 	const trackData = {
 		appId,
-		appKey: cst.APP_KEY,
+		appKey: cst.TRACK_APP_KEY,
 		version: '1.0.1',
 		type: 'app',
 		level: 3,
@@ -25,7 +25,7 @@ export default function track({ extParams, ...data }: any) {
 		// eslint-disable-next-line no-restricted-globals
 		url: location.pathname,
 		cid: md5(
-			cst.APP_KEY +
+			cst.TRACK_APP_KEY +
 				bid +
 				cst.SESSION_ID +
 				datetime +

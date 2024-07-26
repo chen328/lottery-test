@@ -69,6 +69,7 @@ const cst = {
 	PROJECT_VERSION: __BUILD_VERSION__,
 	SESSION_ID: genSessionId(),
 	APP_KEY: 'h5_lottery',
+	TRACK_APP_KEY: 'lottery_everyday', // 埋点需要跟以前一样
 	PAGE_SOURCE: '',
 	USER: {
 		userId: '',
