@@ -757,10 +757,11 @@ function LotteryDetail() {
 		);
 		handleLimitDialog();
 	};
-
+	console.log('外面isGoToLinkTime :>> ', isGoToLinkTime);
 	const handlePageShow = () => {
 		// const { taskDuration, isGoToLinkTime, isImmediateLottery, isLightPre } =
 		// 	this.data;
+		console.log('isGoToLinkTime :>> ', isGoToLinkTime);
 		// 点击逛一逛回来
 		if (isGoToLinkTime) {
 			// 有时长读时长 没有超过3秒返回才可以参与 私域活动15s
@@ -970,6 +971,7 @@ function LotteryDetail() {
 		setresidualCampList(JSON.parse(JSON.stringify(campList)));
 
 		ap.onResume(() => {
+			console.log('onResume')
 			handlePageShow();
 		});
 
