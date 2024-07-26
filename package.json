@@ -47,5 +47,8 @@
 		"typescript": "^5.2.2",
 		"vite": "^5.1.4",
 		"vite-plugin-html": "^3.2.2"
+	},
+	"volta": {
+		"node": "20.10.0"
 	}
 }
