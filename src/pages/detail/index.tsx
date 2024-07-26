@@ -2,7 +2,7 @@ import { useState, useEffect, LegacyRef, useRef } from 'react';
 import { useQuery } from '@/public/hooks';
 import dayjs from 'dayjs';
 import defaultcompany from '@/public/images/default-company.png';
-import { execAsync, openWebInAlipay, storage } from '@/public/util';
+import { execAsync, openWebInAlipay } from '@/public/util';
 import { DescItemTypeEnum, LOTTERY_STATE } from '@/public/enum';
 import { capture } from '@/public/excepture';
 import cst, { BUILTIN_CHANNELS, ERRCODETEXT } from '@/public/constant';
@@ -61,7 +61,7 @@ let partnerRegionInfo;
 let customParams;
 
 let campList: any = [];
-let isFirstAutoFlag;
+// let isFirstAutoFlag;
 
 // 抽奖详情
 function LotteryDetail() {
@@ -547,17 +547,17 @@ function LotteryDetail() {
 		// const privateData = storageToday('PRIVATE');
 		// const RECOMMENDPOP = storageToday('RECOMMENDPOP');
 		// const CHANNELGUIDE = storage('CHANNELGUIDE');
-		const IS_FIRST_AUTO = storage('IS_FIRST_AUTO');
+		// const IS_FIRST_AUTO = storage('IS_FIRST_AUTO');
 		// const { recommendPopCampInfo } = this.data;
 		const showCoinAnimation = true;
 
 		// 首次浏览返回自动弹窗
-		if (!IS_FIRST_AUTO && isFirstAutoFlag) {
-			setIsShowFirstAutoDialog(true);
-			storage('IS_FIRST_AUTO', true);
-			// return;
-		}
-		isFirstAutoFlag = false;
+		// if (!IS_FIRST_AUTO && isFirstAutoFlag) {
+		// 	setIsShowFirstAutoDialog(true);
+		// 	storage('IS_FIRST_AUTO', true);
+		// 	// return;
+		// }
+		// isFirstAutoFlag = false;
 		// 弹窗逻辑暂时不需要
 		ap.showToast({
 			content: '参与成功, 心愿金+10',
@@ -709,7 +709,7 @@ function LotteryDetail() {
 			const time = taskDurationRef.current * 1000 || 3000;
 			if (isGoToLinkTimeRef.current + time < +new Date()) {
 				// 如果是不需要点击参与的直接抽
-				isFirstAutoFlag = true;
+				// isFirstAutoFlag = true;
 				isGoToLinkTimeRef.current = 0;
 				onLotterySubmit();
 			}
@@ -1108,7 +1108,7 @@ function LotteryDetail() {
 								) : (
 									<div className='fz-32 tc-3 limitDialog-text fw-medium l-flex items-baseline relative left-[120px]' style={{marginTop: '132px'}}>
 										今日需再集
-										<div className='fz-60 tc-primary ff-dm relative top-[-4px]'>
+										<div className='text-[50px] tc-primary ff-dm relative top-[-4px]'>
 											<PointCount
 												count={
 													totalWishGold - receiveWishGold - unclaimedWishGold
