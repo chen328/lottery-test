@@ -175,7 +175,7 @@ function LotteryDetail() {
 	const [limitDialog, setlimitDialog] = useState(false); // 限制抽奖弹窗
 	const limitLottieDomRef = useRef<HTMLDivElement>();
 	const limitLottieRef = useRef<AnimationItem | null>(null);
-  const childRef = useRef<any>();
+	const childRef = useRef<any>();
 
 	const goHome = () => {
 		location.href = '/';
@@ -234,7 +234,6 @@ function LotteryDetail() {
 						});
 					}
 					trackEntryDetail(prizeItem);
-
 				}
 
 				execAsync(cb);
@@ -730,9 +729,7 @@ function LotteryDetail() {
 	// 	setshowParticipateSuccess(0);
 	// };
 
-	const onTapRightBtn = () => {
-
-	};
+	const onTapRightBtn = () => {};
 
 	// const onCloseWishNo = () => {
 	// 	setshowWishNo(false);
@@ -845,6 +842,7 @@ function LotteryDetail() {
 						break;
 					case 'JUMP_TASK':
 						// 跳转任务
+						setisGoToLinkTime(+new Date() - 3000);
 						sethaveGoToServiceLink(true);
 						trackDetailJumpOut({
 							campId: abstractCampInfo.campId,
@@ -1054,7 +1052,7 @@ function LotteryDetail() {
 									onTapNextAwardDetail={onTapNextAwardDetail}
 									abstractCampInfo={abstractCampInfo}
 									onShowResultPanel={() => {
-										childRef?.current?.showResultPanel()
+										childRef?.current?.showResultPanel();
 									}}
 									// userSetting='{{userSetting}}'
 									// campId='{{abstractCampInfo.campId}}'
