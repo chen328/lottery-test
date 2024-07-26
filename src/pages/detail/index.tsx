@@ -22,6 +22,7 @@ import {
 	lotteryAction,
 	lotteryFreeQuery,
 	channelReport,
+	receiveAward,
 } from '@/public/service/detail';
 import lottie, { AnimationItem } from 'lottie-web';
 import Modal from '@/components/Modal';
@@ -587,6 +588,23 @@ function LotteryDetail() {
 		}, 100);
 	};
 
+	const onTapReceiveCoupon = async () => {
+		ap.showLoading();
+		// const { campLotteryTransVo } = this.data;
+		const { success } = await receiveAward({
+			lotteryTransId: campLotteryTransVo.lotteryTransId,
+		});
+		ap.hideLoading();
+		if (success) {
+			ap.showToast({ content: '领取成功' });
+			setmyCampLotteryTransVo({
+				...campLotteryTransVo,
+				status: 'AWARDED',
+			});
+			handleItemId({ type: 'reload' });
+		}
+	};
+
 	/*
     中奖弹窗点击处理
     过期：心愿金去心愿金页，其他去首页
@@ -622,7 +640,7 @@ function LotteryDetail() {
 				);
 				refreshRef.current = true;
 			} else {
-				// this.onTapReceiveCoupon();
+				onTapReceiveCoupon();
 			}
 		}
 		// else if (

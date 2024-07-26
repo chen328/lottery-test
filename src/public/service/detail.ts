@@ -90,3 +90,16 @@ export function channelReport(params) {
 		url: '/ipsponsorprod/lottery/channel/config/user/report',
 	});
 }
+
+export function receiveAward(param) {
+	return request({
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		data: {
+			...param,
+		},
+		method: 'POST',
+		url: '/ipsponsorprod/lottery/camp/award',
+	});
+}
