@@ -266,7 +266,7 @@ function ResultDialogV(props) {
 								abstractCampInfo,
 								// lotteryShareStatus,
 							)}
-							{lotteryShareStatus &&
+							{/* {lotteryShareStatus &&
 								lotteryShareStatus !== 'MATERIAL' &&
 								campLotteryTransVo.status === 'AWARDED' && (
 									<div className='l-flex-align-center'>
@@ -276,7 +276,7 @@ function ResultDialogV(props) {
 										/>
 										{lotteryShareStatus === 'SHARE' ? '+10' : '+500'}
 									</div>
-								)}
+								)} */}
 						</div>
 					</>
 				) : (
