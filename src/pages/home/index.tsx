@@ -40,14 +40,16 @@ function Home() {
 	};
 
 	useEffect(() => {
-		ap.onResume(() => {
-			getList();
-			queryRecentLuckDogs();
-		});
+		// console.log('----useEffect')
+		getList();
+		queryRecentLuckDogs();
+		// ap.onResume(() => {
+		// 	console.log('----ap.onResume')
+		// });
 
-		return () => {
-			ap.offResume();
-		};
+		// return () => {
+		// 	ap.offResume();
+		// };
 	}, []);
 
 	return (
