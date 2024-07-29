@@ -1,6 +1,7 @@
 import { useCountDown } from 'ahooks';
+import { useEffect } from 'react';
 import { openWebInAlipay, processImageUrl } from '@/public/util';
-import { lotteryClick } from '@/public/track/home';
+import { lotteryClick, lotteryExposure } from '@/public/track/home';
 import './PrizeItem.less';
 
 interface IProps {
@@ -50,6 +51,10 @@ const PrizeItem: React.FC<IProps> = (props) => {
 				}
 			})
 			.join('');
+
+	useEffect(() => {
+		lotteryExposure(item, '抽奖列表');
+	}, [])
 
 	return (
 		<div className='prize-item' onClick={onCardClick}>
