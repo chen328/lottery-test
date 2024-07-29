@@ -22,7 +22,7 @@ const getHour = (sTime, rTime) => {
 };
 
 function RecommendLottery(props) {
-	const { onTapNextAwardDetail, component, nextCampInfoVo } = props;
+	const { onTapNextAwardDetail, component = '推荐抽奖', nextCampInfoVo } = props;
 	const [serverTime, setServerTime] = useState<number>();
 	const [, formattedRes] = useCountDown({
 		targetDate: nextCampInfoVo.gmtEnd,

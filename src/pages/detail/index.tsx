@@ -14,6 +14,7 @@ import {
 	trackWishGoldThresholdClick,
 	trackGuideClick,
 	trackGuideExposure,
+	trackRecommendClick
 } from '@/public/track/awardDetail';
 import {
 	itemDetail,
@@ -110,7 +111,7 @@ function LotteryDetail() {
 	const [consumeConfigInfoVo, setconsumeConfigInfoVo, getconsumeConfigInfoVo] =
 		useGetState<any>();
 	const [prizeInfoVoList, setprizeInfoVoList] = useState();
-	const [mynextCampInfoVo, setmynextCampInfoVo] = useState();
+	const [mynextCampInfoVo, setmynextCampInfoVo] = useGetState<any>();
 	const lottieDomRef = useRef<HTMLDivElement>();
 	const lottieRef = useRef<AnimationItem | null>(null);
 	const [isShowFirstAutoDialog, setIsShowFirstAutoDialog] =
@@ -874,7 +875,6 @@ function LotteryDetail() {
 		setmyCampLotteryTransVo(null);
 		sethaveGoToServiceLink(false);
 		isGoToLinkTimeRef.current = 0;
-		// setshowParticipateSuccess(0);
 		itemDetail({
 			campId: id,
 			chInfo: cst.PAGE_SOURCE,
@@ -883,6 +883,7 @@ function LotteryDetail() {
 			outBizId,
 			channelName,
 		}).then((response) => {
+			
 			dealWithDetail(response);
 		});
 		ap.hideLoading();
@@ -993,6 +994,7 @@ function LotteryDetail() {
 									campName={abstractCampInfo?.campName}
 									pointAmount={pointAmount}
 									consumeConfigInfoVo={consumeConfigInfoVo}
+									nextCampInfoVo={mynextCampInfoVo}
 								/>
 								{/* <ParticipateDialog /> */}
 

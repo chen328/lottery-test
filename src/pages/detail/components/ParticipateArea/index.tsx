@@ -1,7 +1,11 @@
 import { useState, LegacyRef, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { useThrottleFn } from 'ahooks';
-import { trackGoWishGoldClick } from '@/public/track/awardDetail';
+import {
+	trackGoWishGoldClick,
+	trackRecommendExposure,
+	trackRecommendClick,
+} from '@/public/track/awardDetail';
 import { storageToday } from '@/public/util';
 import PointCount from '@/components/PointCount';
 import lottie from 'lottie-web';
@@ -30,6 +34,7 @@ const ParticipateArea = (props) => {
 		abstractCampInfo = null,
 		onTapNextAwardDetail = () => {},
 		onShowResultPanel = () => {},
+		nextCampInfoVo,
 	} = props;
 
 	const [focusRight, setfocusRight] = useState(true);
@@ -113,6 +118,22 @@ const ParticipateArea = (props) => {
 			}, 50);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (
+			(abstractCampInfo?.myLotteryNum ||
+				abstractCampInfo?.displayStatus === LOTTERY_STATE.ENDED) &&
+			nextCampInfoVo?.prizeInfoVoList
+		) {
+			trackRecommendExposure({
+				component: '下一个抽奖',
+				...nextCampInfoVo,
+			});
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [nextCampInfoVo?.lottoryTitles]);
+
 	return (
 		<div className='lottery-service-bar-wrap'>
 			{config.leftBtn?.show || config.rightBtn?.show ? (
@@ -273,7 +294,13 @@ const ParticipateArea = (props) => {
 									: '查看开奖结果'}
 							</div>
 							<div
-								onClick={onTapNextAwardDetail}
+								onClick={() => {
+									trackRecommendClick({
+										component: '下一个抽奖',
+										...nextCampInfoVo,
+									});
+									onTapNextAwardDetail();
+								}}
 								className='winners-wrap-rate'
 								style={{
 									marginTop: '30px',
