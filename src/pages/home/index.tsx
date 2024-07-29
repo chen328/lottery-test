@@ -67,7 +67,7 @@ function Home() {
 										<div className='text-ellipsis '>
 											恭喜{item.userName || '匿名'}中奖
 											{item.lotteryPrizeInfoVoList?.map((prizeItem: any, index) => (
-												<div key={index}>{index > 0 ? '，' + prizeItem.subject : prizeItem.subject}</div>
+												<span key={index}>{index > 0 ? '，' + prizeItem.subject : prizeItem.subject}</span>
 											))}
 										</div>
 									</Swiper.Item>
