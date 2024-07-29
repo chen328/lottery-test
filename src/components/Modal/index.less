@@ -1,0 +1,27 @@
+.modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	z-index: 1000;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+
+	.modal-body {
+		position: relative;
+	}
+
+	.modal-close {
+		position: absolute;
+		bottom: -96px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 48px;
+		height: 48px;
+		background: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*dXpKS6BlsyoAAAAAAAAAAAAADg6FAQ/original)
+			no-repeat center center/ 100% 100%;
+	}
+}
