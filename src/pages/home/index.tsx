@@ -40,11 +40,9 @@ function Home() {
 	};
 
 	useEffect(() => {
-		console.log('----useEffect')
 		getList();
 		queryRecentLuckDogs();
 		ap.onResume(() => {
-			console.log('----onResume')
 			getList();
 			queryRecentLuckDogs();
 		});
@@ -69,7 +67,7 @@ function Home() {
 										<div className='text-ellipsis '>
 											恭喜{item.userName || '匿名'}中奖
 											{item.lotteryPrizeInfoVoList?.map((prizeItem: any, index) => (
-												<div key={index}>{index > 0 ? '，' + prizeItem.subject : prizeItem.subject}</div>
+												<span key={index}>{index > 0 ? '，' + prizeItem.subject : prizeItem.subject}</span>
 											))}
 										</div>
 									</Swiper.Item>
@@ -84,6 +82,7 @@ function Home() {
 								{campInfoVoList.map(item => (
 									<PrizeItem key={item.campId} item={item} itemList={campInfoVoList} />
 								))}
+								<Image className='home-none-more' src="https://laiy-online-oss-client.laiytech.com/resource/lottery_everyday/v2_71_0/home-none-more.png"/>
 							</>
 						) : (
 							<Image className='home__empty-img' src='https://sl-online-oss.shulidata.com/resource/lottery_everyday/v2_71_0/empty.png' />
