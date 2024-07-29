@@ -84,6 +84,7 @@ function Home() {
 								{campInfoVoList.map(item => (
 									<PrizeItem key={item.campId} item={item} itemList={campInfoVoList} />
 								))}
+								<Image className='home-none-more' src="https://laiy-online-oss-client.laiytech.com/resource/lottery_everyday/v2_71_0/home-none-more.png"/>
 							</>
 						) : (
 							<Image className='home__empty-img' src='https://sl-online-oss.shulidata.com/resource/lottery_everyday/v2_71_0/empty.png' />
