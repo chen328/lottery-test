@@ -3,7 +3,7 @@ import request from '../request';
 export function itemDetail(param) {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...param,
@@ -16,7 +16,7 @@ export function itemDetail(param) {
 export function sendReport(queryParams) {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...queryParams,
@@ -29,7 +29,7 @@ export function sendReport(queryParams) {
 export function messagePointProvide(params) {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...params,
@@ -42,7 +42,7 @@ export function messagePointProvide(params) {
 export function queryAdv(params) {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...params,
@@ -55,7 +55,7 @@ export function queryAdv(params) {
 export async function lotteryAction(param) {
 	return await request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...param,
@@ -70,7 +70,7 @@ export async function lotteryAction(param) {
 export async function lotteryFreeQuery() {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {},
 		method: 'GET',
@@ -81,7 +81,7 @@ export async function lotteryFreeQuery() {
 export function channelReport(params) {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...params,
@@ -94,7 +94,7 @@ export function channelReport(params) {
 export function receiveAward(param) {
 	return request({
 		headers: {
-			'Content-Type': 'application/json',
+			'content-type': 'application/json',
 		},
 		data: {
 			...param,

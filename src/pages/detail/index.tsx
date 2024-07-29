@@ -904,7 +904,6 @@ function LotteryDetail() {
 		prizeItem = null;
 		campLotteryTransVoList = null;
 		campLotteryTransVo = null;
-		// benefits = [];
 		setresidualCampList(JSON.parse(JSON.stringify(campList)));
 
 		ap.onResume(() => {
