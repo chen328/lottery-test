@@ -263,7 +263,7 @@ const DetailContent = forwardRef((props: any, ref) => {
 						<img
 							style={{ borderRadius: '50%', margin: '0 4px' }}
 							className='w-24 h-24'
-							src='{{serviceFavoriteVo.serviceInfoVo && serviceFavoriteVo.serviceInfoVo.serviceIcon}}'
+							src={serviceFavoriteVo.serviceInfoVo && serviceFavoriteVo.serviceInfoVo.serviceIcon}
 						/>
 						<span className='fw-medium tc-3'>
 							{serviceFavoriteVo?.serviceInfoVo?.serviceName}】

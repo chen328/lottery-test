@@ -12,7 +12,7 @@
 
 ## authCode获取
 
-> 测试环境和开发环境走APP_ID: 2021004135682480鉴权 https://lottery-static-k8s01.laiytech.com/#auth 点击按钮获取authcode
+> 测试环境和开发环境走APP_ID: 2021004135682480鉴权 https://lottery-static-k8s01.laiytech.com/auth 点击按钮获取authcode
 > 线上环境走APP_ID: 2021004135682480鉴权
 
 ## 开发环境、测试环境鉴权
