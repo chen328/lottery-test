@@ -601,7 +601,7 @@ function LotteryDetail() {
 			) {
 				ap.pushWindow(
 					`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
-						`/firstSubpackage/pages/receive/receive?itemId=${
+						`firstSubpackage/pages/receive/receive?itemId=${
 							abstractCampInfo.campId
 						}&campLotteryTransVo=${encodeURIComponent(
 							JSON.stringify(campLotteryTransVo),
@@ -640,7 +640,7 @@ function LotteryDetail() {
 		) {
 			ap.pushWindow(
 				`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
-					`/firstSubpackage/pages/logistics/logistics?itemId=${
+					`firstSubpackage/pages/logistics/logistics?itemId=${
 						abstractCampInfo.campId
 					}&campLotteryTransVo=${encodeURIComponent(
 						JSON.stringify(campLotteryTransVo),
