@@ -7,20 +7,14 @@
 
 ## 静态页面地址
 
-- 测试环境：https://association-laiy-static-test-k8s01.shulidata.com
-- 测试环境http地址：http://association-static-base.test.k8s01.shuli.com
-- 线上环境：https://association.shulidata-static.com
+- 测试环境：https://lottery-static-k8s01.laiytech.com
+- 线上环境：https://lottery-static.laiytech.com
 
 ## authCode获取
 
-> 测试环境和开发环境走APP_ID: 2021004135682480鉴权 https://association-laiy-static-k8s01.laiytech.com/#auth 点击按钮获取authcode
+> 测试环境和开发环境走APP_ID: 2021004135682480鉴权 https://lottery-static-k8s01.laiytech.com/#auth 点击按钮获取authcode
 > 线上环境走APP_ID: 2021004135682480鉴权
 
 ## 开发环境、测试环境鉴权
 
 > 页面地址参数直接拼接：?AUTH_CODE=28686e8514154fcc9c66e19959d4OX67 不走鉴权获取authCode
-
-## 聚合页面
-
-测试环境：https://association-laiy-static-test-k8s01.shulidata.com/?pageId=2024020117551400065306
-线上环境: https://association-laiy-static.laiytech.com/?pageId=2024020117551400065306
