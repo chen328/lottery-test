@@ -40,11 +40,9 @@ function Home() {
 	};
 
 	useEffect(() => {
-		console.log('----useEffect')
 		getList();
 		queryRecentLuckDogs();
 		ap.onResume(() => {
-			console.log('----onResume')
 			getList();
 			queryRecentLuckDogs();
 		});
