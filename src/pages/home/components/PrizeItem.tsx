@@ -1,5 +1,6 @@
 import { useCountDown } from 'ahooks';
 import { openWebInAlipay, processImageUrl } from '@/public/util';
+import { lotteryClick } from '@/public/track/home';
 import './PrizeItem.less';
 
 interface IProps {
@@ -17,6 +18,7 @@ const PrizeItem: React.FC<IProps> = (props) => {
 	const { hours, minutes, seconds } = formattedRes;
 
 	const onCardClick = () => {
+		lotteryClick(item, '抽奖列表');
 		const campList: string[] = [];
 		const index = itemList.findIndex((i) => i.campId === item.campId);
 		const newList = [...itemList];

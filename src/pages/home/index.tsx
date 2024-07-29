@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, Image } from 'antd-mobile';
+import { enterPage } from '@/public/track/home';
 import { useQuery } from '@/public/hooks';
 import { homePrizesList, queryRecentLuckDogs as queryRecentLuckDogsApi } from '@/public/service/home';
 import Loading from '@/components/Loading';
@@ -24,6 +25,7 @@ function Home() {
 			displaySubChannel: 'H5',
 		}).then((res) => {
 			setCampInfoVoList(res.campInfoVoList || []);
+			enterPage();
 		}).finally(() => {
 			setLoading(false);
 		});
@@ -38,7 +40,6 @@ function Home() {
 	};
 
 	useEffect(() => {
-		// trackEnterPage({ pageId: source });
 		ap.onResume(() => {
 			getList();
 			queryRecentLuckDogs();
