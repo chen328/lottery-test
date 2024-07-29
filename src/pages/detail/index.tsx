@@ -268,7 +268,6 @@ function LotteryDetail() {
 
 		if (prizeItem.displayStatus === LOTTERY_STATE.ENDED) {
 			prizeItem.advInfos = prizeItem.advInfoVos;
-
 		}
 
 		campLotteryTransVoList = response.campLotteryTransVoList;
@@ -640,13 +639,15 @@ function LotteryDetail() {
 			campLotteryTransVo.prizeType === 'CASH'
 		) {
 			ap.pushWindow(
-				`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(`/firstSubpackage/pages/logistics/logistics?itemId=${
-					abstractCampInfo.campId
-				}&campLotteryTransVo=${encodeURIComponent(
-					JSON.stringify(campLotteryTransVo),
-				)}&regionId=${partnerRegionInfo.regionId}&prizeType=${
-					campLotteryTransVo.prizeType
-				}`)}`,
+				`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(
+					`/firstSubpackage/pages/logistics/logistics?itemId=${
+						abstractCampInfo.campId
+					}&campLotteryTransVo=${encodeURIComponent(
+						JSON.stringify(campLotteryTransVo),
+					)}&regionId=${partnerRegionInfo.regionId}&prizeType=${
+						campLotteryTransVo.prizeType
+					}`,
+				)}`,
 			);
 		} else if (campLotteryTransVo.prizeType === 'VOUCHER') {
 			location.href = '/';
