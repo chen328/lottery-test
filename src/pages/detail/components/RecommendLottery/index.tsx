@@ -67,7 +67,7 @@ function RecommendLottery(props) {
 					<span className='recommend-lottery-region-desc-left'>【</span>
 					<img
 						className='recommend-lottery-region-desc-regionIcon'
-						src='{{nextCampInfoVo.serviceFavoriteVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo.serviceIcon}}'
+						src={nextCampInfoVo.serviceFavoriteVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo.serviceIcon}
 					/>
 					<div className='recommend-lottery-region-desc-name'>
 						{nextCampInfoVo.serviceFavoriteVo &&
