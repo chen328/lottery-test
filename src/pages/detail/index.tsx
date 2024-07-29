@@ -640,13 +640,13 @@ function LotteryDetail() {
 			campLotteryTransVo.prizeType === 'CASH'
 		) {
 			ap.pushWindow(
-				`alipays://platformapi/startapp?appId=2018103161898599&page=${`/firstSubpackage/pages/logistics/logistics?itemId=${
+				`alipays://platformapi/startapp?appId=2018103161898599&page=${encodeURIComponent(`/firstSubpackage/pages/logistics/logistics?itemId=${
 					abstractCampInfo.campId
 				}&campLotteryTransVo=${encodeURIComponent(
 					JSON.stringify(campLotteryTransVo),
 				)}&regionId=${partnerRegionInfo.regionId}&prizeType=${
 					campLotteryTransVo.prizeType
-				}`}`,
+				}`)}`,
 			);
 		} else if (campLotteryTransVo.prizeType === 'VOUCHER') {
 			location.href = '/';
