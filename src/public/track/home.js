@@ -50,7 +50,6 @@ export function lotteryExposure(camp, component, pageAlias = '抽奖列表页') 
 		eventName: '抽奖曝光',
 		pageAlias,
 		appKey: 'lottery_everyday',
-		// '抽奖列表/每日心愿卡弹窗/开奖消息弹窗/参与成功弹窗/参与成功弹窗-私域抽奖/开奖消息弹窗-私域抽奖'
 		component,
 		extParams: getCampParams(camp),
 	});
@@ -65,7 +64,6 @@ export function lotteryClick(
 		eventName: '抽奖点击',
 		pageAlias,
 		appKey: 'lottery_everyday',
-		// '抽奖列表/每日心愿卡弹窗/开奖消息弹窗/参与成功弹窗/参与成功弹窗-私域抽奖/开奖消息弹窗-私域抽奖'
 		component,
 		extParams: getCampParams(camp),
 	});
