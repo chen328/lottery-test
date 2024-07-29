@@ -244,7 +244,8 @@ const ParticipateArea = (props) => {
 				</>
 			) : (
 				<div className='service-bar-bg--big'>
-					{abstractCampInfo?.myLotteryNum && (
+					{(abstractCampInfo?.myLotteryNum ||
+						abstractCampInfo.displayStatus === LOTTERY_STATE.ENDED) && (
 						<div className='winners-wrap relative top-[170px]'>
 							<div
 								className='view-all-winners awardDetail-newdetail__winner'
