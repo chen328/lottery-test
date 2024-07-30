@@ -16,7 +16,8 @@ const PrizeItem: React.FC<IProps> = (props) => {
 	const [, formattedRes] = useCountDown({
 		targetDate: gmtEnd,
 	});
-	const { hours, minutes, seconds } = formattedRes;
+	const { days = 0, hours, minutes, seconds } = formattedRes;
+	const showHours = days * 24 + hours;
 
 	const onCardClick = () => {
 		lotteryClick(item, '抽奖列表');
@@ -79,9 +80,9 @@ const PrizeItem: React.FC<IProps> = (props) => {
 					) : null}
 				</div>
 				<div className='prize-item__countdown'>
-					<span className='prize-item__countdown-num'>{hours}</span>:
-					<span className='prize-item__countdown-num'>{minutes}</span>:
-					<span className='prize-item__countdown-num'>{seconds}</span>
+					<span className='prize-item__countdown-num'>{showHours > 9 ? showHours : `0${showHours}`}</span>:
+					<span className='prize-item__countdown-num'>{minutes > 9 ? minutes : `0${minutes}`}</span>:
+					<span className='prize-item__countdown-num'>{seconds > 9 ? seconds : `0${seconds}`}</span>
 					后开奖
 				</div>
 			</div>
