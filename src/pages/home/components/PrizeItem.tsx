@@ -99,7 +99,7 @@ const PrizeItem: React.FC<IProps> = (props) => {
 						{lotteryTitles(item)}
 					</div>
 					{item.cornerMarker ? (
-						<div className='prize-item__main-tag'>{item.cornerMarker}11</div>
+						<div className='prize-item__main-tag'>{item.cornerMarker}</div>
 					) : null}
 					<div className='text-ellipsis prize-item__main-prise'>
 						<div className='prize-item__main-price'>
