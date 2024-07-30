@@ -93,7 +93,7 @@ function RecommendLottery(props) {
 										className='recommend-lottery-time-count'
 										style={{ marginLeft: 0 }}
 									>
-										{showHours > 9 ? showHours : `0${hoshowHoursurs}`}
+										{showHours > 9 ? showHours : `0${showHours}`}
 									</span>
 									:
 									<span className='recommend-lottery-time-count'>
