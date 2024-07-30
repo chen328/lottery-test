@@ -27,7 +27,8 @@ function RecommendLottery(props) {
 	const [, formattedRes] = useCountDown({
 		targetDate: nextCampInfoVo.gmtEnd,
 	});
-	const { hours, minutes, seconds } = formattedRes;
+	const { days, hours, minutes, seconds } = formattedRes;
+	const showHours = days * 24 + hours;
 
 	const TapNextAwardDetail = () => {
 		trackRecommendClick({
@@ -92,7 +93,7 @@ function RecommendLottery(props) {
 										className='recommend-lottery-time-count'
 										style={{ marginLeft: 0 }}
 									>
-										{hours > 9 ? hours : `0${hours}`}
+										{showHours > 9 ? showHours : `0${showHours}`}
 									</span>
 									:
 									<span className='recommend-lottery-time-count'>

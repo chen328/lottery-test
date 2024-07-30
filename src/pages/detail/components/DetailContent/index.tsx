@@ -34,7 +34,8 @@ const DetailContent = forwardRef((props: any, ref) => {
 	const [, formattedRes] = useCountDown({
 		targetDate: abstractCampInfo.gmtEnd,
 	});
-	const { hours, minutes, seconds } = formattedRes;
+	const { days = 0, hours, minutes, seconds } = formattedRes;
+	const showHours = days * 24 + hours;
 
 	const onTapNextAwardDetail = () => {
 		setShowResultPanel(false);
@@ -114,7 +115,7 @@ const DetailContent = forwardRef((props: any, ref) => {
 								/>
 								<div className='l-flex-center'>
 									<span className='awardDetail-newdetail-top__mode-count text-[28px] l-flex-center ml-0'>
-										{hours > 9 ? hours : `0${hours}`}
+										{showHours > 9 ? showHours : `0${showHours}`}
 									</span>
 									<span
 										className='text-[28px] fw-medium'
