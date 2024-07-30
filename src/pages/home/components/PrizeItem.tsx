@@ -91,9 +91,7 @@ const PrizeItem: React.FC<IProps> = (props) => {
 			<div className='prize-item__main'>
 				<img
 					className='prize-item__main-left'
-					src={
-						'https://laiy-offline-oss.laiytech.com/ipsponsorprod/f-V3cVMZfHqm5WyzR5U4sg.jpg?zoom=400x400xz'
-					}
+					src={item.campLogo}
 					alt=''
 				/>
 				<div className='prize-item__main-right'>
