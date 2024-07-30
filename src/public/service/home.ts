@@ -1,4 +1,5 @@
 import request from '../request';
+import config from '../../public/constant';
 
 /**
  * @name C端/聚合页页面任务列表
@@ -30,6 +31,7 @@ export function queryRecentLuckDogs(queryParams) {
 		},
 		data: {
 			...queryParams,
+			clientVersion: config.clientVersion,
 		},
 	});
 }

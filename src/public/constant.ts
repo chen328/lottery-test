@@ -77,7 +77,7 @@ const cst = {
 		token: '',
 		authCode: '',
 	},
-	clientVersion: '1.1.0',
+	clientVersion: '1.2.0',
 };
 
 export default cst;
