@@ -14,6 +14,7 @@ export function homePrizesList(queryParams) {
 		},
 		data: {
 			...queryParams,
+			clientVersion: config.clientVersion,
 		},
 	});
 }
