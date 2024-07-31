@@ -113,6 +113,30 @@ export function trackDetailJoinActivity(params) {
 		},
 	});
 }
+
+// 成功参与抽奖
+export function trackDetailJoinActivitySuccess(params) {
+	return track({
+		bid: 'joinActivitySuccess',
+		eventName: '成功参与抽奖',
+		pageAlias: '抽奖详情页',
+		extParams: {
+			activity_id: params.campId,
+			activity_name: params.campName,
+			activity_type:
+				(params.consumeConfigInfoVo &&
+					params.consumeConfigInfoVo.consumeType) ||
+				'NORMAL',
+			brand_id: params.regionId,
+			brand_name: params.regionName,
+			join_status: '0',
+			wish_gold_num: params.wish_gold_num,
+			open_mode: params.openMode,
+			display_column: params.displayColumn,
+		},
+	});
+}
+
 // 详情页链接跳转
 export function trackDetailJumpOut(params) {
 	return track({
