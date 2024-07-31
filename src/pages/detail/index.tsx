@@ -9,6 +9,7 @@ import cst, { BUILTIN_CHANNELS, ERRCODETEXT } from '@/public/constant';
 import {
 	trackEntryDetail,
 	trackDetailJoinActivity,
+	trackDetailJoinActivitySuccess,
 	trackDetailJumpOut,
 	trackWishGoldThresholdExposure,
 	trackWishGoldThresholdClick,
@@ -497,6 +498,17 @@ function LotteryDetail() {
 
 			return;
 		}
+
+		trackDetailJoinActivitySuccess({
+			campId: getabstractCampInfo().campId,
+			campName: getabstractCampInfo().campName,
+			consumeConfigInfoVo: getconsumeConfigInfoVo(),
+			regionId: getserviceFavoriteVo()?.serviceInfoVo?.serviceId,
+			regionName: getserviceFavoriteVo()?.serviceInfoVo?.serviceName,
+			wish_gold_num: getconsumeConfigInfoVo()?.consumePoint,
+			openMode: getcampClause()?.openMode,
+			displayColumn: getabstractCampInfo().displayColumn,
+		});
 
 		prizeItem.participantNum++;
 		prizeItem.myLotteryNum = 1;
