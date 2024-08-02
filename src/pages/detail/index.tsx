@@ -199,12 +199,12 @@ function LotteryDetail() {
 
 		prizeItem = response.campInfoVo;
 		prizeItem.campClause = prizeItem.campClauseVo;
-		prizeItem.cGmtStart = dayjs(+prizeItem.gmtStart).format('MM月DD日 hh:mm');
+		prizeItem.cGmtStart = dayjs(+prizeItem.gmtStart).format('MM月DD日 HH:mm');
 		prizeItem.myLotteryNum = prizeItem.myLotteryNum && +prizeItem.myLotteryNum;
 		if (prizeItem.gmtEnd) {
 			prizeItem.cGmtEnd = dayjs(
 				prizeItem.gmtFinished ? +prizeItem.gmtFinished : +prizeItem.gmtEnd,
-			).format('MM月DD日 hh:mm');
+			).format('MM月DD日 HH:mm');
 		}
 		// 优先渲染图片
 		setabstractCampInfo({
@@ -319,7 +319,7 @@ function LotteryDetail() {
 		const { prizeInfoVoList } = nextCampInfoVo;
 		if (nextCampInfoVo && prizeInfoVoList) {
 			nextCampInfoVo.timeFmt =
-				dayjs(nextCampInfoVo.gmtEnd).format('MM月DD日 hh:mm') || '';
+				dayjs(nextCampInfoVo.gmtEnd).format('MM月DD日 HH:mm') || '';
 			nextCampInfoVo.processLogo = nextCampInfoVo.campLogo;
 			nextCampInfoVo.totalPrice = prizeInfoVoList.reduce(
 				(total, currentValue) => {
