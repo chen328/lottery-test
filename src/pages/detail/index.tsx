@@ -769,6 +769,7 @@ function LotteryDetail() {
 					case 'JUMP_STOP_TASK':
 						// 3s任务
 						isGoToLinkTimeRef.current = +new Date();
+						taskDurationRef.current = stopSecond || 0;
 						// 逛一逛 点击埋点
 						trackDetailJumpOut({
 							campId: abstractCampInfo.campId,
