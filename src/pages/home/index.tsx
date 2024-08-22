@@ -4,17 +4,18 @@ import { enterPage } from '@/public/track/home';
 import { useQuery } from '@/public/hooks';
 import { homePrizesList, queryRecentLuckDogs as queryRecentLuckDogsApi } from '@/public/service/home';
 import Loading from '@/components/Loading';
+import { openWebInAlipay } from '@/public/util';
 import { BUILTIN_CHANNELS } from './config';
 import PrizeItem from './components/PrizeItem';
 import './index.less';
 
 function Home() {
-	const { source } = useQuery();
+	const { source, jumpType } = useQuery();
 	const [luckDogs, setLuckDogs] = useState<any[]>([{}]);
 	const [campInfoVoList, setCampInfoVoList] = useState<any[]>([]);
 	const [loading, setLoading] = useState(false);
 
-	const getList = (page = 1) => {
+	const getList = (page = 1, isFirst = false) => {
 		setLoading(true);
 		homePrizesList({
 			page,
@@ -23,8 +24,26 @@ function Home() {
 			displayColumn: 'NORMAL',
 			regionId: BUILTIN_CHANNELS.official.id,
 			displaySubChannel: 'H5',
+			source,
 		}).then((res) => {
 			setCampInfoVoList(res.campInfoVoList || []);
+
+			if (jumpType === 'twoJump' && res?.campInfoVoList.length > 0 && isFirst) {
+				const itemList = res?.campInfoVoList || [];
+				const item = res?.campInfoVoList[0] || {};
+				const campList: string[] = [];
+				const index = itemList.findIndex((i) => i.campId === item.campId);
+				const newList = [...itemList];
+				newList
+					.filter((e, i) => i > index)
+					.forEach((item) => {
+						if (item.campId) {
+							campList.push(item.campId);
+						}
+					});
+				const url = `${location.origin}/detail?itemId=${item.campId}&type=GOING&campList=${campList}`;
+				openWebInAlipay(url);
+			}
 			enterPage();
 		}).finally(() => {
 			setLoading(false);
@@ -40,7 +59,7 @@ function Home() {
 	};
 
 	useEffect(() => {
-		getList();
+		getList(1, true);
 		queryRecentLuckDogs();
 		ap.onResume(() => {
 			getList();
