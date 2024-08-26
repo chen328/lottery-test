@@ -86,7 +86,6 @@ function LotteryDetail() {
 	const [pointAmount, setpointAmount] = useState(-1); // 心愿金总额
 	const [lotteryNum, setlotteryNum] = useState(0); // 参与抽奖次数
 	const [pointTaskStatus, setpointTaskStatus] = useState(0); // 心愿金icon是否领取
-	// const [showWishNo, setshowWishNo] = useState(false); // 心愿金不足弹窗
 	const [showCoinAnimation, setshowCoinAnimation] = useState(false); // 是否显示心愿金获取动效
 	const [, setrecommendPopCampInfo] = useState(null); // 推荐位抽奖
 	const [wishGoldRedPacket, setwishGoldRedPacket] = useState(null); // 心愿金红包配置
@@ -132,7 +131,6 @@ function LotteryDetail() {
 			if (data.success) {
 				// 先写死,页面刷新会更新心愿金数量
 				setpointAmount(pointAmount + 2);
-				// setshowMessageCoinAnimation(true);
 			}
 		});
 	};
@@ -761,7 +759,6 @@ function LotteryDetail() {
 		const abstractCampInfo = getabstractCampInfo();
 		const serviceFavoriteVo = getserviceFavoriteVo();
 		const campClause = getcampClause();
-		console.log('onTapLeftBtn', abstractCampInfo, serviceFavoriteVo)
 
 		// 活动进行中的 参与抽奖
 		if (abstractCampInfo?.displayStatus === LOTTERY_STATE.GOING) {
