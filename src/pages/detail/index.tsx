@@ -192,7 +192,7 @@ function LotteryDetail() {
 		});
 	};
 	const dealWithDetail = (response, type = 'reload') => {
-		console.log('type :>> ', type);
+
 		if (!response.success) {
 			ap.hideLoading();
 			return;
@@ -758,7 +758,11 @@ function LotteryDetail() {
 	};
 
 	const onTapLeftBtn = async () => {
-		console.log('onTapLeftBtn')
+		const abstractCampInfo = getabstractCampInfo();
+		const serviceFavoriteVo = getserviceFavoriteVo();
+		const campClause = getcampClause();
+		console.log('onTapLeftBtn', abstractCampInfo, serviceFavoriteVo)
+
 		// 活动进行中的 参与抽奖
 		if (abstractCampInfo?.displayStatus === LOTTERY_STATE.GOING) {
 			if (
