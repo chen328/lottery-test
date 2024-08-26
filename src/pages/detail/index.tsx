@@ -15,7 +15,7 @@ import {
 	trackWishGoldThresholdClick,
 	trackGuideClick,
 	trackGuideExposure,
-	trackRecommendClick
+	trackRecommendClick,
 } from '@/public/track/awardDetail';
 import {
 	itemDetail,
@@ -73,7 +73,8 @@ function LotteryDetail() {
 		messageId,
 		channelName,
 	} = useQuery();
-	let { itemId, outBizId } = useQuery();
+	// eslint-disable-next-line prefer-const
+	let { itemId, outBizId, hdType } = useQuery();
 
 	const [abstractCampInfo, setabstractCampInfo, getabstractCampInfo] =
 		useGetState<any>(null);
@@ -85,7 +86,6 @@ function LotteryDetail() {
 	const [pointAmount, setpointAmount] = useState(-1); // 心愿金总额
 	const [lotteryNum, setlotteryNum] = useState(0); // 参与抽奖次数
 	const [pointTaskStatus, setpointTaskStatus] = useState(0); // 心愿金icon是否领取
-	// const [showWishNo, setshowWishNo] = useState(false); // 心愿金不足弹窗
 	const [showCoinAnimation, setshowCoinAnimation] = useState(false); // 是否显示心愿金获取动效
 	const [, setrecommendPopCampInfo] = useState(null); // 推荐位抽奖
 	const [wishGoldRedPacket, setwishGoldRedPacket] = useState(null); // 心愿金红包配置
@@ -131,7 +131,6 @@ function LotteryDetail() {
 			if (data.success) {
 				// 先写死,页面刷新会更新心愿金数量
 				setpointAmount(pointAmount + 2);
-				// setshowMessageCoinAnimation(true);
 			}
 		});
 	};
@@ -147,13 +146,12 @@ function LotteryDetail() {
 			channelName,
 		}).then((response) => {
 			if (response.success) {
-				dealWithDetail(response);
+				dealWithDetail(response, type);
 				// 领取消息心愿金
 				if (messageId && type === 'init') {
 					receivePoint();
 				}
 				if (type === 'init') {
-					// getWishGuide();
 					if (!nextCampId) {
 						const param = {
 							page: 1,
@@ -191,7 +189,8 @@ function LotteryDetail() {
 			}
 		});
 	};
-	const dealWithDetail = (response) => {
+	const dealWithDetail = (response, type = 'reload') => {
+
 		if (!response.success) {
 			ap.hideLoading();
 			return;
@@ -390,6 +389,16 @@ function LotteryDetail() {
 
 			if (advInfoType === 'FINISH_TASK' && +quantity === 3) {
 				sethaveGoToServiceLink(true);
+			}
+			// 携带参数 自动去做前置任务
+			if (
+				type === 'init' &&
+				!(prizeItem.myLotteryNum && +prizeItem.myLotteryNum) &&
+				hdType === 'browse'
+			) {
+				execAsync(() => {
+					onTapLeftBtn();
+				}, 100);
 			}
 		}
 	};
@@ -673,18 +682,10 @@ function LotteryDetail() {
 		}
 	};
 
-	// const onTapCloseParicipate = () => {
-	// 	setshowParticipateSuccess(0);
-	// };
-
 	const onTapRightBtn = () => {};
 
-	// const onCloseWishNo = () => {
-	// 	setshowWishNo(false);
-	// };
 	const handleCoinAnimationClose = () => {
 		setshowCoinAnimation(false);
-		// setshowMessageCoinAnimation(false);
 		lottieRef.current?.destroy();
 	};
 	const handleLimitDialog = () => {
@@ -755,6 +756,10 @@ function LotteryDetail() {
 	};
 
 	const onTapLeftBtn = async () => {
+		const abstractCampInfo = getabstractCampInfo();
+		const serviceFavoriteVo = getserviceFavoriteVo();
+		const campClause = getcampClause();
+
 		// 活动进行中的 参与抽奖
 		if (abstractCampInfo?.displayStatus === LOTTERY_STATE.GOING) {
 			if (
@@ -896,7 +901,6 @@ function LotteryDetail() {
 			outBizId,
 			channelName,
 		}).then((response) => {
-			
 			dealWithDetail(response);
 		});
 		ap.hideLoading();
