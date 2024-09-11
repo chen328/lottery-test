@@ -86,12 +86,12 @@ function LotteryDetail() {
 	const [pointAmount, setpointAmount] = useState(-1); // 心愿金总额
 	const [lotteryNum, setlotteryNum] = useState(0); // 参与抽奖次数
 	const [pointTaskStatus, setpointTaskStatus] = useState(0); // 心愿金icon是否领取
-	const [showCoinAnimation, setshowCoinAnimation] = useState(false); // 是否显示心愿金获取动效
+	// const [showCoinAnimation, setshowCoinAnimation] = useState(false); // 是否显示心愿金获取动效
 	const [, setrecommendPopCampInfo] = useState(null); // 推荐位抽奖
 	const [wishGoldRedPacket, setwishGoldRedPacket] = useState(null); // 心愿金红包配置
 	const [receiveWishGold, setreceiveWishGold] = useState(0); // 已领取 // 抽奖门槛
 	const [unclaimedWishGold, setunclaimedWishGold] = useState(0); // 待领取
-	const [totalWishGold, settotalWishGold] = useState(0); // 心愿金门槛
+	// const [totalWishGold, settotalWishGold] = useState(0); // 心愿金门槛
 	const [unimktTaskInfoVo, setunimktTaskInfoVo, getunimktTaskInfoVo] =
 		useGetState<any>(null); // 云码前置任务
 	const isLightPreRef = useRef<boolean>(false); // 云码和灯火前置判断
@@ -117,23 +117,23 @@ function LotteryDetail() {
 	const lottieRef = useRef<AnimationItem | null>(null);
 	const [isShowFirstAutoDialog, setIsShowFirstAutoDialog] =
 		useState<boolean>(false);
-	const [limitDialog, setlimitDialog] = useState(false); // 限制抽奖弹窗
-	const limitLottieDomRef = useRef<HTMLDivElement>();
-	const limitLottieRef = useRef<AnimationItem | null>(null);
+	// const [limitDialog, setlimitDialog] = useState(false); // 限制抽奖弹窗
+	// const limitLottieDomRef = useRef<HTMLDivElement>();
+	// const limitLottieRef = useRef<AnimationItem | null>(null);
 	const childRef = useRef<any>();
 	const refreshRef = useRef<boolean>(false);
 
 	const goHome = () => {
 		location.href = '/';
 	};
-	const receivePoint = () => {
-		messagePointProvide({ messageId }).then((data) => {
-			if (data.success) {
-				// 先写死,页面刷新会更新心愿金数量
-				setpointAmount(pointAmount + 2);
-			}
-		});
-	};
+	// const receivePoint = () => {
+	// 	messagePointProvide({ messageId }).then((data) => {
+	// 		if (data.success) {
+	// 			// 先写死,页面刷新会更新心愿金数量
+	// 			setpointAmount(pointAmount + 2);
+	// 		}
+	// 	});
+	// };
 	const handleItemId = ({ type = 'init', cb = () => {} }) => {
 		const nextCampId = campList && campList.length ? campList[0] : '';
 
@@ -148,9 +148,9 @@ function LotteryDetail() {
 			if (response.success) {
 				dealWithDetail(response, type);
 				// 领取消息心愿金
-				if (messageId && type === 'init') {
-					receivePoint();
-				}
+				// if (messageId && type === 'init') {
+				// 	receivePoint();
+				// }
 				if (type === 'init') {
 					if (!nextCampId) {
 						const param = {
@@ -190,7 +190,6 @@ function LotteryDetail() {
 		});
 	};
 	const dealWithDetail = (response, type = 'reload') => {
-
 		if (!response.success) {
 			ap.hideLoading();
 			return;
@@ -452,38 +451,7 @@ function LotteryDetail() {
 			lotteryNum = '',
 		} = response || {};
 		if (!success) {
-			if (errorCode === '2158') {
-				setlimitDialog(true);
-				const {
-					success: suc,
-					receiveWishGold,
-					unclaimedWishGold,
-					totalWishGold,
-				} = await lotteryFreeQuery();
-				if (suc) {
-					setreceiveWishGold(+receiveWishGold);
-					setunclaimedWishGold(+unclaimedWishGold);
-					settotalWishGold(+totalWishGold);
-				}
-				setTimeout(() => {
-					limitLottieRef.current = lottie.loadAnimation({
-						container: limitLottieDomRef.current!, // 容器元素的引用
-						renderer: 'canvas',
-						loop: true, // 是否循环播放
-						autoplay: true, // 是否自动播放
-						path: 'https://mdn.alipayobjects.com/huamei_zjbdv1/afts/file/A*RRC0TJdPT0cAAAAAAAAAAAAADg6FAQ', // 动画文件的路径
-					});
-				}, 50);
-
-				trackWishGoldThresholdExposure({
-					campId: getabstractCampInfo().campId,
-					campName: getabstractCampInfo().campName,
-					consumeConfigInfoVo: getconsumeConfigInfoVo(),
-					regionId: getserviceFavoriteVo()?.serviceInfoVo?.serviceId,
-					regionName: getserviceFavoriteVo()?.serviceInfoVo?.serviceName,
-					receiveWishGold: +receiveWishGold + unclaimedWishGold,
-				});
-			} else if (errorCode === '2160') {
+			if (errorCode === '2160') {
 				// 社群任务未入群
 				ap.showToast({
 					content: '任务未完成',
@@ -537,47 +505,11 @@ function LotteryDetail() {
 	};
 	// 处理心愿金弹窗类型 (也包含其他所有情况的弹窗)
 	const handleWishDialogType = (_data) => {
-		// const { popType } = _data;
-		// const privateData = storageToday('PRIVATE');
-		// const RECOMMENDPOP = storageToday('RECOMMENDPOP');
-		// const CHANNELGUIDE = storage('CHANNELGUIDE');
-		// const IS_FIRST_AUTO = storage('IS_FIRST_AUTO');
-		// const { recommendPopCampInfo } = this.data;
-		const showCoinAnimation = true;
-
-		// 首次浏览返回自动弹窗
-		// if (!IS_FIRST_AUTO && isFirstAutoFlag) {
-		// 	setIsShowFirstAutoDialog(true);
-		// 	storage('IS_FIRST_AUTO', true);
-		// 	// return;
-		// }
-		// isFirstAutoFlag = false;
-		// 弹窗逻辑暂时不需要
+		const { lotteryNum } = _data;
 		ap.showToast({
-			content: '参与成功, 心愿金+10',
+			content: '参与抽奖成功',
 		});
-
-		handleAfterDialogRefresh(_data, { showCoinAnimation });
-	};
-	const handleAfterDialogRefresh = (_data, { showCoinAnimation }) => {
-		const { pointAmount, lotteryNum } = _data;
 		setlotteryNum(+lotteryNum);
-		setpointAmount(pointAmount);
-		setshowCoinAnimation(showCoinAnimation);
-		setTimeout(() => {
-			lottieRef.current = lottie.loadAnimation({
-				container: lottieDomRef.current!, // 容器元素的引用
-				renderer: 'canvas',
-				loop: false, // 是否循环播放
-				autoplay: true, // 是否自动播放
-				path: 'https://mdn.alipayobjects.com/huamei_zjbdv1/afts/file/A*45WLQbfr9S4AAAAAAAAAAAAADg6FAQ', // 动画文件的路径
-			});
-			lottieRef.current.addEventListener('complete', () => {
-				// 动画播放完毕后的操作
-				console.log('动画播放完毕！');
-				handleCoinAnimationClose();
-			});
-		}, 100);
 	};
 
 	const onTapReceiveCoupon = async () => {
@@ -684,14 +616,14 @@ function LotteryDetail() {
 
 	const onTapRightBtn = () => {};
 
-	const handleCoinAnimationClose = () => {
-		setshowCoinAnimation(false);
-		lottieRef.current?.destroy();
-	};
-	const handleLimitDialog = () => {
-		setlimitDialog(false);
-		limitLottieRef.current?.destroy();
-	};
+	// const handleCoinAnimationClose = () => {
+	// 	setshowCoinAnimation(false);
+	// 	lottieRef.current?.destroy();
+	// };
+	// const handleLimitDialog = () => {
+	// 	setlimitDialog(false);
+	// 	limitLottieRef.current?.destroy();
+	// };
 	const goWish = () => {
 		trackWishGoldThresholdClick({
 			campId: abstractCampInfo.campId,
@@ -704,7 +636,7 @@ function LotteryDetail() {
 		openWebInAlipay(
 			'alipays://platformapi/startapp?appId=2018103161898599&page=pages%2FpointsIndex%2FpointsIndex%3FallLottery%3Dtrue',
 		);
-		handleLimitDialog();
+		// handleLimitDialog();
 	};
 
 	const handlePageShow = () => {
@@ -1015,23 +947,14 @@ function LotteryDetail() {
 								{/* <ParticipateDialog /> */}
 
 								{/* 心愿金浮标 */}
-								{lotteryNum &&
+								{/* {lotteryNum &&
 									!(lotteryNum === 3 && pointTaskStatus) &&
 									!(lotteryNum >= 5 && pointTaskStatus) && (
 										<WishIcon
 											pointTaskStatus={pointTaskStatus}
 											lotteryNum={lotteryNum}
 										/>
-									)}
-
-								{/* <!-- 心愿金弹窗 -->
-          <wish-dialog
-            a:if="{{wishType}}"
-            wishType="{{wishType}}"
-            wishImage="{{wishImage}}"
-            onCloseWish="onCloseWish"
-            onGoSelf="onGoSelf"
-          /> */}
+									)} */}
 
 								{/* <!-- 心愿金不足 --> */}
 								{/* <wish-noenough a:if="{{showWishNo}}" onCloseWishNo="onCloseWishNo" /> */}
@@ -1048,103 +971,19 @@ function LotteryDetail() {
 								onClick={() => {
 									setIsShowFirstAutoDialog(false);
 								}}
-								// style={{ transform: 'translate(-50%,-50%)' }}
 							/>
 						</Modal>
 					)}
 
 					{/* 心愿金落入 */}
-					{
+					{/* {
 						<div
 							ref={lottieDomRef as LegacyRef<HTMLDivElement>}
 							className={classNames('coinAnimation-lottie', {
 								'coinAnimation-lottie-no': !showCoinAnimation,
 							})}
 						/>
-					}
-					{/* <!-- 解锁抽奖弹窗 --> */}
-					{limitDialog && (
-						<Modal
-							showClose
-							onClose={() => {
-								setlimitDialog(false);
-							}}
-						>
-							<div
-								className='w-[714px] h-[656px] bg-no-repeat bg-contain overflow-hidden'
-								style={{
-									backgroundImage:
-										'url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*oR_wSZxG08wAAAAAAAAAAAAADg6FAQ/original)',
-								}}
-							>
-								{totalWishGold < receiveWishGold + unclaimedWishGold ? (
-									<div className='fz-32 tc-3 limitDialog-text fw-medium relative left-[120px]'>
-										收
-										<text className='tc-primary' style={{ padding: '0 4px' }}>
-											心愿金气泡
-										</text>
-										即可解锁
-									</div>
-								) : (
-									<div
-										className='fz-32 tc-3 limitDialog-text fw-medium l-flex items-baseline relative left-[120px]'
-										style={{ marginTop: '132px' }}
-									>
-										今日需再集
-										<div className='text-[50px] tc-primary ff-dm relative top-[-4px]'>
-											<PointCount
-												count={
-													totalWishGold - receiveWishGold - unclaimedWishGold
-												}
-											/>
-										</div>
-										<text className='tc-primary'>心愿金</text>
-									</div>
-								)}
-								<div
-									className='limitDialog-lottie'
-									ref={limitLottieDomRef as LegacyRef<HTMLDivElement>}
-								></div>
-
-								{/* <!-- 进度条 --> */}
-								<div
-									className={classNames('limitDialog-box', 'mt-4')}
-									style={{
-										left:
-											// totalWishGold > receiveWishGold + unclaimedWishGold
-											// 	? '65px'
-											// 	: 'auto',
-											'65px',
-									}}
-								>
-									<div
-										style={{
-											width: `${((receiveWishGold + unclaimedWishGold) * 100) / totalWishGold}%`,
-										}}
-										className='limitDialog-box-progress'
-									>
-										<img
-											lazy-load
-											className='limitDialog-box-progress-mask'
-											src='https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*QEmZSrkAeKYAAAAAAAAAAAAADg6FAQ/original'
-										/>
-									</div>
-									<div className='limitDialog-box-tip fz-24 white lh-normal'>
-										{totalWishGold > receiveWishGold + unclaimedWishGold
-											? `集满${totalWishGold}心愿金`
-											: '心愿金进度已完成100%'}
-									</div>
-								</div>
-
-								<div
-									className='limitDialog-btn white l-flex-center text-[32px]'
-									onClick={goWish}
-								>
-									去收集
-								</div>
-							</div>
-						</Modal>
-					)}
+					} */}
 				</div>
 			)}
 		</div>
