@@ -17,7 +17,7 @@ function getBtnName(campLotteryTransVo, abstractCampInfo) {
 			// } else if (lotteryShareStatus === 'MATERIAL') {
 			// 	return '查看我的晒奖';
 			// } else {
-				return '查看物流';
+			return '查看物流';
 			// }
 		} else if (prizeType === 'WISH_GOLD') {
 			return '查看我的心愿金';
