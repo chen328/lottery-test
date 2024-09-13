@@ -248,7 +248,16 @@ const DetailContent = forwardRef((props: any, ref) => {
       </div> */}
 				</div>
 
-				{/* <div className="awardDetail-newdetail-top__rule" onTap="onPushToRules">抽奖规则</div> */}
+				<div
+					className='awardDetail-newdetail-top__rule'
+					onClick={() =>
+						ap.pushWindow(
+							'https://laiy-online-oss-client.laiytech.com/resource/shequn/rulelottery.html',
+						)
+					}
+				>
+					抽奖规则
+				</div>
 
 				{/* <!-- 分割线 --> */}
 				<img
@@ -264,7 +273,10 @@ const DetailContent = forwardRef((props: any, ref) => {
 						<img
 							style={{ borderRadius: '50%', margin: '0 4px' }}
 							className='w-24 h-24'
-							src={serviceFavoriteVo.serviceInfoVo && serviceFavoriteVo.serviceInfoVo.serviceIcon}
+							src={
+								serviceFavoriteVo.serviceInfoVo &&
+								serviceFavoriteVo.serviceInfoVo.serviceIcon
+							}
 						/>
 						<span className='fw-medium tc-3'>
 							{serviceFavoriteVo?.serviceInfoVo?.serviceName}】
