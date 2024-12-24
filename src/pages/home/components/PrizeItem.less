@@ -1,0 +1,116 @@
+.prize-item {
+	box-sizing: border-box;
+	width: 696px;
+	padding: 24px;
+	background-color: #fff;
+	border-radius: 24px;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__dad {
+		display: flex;
+		align-items: center;
+		font-size: 24px;
+		color: #999999;
+		letter-spacing: 0;
+		line-height: 12px;
+		white-space: nowrap;
+
+		&-name {
+			display: flex;
+			align-items: center;
+			color: #292929;
+		}
+
+		&-avatar {
+			width: 28px;
+			height: 28px;
+			border-radius: 14px;
+		}
+	}
+	&__countdown {
+		font-size: 24px;
+		color: #ec171f;
+		letter-spacing: 0;
+		line-height: 12px;
+		&-num {
+			box-sizing: border-box;
+			display: inline-block;
+			height: 32px;
+			margin: 0 4px;
+			padding: 0 2px;
+			border-radius: 4px;
+			line-height: 32px;
+			text-align: center;
+			background-color: rgba(236, 23, 31, 0.1);
+		}
+	}
+
+	&__divider {
+		height: 2px;
+		margin-top: 14px;
+		margin-bottom: 20px;
+		background: #f6f6f6;
+	}
+
+	&__main {
+		display: flex;
+		position: relative;
+
+		&-left {
+			min-width: 240px;
+			width: 240px;
+			height: 240px;
+			border-radius: 12px;
+			background-size: 100% 100%;
+			object-fit: cover;
+		}
+
+		&-right {
+			width: 374px;
+			margin-left: 24px;
+			display: flex;
+			flex-direction: column;
+		}
+
+		&-title {
+			font-size: 32px;
+			color: #333333;
+			letter-spacing: 0;
+		}
+
+		&-tag {
+			box-sizing: border-box;
+			width: fit-content;
+			max-width: 374px;
+			margin-top: 16px;
+			padding: 4px 18px;
+			background: rgba(232, 136, 57, 0.16);
+			border-radius: 4px;
+			font-size: 24px;
+			color: #e88839;
+			letter-spacing: 0;
+		}
+		&-prise {
+			position: absolute;
+			bottom: 82px;
+		}
+
+		&-price {
+			font-size: 24px;
+			color: #999999;
+		}
+
+		&-btn {
+			position: absolute;
+			bottom: 0;
+			width: 374px;
+			height: 68px;
+			object-fit: fill;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+.point-count {
+	display: inline-flex;
+	vertical-align: middle;
+	padding: 0 0.2em;
+}
+
+.point-count-item {
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	width: 0.65em;
+	overflow: hidden;
+	text-align: center;
+}
+
+.point-count-roller {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	transition: bottom;
+	transition-duration: 0.6s;
+}
+
+.point-count-roller > span {
+	display: block;
+}

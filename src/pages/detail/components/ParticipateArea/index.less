@@ -1,0 +1,496 @@
+.lottery-service-bar-wrap {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* z-index: 99; */
+}
+
+.lottery-service-bar-top {
+	display: flex;
+	justify-content: center;
+}
+
+.pa-tip-wrap {
+	position: absolute;
+	top: -24px;
+	width: 420px;
+	transition: all 0.3s cubic-bezier(0.25, 0.43, 0.55, 0.83);
+	opacity: 1;
+}
+
+.hideTips {
+	opacity: 0 !important;
+	top: 44px;
+}
+
+.pa-tip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* 为了使得tip在按钮动画上方 */
+	z-index: 1;
+}
+
+.pa-tip-text {
+	background-color: #fff;
+	border-radius: 8px;
+	font-size: 28px;
+	/* color: #ff3c2c; */
+	padding: 20px 25px;
+	box-shadow: 0 20px 40px 0 rgba(207, 207, 207, 0.5);
+	display: flex;
+	display: block;
+	text-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 500px;
+	overflow: hidden;
+}
+
+.pa-tip-triangle {
+	background-image: url('/images/awardDetail/triangle.png');
+	height: 10px;
+	width: 22px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.service-bar-bg {
+	width: 100%;
+	height: 153px;
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 1)
+	);
+}
+
+.service-bar-bg--big {
+	width: 100%;
+	height: 253px;
+	background-image: linear-gradient(
+		rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 1)
+	);
+}
+
+.service-bar-button {
+	position: absolute;
+	/* 从顶部定位，会随高度不同而改变 */
+	top: 36px;
+	left: 0;
+	right: 0;
+	width: 304px;
+	height: 280px;
+	background-image: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*INCySY-USQoAAAAAAAAAAAAAARQnAQ);
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	text-align: center;
+	transition: all 0.3s cubic-bezier(0.25, 0.43, 0.55, 0.83);
+	opacity: 1;
+	z-index: 1;
+	animation: breathe 1s infinite;
+	border-radius: 50%;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	/* padding: 50px 40px; */
+}
+.circleButton_gray {
+	/* background: gray; */
+	background-image: linear-gradient(180deg, #cecece 0%, #9e9e9e 100%);
+	width: 204px;
+	height: 204px;
+	bottom: 25px;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.gray_name_circle {
+	padding-top: 0 !important;
+	color: white !important;
+}
+.getWishTips_Btn {
+	background-color: #f81235;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 187px;
+	height: 48px;
+	border-radius: 25px;
+	font-size: 24px;
+	color: white;
+	margin-left: 100px;
+}
+
+.hideCircleButton {
+	opacity: 0 !important;
+	bottom: -60px;
+}
+
+.service-bar-button .name {
+	font-size: 32px;
+	color: #fff8c7;
+	font-weight: 500;
+	line-height: 45px;
+	width: 148px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* margin-bottom: 16px; */
+}
+
+.service-bar-button .tips {
+	width: calc(100% - 10px);
+	font-size: 18px;
+	color: #ffecdc;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 33px;
+	padding: 0 5px;
+	width: 204px;
+	margin-top: 16px;
+}
+
+.lottery-service-bar-top .btn-disabled {
+	background-image: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*StEYT4YBN3kAAAAAAAAAAAAAARQnAQ);
+	width: 204px;
+	height: 206px;
+	padding: 0;
+	bottom: 25px;
+}
+
+.lottery-service-bar-top .btn-disabled .name {
+	margin-bottom: 0;
+}
+
+.lottery-service-bar-bottom {
+	display: flex;
+	background: #fff;
+	padding: 25px;
+}
+
+.lottery-button {
+	flex: 1;
+	height: 93px;
+}
+
+@keyframes breathe {
+	0% {
+		transform: scale(0.99);
+	}
+	50% {
+		transform: scale(1.03);
+	}
+	100% {
+		transform: scale(0.99);
+	}
+}
+
+.showLongButton {
+	opacity: 1 !important;
+}
+
+@keyframes shake {
+	10% {
+		transform: rotate(15deg);
+	}
+	20% {
+		transform: rotate(-10deg);
+	}
+	30% {
+		transform: rotate(5deg);
+	}
+	40% {
+		transform: rotate(-5deg);
+	}
+	50%,
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+.packet-shake {
+	position: absolute;
+	left: 100px;
+	bottom: 100px;
+	float: left;
+	width: 88px;
+	height: 88px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.packet-shake img {
+	width: 52px;
+	height: 57px;
+	animation: shake 2.5s 0.15s linear infinite;
+}
+.packet-shake .poptext {
+	background: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*u1c2T7GFXzUAAAAAAAAAAABkARQnAQ)
+		no-repeat;
+	background-size: 100% 100%;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	line-height: 30px;
+	width: 88px;
+	height: 34px;
+}
+.lottery-tips,
+.lottery-share {
+	height: 97px;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100px;
+	justify-content: center;
+	position: relative;
+}
+
+.lottery-tips .share-num,
+.lottery-share .share-num {
+	position: absolute;
+	top: 5px;
+	font-size: 30px;
+	color: #454952;
+	width: 150px;
+}
+
+.lottery-tips .share-num {
+	left: 80px;
+	text-align: left;
+}
+
+.lottery-share .share-num {
+	right: 80px;
+	text-align: right;
+}
+
+.lottery-tips .text,
+.lottery-share .text {
+	font-size: 24px;
+	color: #9599a8;
+	line-height: 33px;
+	width: 100%;
+	text-align: center;
+}
+
+.lottery-code .share-num {
+	top: -1px;
+}
+
+.lottery-tips .pa-tip-wrap {
+	width: 239px;
+	top: -97px;
+	left: 0;
+}
+
+.lottery-tips .pa-tip-text {
+	font-size: 24px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 224px;
+}
+
+.lottery-tips .pa-tip {
+	align-items: flex-start;
+}
+
+.lottery-tips .pa-tip-triangle {
+	margin-left: 44px;
+}
+
+.share-btn {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 0;
+	opacity: 0;
+}
+
+.btn-disabled > view {
+	color: #fff8c7;
+}
+
+.pa-disabled > view {
+	color: rgba(255, 248, 199, 0.5) !important;
+}
+
+.pa-active > view {
+	color: #fffccb;
+}
+
+.pa-invisible {
+	visibility: hidden;
+}
+
+.lottery-service-participate-box {
+	background-image: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*raXzRoTh0S8AAAAAAAAAAAAAARQnAQ);
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 212px;
+	height: 118px;
+	flex: none;
+}
+
+.lottery-service-participate-num {
+	color: #999999;
+	font-size: 24px;
+	margin-top: 18px;
+	margin-left: 36px;
+}
+
+.lottery-service-participate-flex {
+	display: flex;
+	align-items: center;
+	/* justify-content: flex-end; */
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.lottery-service-participate-gift {
+	width: 40px;
+	height: 38px;
+	margin-right: 8px;
+}
+
+.lottery-service-participate-number {
+	font-size: 32px;
+	color: #999999;
+}
+
+.lottery-right-share {
+	background-image: url(https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*2YwVRKGGC0cAAAAAAAAAAAAAARQnAQ);
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 212px;
+	height: 118px;
+	position: relative;
+	flex: none;
+}
+
+.immediate-red-guide {
+	position: absolute;
+	top: -50px;
+	left: 70px;
+	width: 170px;
+	height: 82px;
+	background-image: url(https://mdn.alipayobjects.com/huamei_zjbdv1/afts/img/A*LQ56Qa_VN6AAAAAAAAAAAAAADg6FAQ/original);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding-top: 16px;
+	box-sizing: border-box;
+}
+
+.lottery-service-share-icon {
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+}
+
+.lottery-service-share-number {
+	font-size: 32px;
+	color: #333333;
+}
+
+.lottery-service-share-number text {
+	font-size: 32px;
+	color: #333333;
+}
+
+.lottery-service-wish-icon {
+	width: 48px;
+	height: 48px;
+	margin-right: 10px;
+}
+
+.lottery-right-wish-tip {
+	width: 220px;
+	height: 122px;
+	position: absolute;
+	top: -80px;
+	left: 18px;
+}
+
+.lottery-right-wish-festival {
+	position: absolute;
+	top: -162px;
+	left: 70px;
+	width: 124px;
+	height: 152px;
+}
+
+.lottery-right-wish-recommend {
+	position: absolute;
+	top: -202px;
+	left: 44px;
+}
+
+.detail__channel-hand {
+	width: 184px;
+	height: 168px;
+	position: absolute;
+	left: 150px;
+	bottom: 0;
+	animation: scroll 2s linear infinite forwards;
+}
+
+.lottery-service-bar-wrap-next-lottery-text {
+	width: 100%;
+	height: 0;
+	border-radius: 24px 24px 0 0;
+	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	position: relative;
+	background-color: #fff;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 -2px 12px;
+	transition: height 0.3s linear;
+}
+
+.lottery-service-bar-wrap-next-lottery-text--show {
+	height: 212px;
+	visibility: visible;
+}
+
+.lottery-service-bar-wrap-next-lottery-text-btn {
+	width: 686px;
+	height: 88px;
+	margin: 24px auto;
+}
+
+.lottery-service-bar-wrap-next-lottery-text-icon {
+	width: 20px;
+	height: 22px;
+	margin-right: 2px;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(10%);
+	}
+	50% {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(-10%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
