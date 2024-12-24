@@ -17,7 +17,7 @@ function Home() {
 	const [luckDogs, setLuckDogs] = useState<any[]>([{}]);
 	const [campInfoVoList, setCampInfoVoList] = useState<any[]>([]);
 	const [loading, setLoading] = useState(false);
-	const b;
+	const c;
 	const getList = (page = 1, isFirst = false) => {
 		setLoading(true);
 		homePrizesList({
