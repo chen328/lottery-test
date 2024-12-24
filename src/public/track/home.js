@@ -1,5 +1,5 @@
 import track from './track';
-import get from 'lodash/get';
+// import get from 'lodash/get';
 
 export function enterPage(duration) {
 	return track({
@@ -28,16 +28,16 @@ function getCampParams(campInfo = {}) {
 		activity_id: campId, // 抽奖id
 		activity_name: campName, // 活动名称
 		activity_type: consumeConfigInfoVo ? 1 : 0, // 抽奖类型，0-0元抽奖,1-积分抽奖
-		brand_id: get(
-			campInfo,
-			'serviceFavoriteVo.serviceInfoVo.serviceId',
-			partnerRegionId,
-		),
-		brand_name: get(
-			campInfo,
-			'serviceFavoriteVo.serviceInfoVo.serviceName',
-			partnerRegionName,
-		),
+		// brand_id: get(
+		// 	campInfo,
+		// 	'serviceFavoriteVo.serviceInfoVo.serviceId',
+		// 	partnerRegionId,
+		// ),
+		// brand_name: get(
+		// 	campInfo,
+		// 	'serviceFavoriteVo.serviceInfoVo.serviceName',
+		// 	partnerRegionName,
+		// ),
 		join_status: +myLotteryNum > 0 ? 1 : 0, // '0-未参与，1-已参与',
 		activity_status: displayStatus,
 		open_mode: openMode,
@@ -51,7 +51,7 @@ export function lotteryExposure(camp, component, pageAlias = '抽奖列表页') 
 		pageAlias,
 		appKey: 'lottery_everyday',
 		component,
-		extParams: getCampParams(camp),
+		// extParams: getCampParams(camp),
 	});
 }
 export function lotteryClick(
@@ -65,6 +65,6 @@ export function lotteryClick(
 		pageAlias,
 		appKey: 'lottery_everyday',
 		component,
-		extParams: getCampParams(camp),
+		// extParams: getCampParams(camp),
 	});
 }
