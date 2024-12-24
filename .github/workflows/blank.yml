@@ -34,9 +34,6 @@ jobs:
 
       - name: Install volta
         uses: volta-cli/action@v1 # 从 volta 官方提供 Action安装 Volta. 
-    
-      - name: Setup Volta Node
-        run: volta pin --force   #通过volta 安装对应 node version， 如果项目已经存在 volta配置，那么可以通过 volta pin来设置
    
       - name: Use Node with Volta
         run: volta setup # 使用volta 管理当前目录Node版本
