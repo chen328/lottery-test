@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite --host --mode development",
 		"build:k8s": "export ENV=k8s && tsc && vite build --mode test",
-		"build:prod": "export ENV=production && tsc && vite build --mode production",
+		"build": "tsc && vite build --mode production",
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"preview": "vite preview",
