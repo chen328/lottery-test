@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { Swiper, Image } from 'antd-mobile';
 import { enterPage } from '@/public/track/home';
 import { useQuery } from '@/public/hooks';
-import { homePrizesList, queryRecentLuckDogs as queryRecentLuckDogsApi } from '@/public/service/home';
+import {
+	homePrizesList,
+	queryRecentLuckDogs as queryRecentLuckDogsApi,
+} from '@/public/service/home';
 import Loading from '@/components/Loading';
 import { openWebInAlipay } from '@/public/util';
 import { BUILTIN_CHANNELS } from './config';
@@ -25,29 +28,35 @@ function Home() {
 			regionId: BUILTIN_CHANNELS.official.id,
 			displaySubChannel: 'H5',
 			source,
-		}).then((res) => {
-			setCampInfoVoList(res.campInfoVoList || []);
+		})
+			.then((res) => {
+				setCampInfoVoList(res.campInfoVoList || []);
 
-			if (jumpType === 'twoJump' && res?.campInfoVoList.length > 0 && isFirst) {
-				const itemList = res?.campInfoVoList || [];
-				const item = res?.campInfoVoList[0] || {};
-				const campList: string[] = [];
-				const index = itemList.findIndex((i) => i.campId === item.campId);
-				const newList = [...itemList];
-				newList
-					.filter((e, i) => i > index)
-					.forEach((item) => {
-						if (item.campId) {
-							campList.push(item.campId);
-						}
-					});
-				const url = `${location.origin}/detail?itemId=${item.campId}&type=GOING&campList=${campList}`;
-				openWebInAlipay(url);
-			}
-			enterPage();
-		}).finally(() => {
-			setLoading(false);
-		});
+				if (
+					jumpType === 'twoJump' &&
+					res?.campInfoVoList.length > 0 &&
+					isFirst
+				) {
+					const itemList = res?.campInfoVoList || [];
+					const item = res?.campInfoVoList[0] || {};
+					const campList: string[] = [];
+					const index = itemList.findIndex((i) => i.campId === item.campId);
+					const newList = [...itemList];
+					newList
+						.filter((e, i) => i > index)
+						.forEach((item) => {
+							if (item.campId) {
+								campList.push(item.campId);
+							}
+						});
+					const url = `${location.origin}/detail?itemId=${item.campId}&type=GOING&campList=${campList}`;
+					openWebInAlipay(url);
+				}
+				enterPage();
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	};
 
 	const queryRecentLuckDogs = async () => {
@@ -80,14 +89,26 @@ function Home() {
 					{/* 中奖轮播放 */}
 					{luckDogs?.length > 0 ? (
 						<div className='home__carousel text-ellipsis'>
-							<Swiper autoplay direction='vertical' indicator={() => null} loop style={{ '--height': '62px' }}>
+							<Swiper
+								autoplay
+								direction='vertical'
+								indicator={() => null}
+								loop
+								style={{ '--height': '62px' }}
+							>
 								{luckDogs.map((item, index) => (
 									<Swiper.Item key={index}>
 										<div className='text-ellipsis '>
 											恭喜{item.userName || '匿名'}中奖
-											{item.lotteryPrizeInfoVoList?.map((prizeItem: any, index) => (
-												<span key={index}>{index > 0 ? '，' + prizeItem.subject : prizeItem.subject}</span>
-											))}
+											{item.lotteryPrizeInfoVoList?.map(
+												(prizeItem: any, index) => (
+													<span key={index}>
+														{index > 0
+															? '，' + prizeItem.subject
+															: prizeItem.subject}
+													</span>
+												),
+											)}
 										</div>
 									</Swiper.Item>
 								))}
@@ -98,13 +119,23 @@ function Home() {
 					<div className='home__prize-list'>
 						{campInfoVoList.length > 0 ? (
 							<>
-								{campInfoVoList.map(item => (
-									<PrizeItem key={item.campId} item={item} itemList={campInfoVoList} />
+								{campInfoVoList.map((item) => (
+									<PrizeItem
+										key={item.campId}
+										item={item}
+										itemList={campInfoVoList}
+									/>
 								))}
-								<Image className='home-none-more' src="https://laiy-online-oss-client.laiytech.com/resource/lottery_everyday/v2_71_0/home-none-more.png"/>
+								<Image
+									className='home-none-more'
+									src='https://laiy-online-oss-client.laiytech.com/resource/lottery_everyday/v2_71_0/home-none-more.png'
+								/>
 							</>
 						) : (
-							<Image className='home__empty-img' src='https://sl-online-oss.shulidata.com/resource/lottery_everyday/v2_71_0/empty.png' />
+							<Image
+								className='home__empty-img'
+								src='https://sl-online-oss.shulidata.com/resource/lottery_everyday/v2_71_0/empty.png'
+							/>
 						)}
 					</div>
 				</>

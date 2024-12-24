@@ -20,12 +20,12 @@ function CampRichText(props) {
 	return (
 		<div>
 			{abstractCampInfo.displayColumn === 'SUSPENSION' &&
-				campDescItemInfos.length === 0 ? (
-					<img
-						className='desc-box-image'
-						src='https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*FvT8Q7qpNe8AAAAAAAAAAAAAARQnAQ'
-					/>
-				) : null}
+			campDescItemInfos.length === 0 ? (
+				<img
+					className='desc-box-image'
+					src='https://gw.alipayobjects.com/mdn/TinyAppInnovation/afts/img/A*FvT8Q7qpNe8AAAAAAAAAAAAAARQnAQ'
+				/>
+			) : null}
 			{campDescItemInfos && campDescItemInfos.length ? (
 				<div
 					className='desc-box'
@@ -36,37 +36,39 @@ function CampRichText(props) {
 					// }
 				>
 					{campDescItemInfos.map((item, index) => {
-						return <div key={index}>
-							{item.descItemType === DescItemTypeEnum.link && (
-								<div
-									className='desc-item-link'
-									onClick={() => onLinkTap(index)}
-								>
-									<div className='desc-link-title'>{item.descItem.title}</div>
-									<div className='desc-item-link-action'>
-										{item.descItem.action}
+						return (
+							<div key={index}>
+								{item.descItemType === DescItemTypeEnum.link && (
+									<div
+										className='desc-item-link'
+										onClick={() => onLinkTap(index)}
+									>
+										<div className='desc-link-title'>{item.descItem.title}</div>
+										<div className='desc-item-link-action'>
+											{item.descItem.action}
+										</div>
+										<div className='blue-line-arrow'></div>
 									</div>
-									<div className='blue-line-arrow'></div>
-								</div>
-							)}
-							{item.descItemType === DescItemTypeEnum.text && (
-								<span className='desc-text'>{item.descItem}</span>
-							)}
-							{item.descItemType === DescItemTypeEnum.img && (
-								<div className='desc-image-div' data-index='{{index}}'>
-									<img
-										onClick={() => onTapImage(index)}
-										className='desc-image'
-										src={item.descItem}
-									/>
-								</div>
-							)}
-						</div>;
+								)}
+								{item.descItemType === DescItemTypeEnum.text && (
+									<span className='desc-text'>{item.descItem}</span>
+								)}
+								{item.descItemType === DescItemTypeEnum.img && (
+									<div className='desc-image-div' data-index='{{index}}'>
+										<img
+											onClick={() => onTapImage(index)}
+											className='desc-image'
+											src={item.descItem}
+										/>
+									</div>
+								)}
+							</div>
+						);
 					})}
 
 					<div className='desc-gap'></div>
 				</div>
-			): null}
+			) : null}
 		</div>
 	);
 }

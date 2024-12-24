@@ -12,7 +12,7 @@ let interval: any = null;
 export default function track({ extParams, ...data }: any) {
 	const datetime = +new Date();
 	const bid = data.bid || data.eventId;
-	const appId = cst.APP_ID
+	const appId = cst.APP_ID;
 	const trackData = {
 		appId,
 		appKey: cst.TRACK_APP_KEY,

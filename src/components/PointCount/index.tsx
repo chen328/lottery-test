@@ -10,7 +10,7 @@ const PointCount = (props) => {
 	const { count } = props;
 	return (
 		<div className='point-count'>
-			{getCount(count).map((itemName,index) => {
+			{getCount(count).map((itemName, index) => {
 				return (
 					<div key={index}>
 						<div className='point-count-item'>

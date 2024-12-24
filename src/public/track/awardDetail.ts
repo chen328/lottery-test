@@ -667,7 +667,6 @@ export function trackGuideClick(task_type) {
 	});
 }
 
-
 /**
  * 晒奖入口曝光
  */

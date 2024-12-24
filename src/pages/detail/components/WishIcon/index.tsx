@@ -21,37 +21,39 @@ const WishIcon = (props) => {
 				src='https://mdn.alipayobjects.com/portal_s6jpcc/afts/img/A*9R7eS5bix7sAAAAAAAAAAAAAAQAAAQ/original'
 			/>
 			<div className='detail-wishicon-bg'>
-        {
-          lotteryNum !== 3 && lotteryNum < 5 && <div
-					className={classNames('detail-wishicon-bg-progress',{'detail-wishicon-bg-progress--more': lotteryNum > 3})}
-				>
-					{/* <!-- 1/2次样式 --> */}
+				{lotteryNum !== 3 && lotteryNum < 5 && (
+					<div
+						className={classNames('detail-wishicon-bg-progress', {
+							'detail-wishicon-bg-progress--more': lotteryNum > 3,
+						})}
+					>
+						{/* <!-- 1/2次样式 --> */}
 
-					{lotteryNum <= 3 &&
-						[1, 2, 3].map((item) => {
-							return (
-								<div
-									className={classNames('detail-wishicon-bg-progress-small', {
-										'detail-wishicon-bg-progress--active': lotteryNum >= item,
-									})}
-									key={item}
-								></div>
-							);
-						})}
-					{lotteryNum > 3 &&
-						[4, 5].map((item) => {
-							return (
-								<div
-									className={classNames('detail-wishicon-bg-progress-big', {
-										'detail-wishicon-bg-progress--active': lotteryNum >= item,
-									})}
-									key={item}
-								></div>
-							);
-						})}
-				</div>
-        }
-				
+						{lotteryNum <= 3 &&
+							[1, 2, 3].map((item) => {
+								return (
+									<div
+										className={classNames('detail-wishicon-bg-progress-small', {
+											'detail-wishicon-bg-progress--active': lotteryNum >= item,
+										})}
+										key={item}
+									></div>
+								);
+							})}
+						{lotteryNum > 3 &&
+							[4, 5].map((item) => {
+								return (
+									<div
+										className={classNames('detail-wishicon-bg-progress-big', {
+											'detail-wishicon-bg-progress--active': lotteryNum >= item,
+										})}
+										key={item}
+									></div>
+								);
+							})}
+					</div>
+				)}
+
 				<div
 					className={classNames('detail-wishicon-bg-count', {
 						'detail-wishicon-bg-count--mg': lotteryNum === 3 || lotteryNum >= 5,

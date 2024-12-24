@@ -55,7 +55,7 @@ const PrizeItem: React.FC<IProps> = (props) => {
 
 	useEffect(() => {
 		lotteryExposure(item, '抽奖列表');
-	}, [])
+	}, []);
 
 	return (
 		<div className='prize-item' onClick={onCardClick}>
@@ -80,9 +80,17 @@ const PrizeItem: React.FC<IProps> = (props) => {
 					) : null}
 				</div>
 				<div className='prize-item__countdown'>
-					<span className='prize-item__countdown-num'>{showHours > 9 ? showHours : `0${showHours}`}</span>:
-					<span className='prize-item__countdown-num'>{minutes > 9 ? minutes : `0${minutes}`}</span>:
-					<span className='prize-item__countdown-num'>{seconds > 9 ? seconds : `0${seconds}`}</span>
+					<span className='prize-item__countdown-num'>
+						{showHours > 9 ? showHours : `0${showHours}`}
+					</span>
+					:
+					<span className='prize-item__countdown-num'>
+						{minutes > 9 ? minutes : `0${minutes}`}
+					</span>
+					:
+					<span className='prize-item__countdown-num'>
+						{seconds > 9 ? seconds : `0${seconds}`}
+					</span>
 					后开奖
 				</div>
 			</div>
@@ -90,11 +98,7 @@ const PrizeItem: React.FC<IProps> = (props) => {
 			<div className='prize-item__divider' />
 
 			<div className='prize-item__main'>
-				<img
-					className='prize-item__main-left'
-					src={item.campLogo}
-					alt=''
-				/>
+				<img className='prize-item__main-left' src={item.campLogo} alt='' />
 				<div className='prize-item__main-right'>
 					<div className='text-ellipsis prize-item__main-title'>
 						{lotteryTitles(item)}

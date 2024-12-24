@@ -7,12 +7,12 @@ export function auth(authCode) {
 		url: '/ipsponsorprod/lottery/auth',
 		data: {
 			authCode,
-			source: cst.SOURCE
+			source: cst.SOURCE,
 		},
 		headers: {
 			'content-type': 'application/json',
 			'X-B3-TraceId': genRandomStr(32),
-		}
+		},
 	}).then(
 		({ data }) => {
 			const { invUserInfo, sessionId } = data || {};

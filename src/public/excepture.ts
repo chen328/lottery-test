@@ -15,14 +15,29 @@ export function capture(e: any = {}, type = 'syntax') {
 		let captureType = type;
 		const datetime = +new Date();
 		const url = location.pathname || '/';
-		const msg = typeof e === 'string' ? e : e.msg || e.message || (e.reason ? e.reason.msg || e.reason.message : '');
+		const msg =
+			typeof e === 'string'
+				? e
+				: e.msg ||
+					e.message ||
+					(e.reason ? e.reason.msg || e.reason.message : '');
 		const params: any = {};
 
-		if (!msg || (e && e.reason && e.reason.code && !e.reason.success && e.reason.name !== 'AxiosError')) {
+		if (
+			!msg ||
+			(e &&
+				e.reason &&
+				e.reason.code &&
+				!e.reason.success &&
+				e.reason.name !== 'AxiosError')
+		) {
 			return;
 		}
 
-		if (type === 'request' && ['领取频繁,请明日再试', 'Network Error', '任务未完成'].includes(msg)) {
+		if (
+			type === 'request' &&
+			['领取频繁,请明日再试', 'Network Error', '任务未完成'].includes(msg)
+		) {
 			return;
 		}
 
@@ -31,7 +46,7 @@ export function capture(e: any = {}, type = 'syntax') {
 			params.response = e ? e.response : '';
 		}
 
-		if (e && e.reason && e.reason.name === "AxiosError") {
+		if (e && e.reason && e.reason.name === 'AxiosError') {
 			const { response = {} } = e.reason || {};
 			const { config = {}, data = {} } = response || {};
 			params.request = JSON.stringify(data);
@@ -63,6 +78,6 @@ export function capture(e: any = {}, type = 'syntax') {
 			);
 		}
 	} catch (e) {
-		console.log(e)
+		console.log(e);
 	}
 }

@@ -22,7 +22,11 @@ const getHour = (sTime, rTime) => {
 };
 
 function RecommendLottery(props) {
-	const { onTapNextAwardDetail, component = '推荐抽奖', nextCampInfoVo } = props;
+	const {
+		onTapNextAwardDetail,
+		component = '推荐抽奖',
+		nextCampInfoVo,
+	} = props;
 	const [serverTime, setServerTime] = useState<number>();
 	const [, formattedRes] = useCountDown({
 		targetDate: nextCampInfoVo.gmtEnd,
@@ -68,7 +72,11 @@ function RecommendLottery(props) {
 					<span className='recommend-lottery-region-desc-left'>【</span>
 					<img
 						className='recommend-lottery-region-desc-regionIcon'
-						src={nextCampInfoVo.serviceFavoriteVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo && nextCampInfoVo.serviceFavoriteVo.serviceInfoVo.serviceIcon}
+						src={
+							nextCampInfoVo.serviceFavoriteVo &&
+							nextCampInfoVo.serviceFavoriteVo.serviceInfoVo &&
+							nextCampInfoVo.serviceFavoriteVo.serviceInfoVo.serviceIcon
+						}
 					/>
 					<div className='recommend-lottery-region-desc-name'>
 						{nextCampInfoVo.serviceFavoriteVo &&

@@ -16,9 +16,9 @@ function getEndDesc(campClause, abstractCampInfo) {
 
 const ParticipateDialog = (props) => {
 	const { campClause, abstractCampInfo, onTapClose = () => {} } = props;
-  const onMyTapClose = () => {
-    onTapClose();
-  }
+	const onMyTapClose = () => {
+		onTapClose();
+	};
 	return (
 		<div>
 			<div className='paricipate-mask'>

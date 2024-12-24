@@ -31,7 +31,9 @@ const Routers: FC = () => {
 			<Routes>
 				<Route path={'/'} element={<Home />} />
 				<Route path={'/detail'} element={<Detail />} />
-				{cst.ENV === 'k8s' || cst.ENV === 'development' ? <Route path={'/auth'} element={<Auth />} /> : null}
+				{cst.ENV === 'k8s' || cst.ENV === 'development' ? (
+					<Route path={'/auth'} element={<Auth />} />
+				) : null}
 			</Routes>
 		</Suspense>
 	);

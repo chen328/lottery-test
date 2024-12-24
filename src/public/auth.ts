@@ -6,9 +6,11 @@ import { showToast } from './util';
 export function getAuth() {
 	return new Promise((resolve, reject) => {
 		const { search, href } = location || {};
-		const hrefSplit = href.split('?') || []
+		const hrefSplit = href.split('?') || [];
 		const hrefSearch = hrefSplit[1] || '';
-		const { AUTH_CODE } = qs.parse(search || hrefSearch, { ignoreQueryPrefix: true }); // 本地开发鉴权
+		const { AUTH_CODE } = qs.parse(search || hrefSearch, {
+			ignoreQueryPrefix: true,
+		}); // 本地开发鉴权
 		// const isBackUrl = href.includes(cst.ALIPAY_CALLBACK_URL);
 
 		if (ap.isAlipay && !AUTH_CODE) {
