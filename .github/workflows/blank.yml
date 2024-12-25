@@ -26,11 +26,36 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Install pnpm
+        run: npm install -g pnpm  #先全局安装pnpm，方便后续volta使用
+
+      - name: Install volta
+        uses: volta-cli/action@v1 # 从 volta 官方提供 Action安装 Volta. 
+   
+      - name: Use Node with Volta
+        run: volta setup # 使用volta 管理当前目录Node版本
+
+      - name: Install dependencies (pnpm)
+        run: pnpm install --frozen-lockfile  # pnpm 的 install ，根据lock安装，如果package-lock不存在可以使用 `pnpm install`
+
+      - name: Build (Production)
+        run: pnpm run build
+
+      - name: List dist folder for debug #调试用
+        run: ls dist #打印构建后的文件列表 
+  deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main'
+      steps:
+        - uses: actions/checkout@v4   #关键： deploy 添加检出代码的 step
+        - name: Deploy to Vercel
+          uses: amondnet/vercel-action@v20 #推荐此官方维护 action， 具体版本查看仓库 releases 界面
+          with:
+            vercel-token: ${{ secrets.VERCEL_TOKEN }}
+            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+            github-deployment: true
