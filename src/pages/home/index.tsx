@@ -67,6 +67,7 @@ function Home() {
 	};
 
 	useEffect(() => {
+		console.log('新部署');
 		getList(1, true);
 		queryRecentLuckDogs();
 		ap.onResume(() => {
