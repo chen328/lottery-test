@@ -46,3 +46,15 @@ jobs:
 
       - name: List dist folder for debug #调试用
         run: ls dist #打印构建后的文件列表 
+  deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main'
+      steps:
+        - name: Deploy to Vercel
+          uses: amondnet/vercel-action@v20 #推荐此官方维护 action， 具体版本查看仓库 releases 界面
+          with:
+            vercel-token: ${{ secrets.VERCEL_TOKEN }}
+            vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+            vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+            github-deployment: true
